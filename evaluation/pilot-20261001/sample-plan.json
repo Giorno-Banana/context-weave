@@ -1,0 +1,27 @@
+{
+  "seed": "cycle2-v4-pilot-20261001",
+  "selection": "Two conversation IDs ranked by seeded SHA-256 among conversations with >=5 questions in each category; five questions per category per conversation ranked by seeded SHA-256. No retrieval outcomes used.",
+  "conversations": [
+    "conv-50",
+    "conv-43"
+  ],
+  "categories": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "questions": 40,
+  "modes": [
+    "dense",
+    "hybrid",
+    "hybrid_window"
+  ],
+  "retrospective_public_diagnostic": true,
+  "official_score": false,
+  "source_messages": 1248,
+  "source_characters": 246606,
+  "source_chunks": 1248,
+  "estimated_requests_without_retries": 268,
+  "request_guard": 400
+}
