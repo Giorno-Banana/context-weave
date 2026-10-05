@@ -1,0 +1,36 @@
+services:
+  memory:
+    build: .
+    image: adaptive-evidence:0.2.0
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:18081:8000"
+    volumes:
+      - memory-data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+  caddy:
+    image: caddy:2
+    profiles: [public]
+    restart: unless-stopped
+    environment:
+      AE_DOMAIN: ${AE_DOMAIN:-localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      memory:
+        condition: service_healthy
+volumes:
+  memory-data:
+  caddy-data:
+  caddy-config:
