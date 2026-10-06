@@ -126,14 +126,16 @@ class Index:
 
 
 class MemoryStore:
-    def __init__(self, path: str | Path, encoder: Encoder, config: Config | None = None):
+    def __init__(self, path: str | Path, encoder: Encoder, config: Config | None = None, *, add_indexer=None):
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.encoder = encoder
+        self.add_indexer = add_indexer
         self.config = config or Config()
         self.cache: OrderedDict[str, Index] = OrderedDict()
         self.cache_lock = threading.RLock()
         self.encoder_lock = threading.RLock()
+        self.add_locks = [threading.Lock() for _ in range(128)]
         with closing(self.connect()) as db:
             db.execute("PRAGMA journal_mode=WAL")
             db.executescript("""
@@ -148,15 +150,17 @@ class MemoryStore:
                     timestamp INTEGER,content TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS chunks(
                     id TEXT PRIMARY KEY,source_id TEXT NOT NULL REFERENCES sources(id),
-                    start INTEGER NOT NULL,end INTEGER NOT NULL,embedding BLOB NOT NULL);
+                    start INTEGER NOT NULL,end INTEGER NOT NULL,embedding BLOB NOT NULL,
+                    index_text TEXT NOT NULL);
                 CREATE INDEX IF NOT EXISTS source_scope ON sources(user_id);
                 CREATE INDEX IF NOT EXISTS chunk_source ON chunks(source_id);
             """)
             identity = digest({"encoder": encoder.identity, "chunk_chars": self.config.chunk_chars,
-                               "overlap_chars": self.config.overlap_chars, "schema": 1})
+                               "overlap_chars": self.config.overlap_chars, "schema": 2,
+                               "add_indexer": getattr(add_indexer, "identity", None)})
             existing = db.execute("SELECT value FROM metadata WHERE key='identity'").fetchone()
             if existing and existing[0] != identity:
-                raise ValueError("Database uses a different model or chunking configuration")
+                raise ValueError("Database uses a different model, Add indexer, chunking configuration or schema")
             db.execute("INSERT OR IGNORE INTO metadata VALUES ('identity',?)", (identity,))
             db.commit()
 
@@ -167,6 +171,15 @@ class MemoryStore:
         return db
 
     def add(self, *, user_id: str, request_id: str, session_id: str, messages: list[dict]) -> int:
+        if not all(isinstance(x, str) and x for x in (user_id, request_id, session_id)):
+            raise ValueError("Missing Add fields")
+        # Serialize identical in-process retries before paid model calls. Fixed
+        # stripes bound lock memory; database uniqueness also protects processes.
+        stripe = int(digest([user_id, request_id])[:8], 16) % len(self.add_locks)
+        with self.add_locks[stripe]:
+            return self._add(user_id=user_id, request_id=request_id, session_id=session_id, messages=messages)
+
+    def _add(self, *, user_id: str, request_id: str, session_id: str, messages: list[dict]) -> int:
         if not all(isinstance(x, str) and x for x in (user_id, request_id, session_id)) or not messages:
             raise ValueError("Missing Add fields")
         clean = []
@@ -197,9 +210,12 @@ class MemoryStore:
                 chunk_id = digest([source_id, start, end])
                 chunks.append((chunk_id, source_id, start, end))
                 texts.append(message["content"][start:end])
+        index_texts = self.add_indexer.enrich(texts) if self.add_indexer is not None else texts
+        if len(index_texts) != len(texts) or any(not isinstance(t, str) or not t for t in index_texts):
+            raise ValueError("Invalid Add indexing result")
         if texts:
             with self.encoder_lock:
-                matrix = np.asarray(self.encoder.encode(texts), dtype=np.float32)
+                matrix = np.asarray(self.encoder.encode(index_texts), dtype=np.float32)
             if matrix.ndim != 2 or len(matrix) != len(texts) or matrix.shape[1] == 0 or not np.isfinite(matrix).all():
                 raise ValueError("Invalid embedding matrix")
             norms = np.linalg.norm(matrix, axis=1, keepdims=True)
@@ -219,8 +235,9 @@ class MemoryStore:
                     return 0
                 db.execute("INSERT INTO requests VALUES (?,?,?)", (user_id, request_id, fingerprint))
                 db.executemany("INSERT INTO sources VALUES (?,?,?,?,?,?,?,?)", sources)
-                db.executemany("INSERT INTO chunks VALUES (?,?,?,?,?)",
-                               [(*chunk, vector.astype(np.float32).tobytes()) for chunk, vector in zip(chunks, matrix)])
+                db.executemany("INSERT INTO chunks VALUES (?,?,?,?,?,?)",
+                               [(*chunk, vector.astype(np.float32).tobytes(), text)
+                                for chunk, vector, text in zip(chunks, matrix, index_texts)])
                 db.execute("INSERT INTO scopes VALUES (?,1) ON CONFLICT(user_id) DO UPDATE SET revision=revision+1", (user_id,))
                 db.commit()
             except Exception:
@@ -244,7 +261,7 @@ class MemoryStore:
                     self.cache.move_to_end(user_id)
                     return cached
             rows = [dict(row) for row in db.execute("""
-                SELECT c.id,c.source_id,c.start,c.end,c.embedding,s.request_id,s.session_id,
+                SELECT c.id,c.source_id,c.start,c.end,c.embedding,c.index_text,s.request_id,s.session_id,
                        s.position,s.role,s.timestamp,substr(s.content,c.start+1,c.end-c.start) AS content
                 FROM chunks c JOIN sources s ON s.id=c.source_id WHERE s.user_id=?
                 ORDER BY s.session_id,s.timestamp,s.request_id,s.position,c.start
@@ -252,6 +269,7 @@ class MemoryStore:
         if not rows:
             return None
         matrix = np.stack([np.frombuffer(row.pop("embedding"), dtype=np.float32) for row in rows])
+        index_texts = [row.pop("index_text") for row in rows]
         groups = defaultdict(list)
         for i, row in enumerate(rows):
             # Only an Add's ordered messages guarantee adjacency. Never infer it
@@ -263,7 +281,7 @@ class MemoryStore:
             for position, i in enumerate(group):
                 neighbors[i] = group[max(0, position - self.config.window_radius):position + self.config.window_radius + 1]
         texts = [row["content"] for row in rows]
-        index = Index(revision, rows, matrix, BM25(texts), [content_tokens(t) for t in texts], neighbors)
+        index = Index(revision, rows, matrix, BM25(index_texts), [content_tokens(t) for t in texts], neighbors)
         with self.cache_lock:
             self.cache[user_id] = index
             self.cache.move_to_end(user_id)

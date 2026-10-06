@@ -13,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from .core import Config, ConflictError, MemoryStore
 from .remote_encoder import EmbeddingError, encoder_from_env
+from .add_indexer import AddIndexerError, add_indexer_from_env
 
 
 class Message(BaseModel):
@@ -40,12 +41,17 @@ class Search(BaseModel):
 @lru_cache(maxsize=1)
 def get_store():
     encoder = encoder_from_env()
+    add_indexer = None
     try:
+        add_indexer = add_indexer_from_env()
         return MemoryStore(os.getenv("AE_DATABASE", "data/cycle2-v4/memory.sqlite3"),
-                           encoder, Config(context_chars=int(os.getenv("AE_CONTEXT_CHARS", "24000"))))
+                           encoder, Config(context_chars=int(os.getenv("AE_CONTEXT_CHARS", "24000"))),
+                           add_indexer=add_indexer)
     except Exception:
         if hasattr(encoder, "close"):
             encoder.close()
+        if add_indexer is not None:
+            add_indexer.close()
         raise
 
 
@@ -83,13 +89,15 @@ async def lifespan(app):
     finally:
         if hasattr(store.encoder, "close"):
             store.encoder.close()
+        if store.add_indexer is not None:
+            store.add_indexer.close()
         if planner is not None:
             planner.client.close()
         get_store.cache_clear()
         get_planner.cache_clear()
 
 
-app = FastAPI(title="Adaptive Evidence", version="0.2.0", lifespan=lifespan)
+app = FastAPI(title="Context Weave", version="0.3.0", lifespan=lifespan)
 
 
 @app.exception_handler(RequestValidationError)
@@ -102,11 +110,18 @@ async def embedding_error(request, exc):
     return JSONResponse(status_code=503, content={"detail": str(exc)})
 
 
+@app.exception_handler(AddIndexerError)
+async def add_indexer_error(request, exc):
+    return JSONResponse(status_code=503, content={"detail": str(exc)})
+
+
 @app.get("/health")
 def health(store: MemoryStore = Depends(get_store)):
-    return {"status": "ok", "version": "0.2.0",
+    return {"status": "ok", "version": "0.3.0",
             "embedding": getattr(store.encoder, "model", "local-or-test"),
-            "llm": "gpt-4o-mini" if os.getenv("AE_PLANNER") == "1" else "none"}
+            "llm": "gpt-4o-mini" if store.add_indexer is not None or os.getenv("AE_PLANNER") == "1" else "none",
+            "add_llm": getattr(store.add_indexer, "model", "none"),
+            "llm_provider": "openrouter" if store.add_indexer is not None else "none"}
 
 
 @app.post("/add", dependencies=[Depends(authenticate)])
