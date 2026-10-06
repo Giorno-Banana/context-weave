@@ -11,10 +11,13 @@ import preflight
 from adaptive_evidence import api
 from adaptive_evidence.remote_encoder import DashScopeEncoder
 from test_remote_encoder import ENDPOINT, result
+from test_add_indexer import valid_handler
+from adaptive_evidence.add_indexer import OpenRouterAddIndexer
 
 
 SETTINGS = {"MEMORY_API_KEY": "test-memory-key", "DASHSCOPE_API_KEY": "test-provider-key",
-            "AE_EMBEDDING_URL": ENDPOINT, "AE_EMBEDDING_BACKEND": "dashscope", "AE_PLANNER": "0"}
+            "AE_EMBEDDING_URL": ENDPOINT, "AE_EMBEDDING_BACKEND": "dashscope", "AE_PLANNER": "0",
+            "AE_ADD_INDEXER": "1", "OPENROUTER_API_KEY": "test-router-key"}
 
 
 class PreflightTests(unittest.TestCase):
@@ -22,7 +25,7 @@ class PreflightTests(unittest.TestCase):
         with patch.dict(os.environ, {}, clear=True), patch.object(httpx.Client, "post", side_effect=AssertionError("network")):
             report = preflight.configuration_report()
             self.assertFalse(report["ready_for_live_probe"])
-            self.assertEqual(3, len(report["missing_environment"]))
+            self.assertEqual(4, len(report["missing_environment"]))
         with patch.dict(os.environ, SETTINGS, clear=True), patch.object(httpx.Client, "post", side_effect=AssertionError("network")):
             report = preflight.configuration_report()
             self.assertTrue(report["ready_for_live_probe"])
@@ -42,10 +45,14 @@ class PreflightTests(unittest.TestCase):
             requests.append(body)
             return httpx.Response(200, json=result(len(body["input"]["texts"])))
         encoder = DashScopeEncoder("test", ENDPOINT, dimensions=64, transport=httpx.MockTransport(handler))
-        with patch.dict(os.environ, SETTINGS, clear=True), patch.object(api, "encoder_from_env", return_value=encoder):
+        indexer = OpenRouterAddIndexer("test", transport=httpx.MockTransport(valid_handler))
+        with patch.dict(os.environ, SETTINGS, clear=True), patch.object(api, "encoder_from_env", return_value=encoder), \
+                patch.object(api, "add_indexer_from_env", return_value=indexer):
             report = preflight.live_probe()
         self.assertEqual("passed", report["live_probe"])
         self.assertTrue(encoder.client.is_closed)
+        self.assertTrue(indexer.client.is_closed)
+        self.assertGreater(indexer.usage()["validated_chunks"], 0)
         self.assertGreater(len(requests), 5)
         self.assertEqual(0, api.get_store.cache_info().currsize)
         self.assertEqual({"document", "query"}, {r["parameters"]["text_type"] for r in requests})

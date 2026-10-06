@@ -5,7 +5,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import evaluate_retrieval
 from test_contract import FakeEncoder
@@ -37,7 +37,9 @@ class Cycle2EvaluationTests(unittest.TestCase):
             argv = ["evaluate_retrieval.py", "--env-file", str(env_file), "--data-dir", str(data), "--output", str(output), "--modes", "hybrid_window"]
             encoder = CountedEncoder()
             with patch.dict(os.environ, {"AE_EMBEDDING_BACKEND": "dashscope"}), patch("sys.argv", argv), \
-                    patch.object(evaluate_retrieval, "encoder_from_env", return_value=encoder), contextlib.redirect_stdout(io.StringIO()):
+                    patch.object(evaluate_retrieval, "encoder_from_env", return_value=encoder), \
+                    patch.object(evaluate_retrieval, "add_indexer_from_env", return_value=None) as indexer_factory, \
+                    contextlib.redirect_stdout(io.StringIO()):
                 evaluate_retrieval.main()
                 self.assertEqual("0", os.environ["AE_PLANNER"])
                 calls = encoder.calls
@@ -50,6 +52,14 @@ class Cycle2EvaluationTests(unittest.TestCase):
                 self.assertEqual(encoder.identity, manifest["encoder_identity"])
                 self.assertEqual("dashscope", manifest["embedding_backend"])
                 self.assertFalse(manifest["official_score"])
+                self.assertIsNone(manifest["add_indexer_identity"])
+                changed_indexer = Mock(identity="changed-add-indexing-profile")
+                indexer_factory.return_value = changed_indexer
+                with self.assertRaisesRegex(ValueError, "different frozen protocol"):
+                    evaluate_retrieval.main()
+                changed_indexer.enrich.assert_not_called()
+                changed_indexer.close.assert_called_once()
+                indexer_factory.return_value = None
                 encoder.identity = "changed-vector-space"
                 with self.assertRaisesRegex(ValueError, "different frozen protocol"):
                     evaluate_retrieval.main()
