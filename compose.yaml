@@ -1,7 +1,7 @@
 services:
   memory:
     build: .
-    image: adaptive-evidence:0.2.0
+    image: context-weave:0.3.0
     restart: unless-stopped
     env_file: .env
     ports:

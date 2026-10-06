@@ -1,4 +1,5 @@
 """Build an allowlisted Cycle 2 source archive; excludes credentials and data."""
+import argparse
 import hashlib
 import json
 import zipfile
@@ -7,6 +8,9 @@ from pathlib import Path
 
 def main():
     root = Path(__file__).resolve().parent
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=root / "dist/context-weave-0.3.0-cycle2-source.zip")
+    target = parser.parse_args().output.resolve()
     files = {name: root / name for name in (
         "OPERATIONS.md", "PROVENANCE.md", "CYCLE2_STATUS.md", "SUBMISSION.md", "LICENSE",
         "requirements.txt", "requirements-local.txt", "Dockerfile", "compose.yaml", "Caddyfile",
@@ -19,11 +23,10 @@ def main():
     for path in sorted((root / "adaptive_evidence").glob("*.py")):
         files["adaptive_evidence/" + path.name] = path
     for name in ("test_contract.py", "test_adaptive.py", "test_planner.py", "test_retrieval_views.py",
-                 "test_remote_encoder.py", "test_preflight.py", "test_cycle2_evaluation.py"):
+                 "test_remote_encoder.py", "test_preflight.py", "test_cycle2_evaluation.py", "test_add_indexer.py"):
         files["tests/" + name] = root / "tests" / name
     manifest = {name: hashlib.sha256(path.read_bytes()).hexdigest() for name, path in files.items()}
-    target = root.parent / "dist/adaptive-evidence-0.2.0-cycle2-source.zip"
-    target.parent.mkdir(exist_ok=True)
+    target.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(target, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
         for name, path in files.items():
             bundle.write(path, name)

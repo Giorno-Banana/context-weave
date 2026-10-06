@@ -1,4 +1,4 @@
-"""Cycle 2 configuration check; --live uses real embeddings on synthetic data.
+"""Cycle 2 configuration check; --live calls embeddings and Add LLM on synthetic data.
 
 Default mode is offline. Neither mode submits an AML Smoke or Full task.
 """
@@ -14,6 +14,7 @@ from unittest.mock import patch
 
 from adaptive_evidence.core import Config, MemoryStore
 from adaptive_evidence.remote_encoder import EmbeddingError, encoder_from_env, validate_endpoint
+from adaptive_evidence.add_indexer import AddIndexerError, add_indexer_from_env
 
 
 def load_env(path: Path):
@@ -32,9 +33,11 @@ def load_env(path: Path):
 
 
 def configuration_report():
-    missing = [name for name in ("MEMORY_API_KEY", "DASHSCOPE_API_KEY", "AE_EMBEDDING_URL")
+    missing = [name for name in ("MEMORY_API_KEY", "DASHSCOPE_API_KEY", "AE_EMBEDDING_URL", "OPENROUTER_API_KEY")
                if not os.getenv(name, "").strip()]
     problems = []
+    if os.getenv("AE_ADD_INDEXER", "0") != "1":
+        problems.append("Version 0.3.0 candidate requires AE_ADD_INDEXER=1")
     if os.getenv("AE_EMBEDDING_URL"):
         try:
             validate_endpoint(os.environ["AE_EMBEDDING_URL"])
@@ -54,16 +57,20 @@ def configuration_report():
         problems.append("Invalid AE_CONTEXT_CHARS")
     if os.getenv("AE_MODE", "hybrid_window") not in {"hybrid_window", "hybrid", "adaptive", "dense"}:
         problems.append("Use a supported candidate retrieval mode")
-    encoder = None
+    encoder = indexer = None
     if not missing and not problems:
         try:
             encoder = encoder_from_env()
+            indexer = add_indexer_from_env()
         except ValueError:
-            problems.append("Invalid embedding endpoint, dimensions, batch, timeout, attempts or request budget")
+            problems.append("Invalid embedding or Add LLM configuration and request limits")
         finally:
             if encoder is not None:
                 encoder.close()
-    return {"track": "textual", "division": "open-source", "version": "0.2.0",
+            if indexer is not None:
+                indexer.close()
+    return {"track": "textual", "division": "open-source", "version": "0.3.0",
+            "add_llm": "openai/gpt-4o-mini", "llm_provider": "openrouter",
             "embedding": "text-embedding-v4", "missing_environment": missing,
             "configuration_problems": problems, "ready_for_live_probe": not missing and not problems,
             "live_probe": "not_run", "official_smoke": False, "official_full": False}
@@ -93,8 +100,11 @@ def live_probe():
                 check(response.json() == {"success": True, "request_id": "r1", "user_id": "synthetic-a", "session_id": "s1"}, "add IDs")
                 store = get_store()
                 before = store.encoder.usage()["requests"]
+                before_llm = store.add_indexer.usage()["requests"] if store.add_indexer else 0
                 check(client.post("/add", headers=headers, json=body).status_code == 200, "idempotent retry")
                 check(store.encoder.usage()["requests"] == before, "no duplicate embedding")
+                if store.add_indexer:
+                    check(store.add_indexer.usage()["requests"] == before_llm, "no duplicate LLM indexing")
                 conflict = {**body, "messages": [{"role": "user", "content": "conflicting retry"}]}
                 check(client.post("/add", headers=headers, json=conflict).status_code == 409, "conflict")
                 query = {"user_id": "synthetic-a", "query": "我喜欢什么旅行方式？", "top_k": 100,
@@ -111,10 +121,11 @@ def live_probe():
                 check(client.post("/add", headers=headers, json=update).status_code == 200, "streaming update")
                 response = client.post("/search", headers=headers, json={**query, "query": "Where did I move?"})
                 check(response.status_code == 200 and "Berlin" in str(response.json()), "cache invalidation")
-                restored = MemoryStore(path, store.encoder, store.config)
+                restored = MemoryStore(path, store.encoder, store.config, add_indexer=store.add_indexer)
                 check(len(restored.search(user_id="synthetic-a", query="home city")) == 2, "persistent recovery")
-                return {"live_probe": "passed", "transport": "in-process HTTP with real DashScope calls",
+                return {"live_probe": "passed", "transport": "in-process HTTP with configured upstream providers",
                         "synthetic_data_only": True, "embedding_usage": store.encoder.usage(),
+                        "add_llm_usage": store.add_indexer.usage() if store.add_indexer else None,
                         "checks": ["health", "auth", "add_ids", "idempotence", "conflict", "retrieval",
                                    "choice_options", "user_isolation", "streaming_update", "persistence"]}
 
@@ -122,7 +133,7 @@ def live_probe():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--env-file", type=Path)
-    parser.add_argument("--live", action="store_true", help="Spend embedding API calls on a small synthetic probe")
+    parser.add_argument("--live", action="store_true", help="Spend embedding and Add LLM calls on a small synthetic probe")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     if args.env_file:

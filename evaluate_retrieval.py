@@ -19,6 +19,7 @@ from pathlib import Path
 from adaptive_evidence.core import Config, MemoryStore, digest
 from adaptive_evidence.encoder import BGEEncoder
 from adaptive_evidence.remote_encoder import encoder_from_env
+from adaptive_evidence.add_indexer import add_indexer_from_env
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -79,6 +80,7 @@ def main():
         if os.getenv("AE_EMBEDDING_BACKEND", "dashscope") != "dashscope":
             parser.error("DashScope evaluation requires AE_EMBEDDING_BACKEND=dashscope")
         encoder = encoder_from_env()
+    add_indexer = add_indexer_from_env()
     protocol = {"kind": "retrospective_retrieval_only", "unseen_holdout": False,
                 "data_sha256": inputs, "config": asdict(config), "top_k": args.top_k,
                 "modes": args.modes, "limit": args.limit,
@@ -87,6 +89,7 @@ def main():
                                    for p in (Path(__file__).parent / "adaptive_evidence").glob("*.py")},
                 "evaluation_script_sha256": sha(Path(__file__)),
                 "embedding_backend": args.embedding_backend, "encoder_identity": encoder.identity,
+                "add_indexer_identity": getattr(add_indexer, "identity", None),
                 "model": str(args.model.resolve()) if args.embedding_backend == "bge" else "text-embedding-v4",
                 "device": args.device if args.embedding_backend == "bge" else "provider",
                 "source_policy": "raw message text, speaker, date string; supplied image captions/query are marked as such",
@@ -94,6 +97,10 @@ def main():
                 "answer_model": None, "judge_model": None, "official_score": False}
     manifest_path = args.output / "manifest.json"
     if manifest_path.exists() and json.loads(manifest_path.read_text(encoding="utf-8")) != protocol:
+        if hasattr(encoder, "close"):
+            encoder.close()
+        if add_indexer is not None:
+            add_indexer.close()
         raise ValueError("Output belongs to a different frozen protocol; use a new directory")
     manifest_path.write_text(json.dumps(protocol, ensure_ascii=False, indent=2), encoding="utf-8")
     snapshot = args.output / "source_snapshot"
@@ -105,7 +112,7 @@ def main():
     shutil.copyfile(__file__, snapshot / Path(__file__).name)
     result_path = args.output / "retrieval_metrics.jsonl"
     done = {(r["mode"], r["qa_id"]) for r in rows(result_path)} if result_path.exists() else set()
-    store = MemoryStore(args.database or args.output / "public_memory.sqlite3", encoder, config)
+    store = MemoryStore(args.database or args.output / "public_memory.sqlite3", encoder, config, add_indexer=add_indexer)
     question_rows = rows(data / "questions.jsonl")
     if args.sample_ids:
         sample_ids = json.loads(args.sample_ids.read_text(encoding="utf-8"))
@@ -195,10 +202,13 @@ def main():
                "elapsed_seconds_this_invocation": time.monotonic()-started}
     if hasattr(encoder, "usage"):
         summary["embedding_usage_this_process"] = encoder.usage()
+    summary["add_llm_usage_this_process"] = add_indexer.usage() if add_indexer else None
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
     print(json.dumps(summary["by_mode"], indent=2), flush=True)
     if hasattr(encoder, "close"):
         encoder.close()
+    if add_indexer is not None:
+        add_indexer.close()
 
 
 if __name__ == "__main__":
