@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import hmac
+import logging
 import os
+import time
 from contextlib import asynccontextmanager
 from functools import lru_cache
 
@@ -97,7 +99,25 @@ async def lifespan(app):
         get_planner.cache_clear()
 
 
-app = FastAPI(title="Context Weave", version="0.3.0", lifespan=lifespan)
+LOG = logging.getLogger("adaptive_evidence")
+LOG.setLevel(logging.INFO)
+LOG.propagate = False
+if not LOG.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s %(message)s"))
+    LOG.addHandler(handler)
+
+app = FastAPI(title="Context Weave", version="0.3.1", lifespan=lifespan)
+
+
+@app.middleware("http")
+async def request_timing(request, call_next):
+    started = time.monotonic()
+    response = await call_next(request)
+    if request.url.path in {"/add", "/search"}:
+        LOG.info("api_request path=%s status=%s seconds=%.2f", request.url.path,
+                 response.status_code, time.monotonic() - started)
+    return response
 
 
 @app.exception_handler(RequestValidationError)
@@ -107,17 +127,19 @@ async def validation_error(request, exc):
 
 @app.exception_handler(EmbeddingError)
 async def embedding_error(request, exc):
-    return JSONResponse(status_code=503, content={"detail": str(exc)})
+    LOG.warning("embedding_failure reason=%s", str(exc))
+    return JSONResponse(status_code=503, content={"detail": str(exc)}, headers={"Retry-After": "5"})
 
 
 @app.exception_handler(AddIndexerError)
 async def add_indexer_error(request, exc):
-    return JSONResponse(status_code=503, content={"detail": str(exc)})
+    LOG.warning("add_failure reason=%s", str(exc))
+    return JSONResponse(status_code=503, content={"detail": str(exc)}, headers={"Retry-After": "5"})
 
 
 @app.get("/health")
 def health(store: MemoryStore = Depends(get_store)):
-    return {"status": "ok", "version": "0.3.0",
+    return {"status": "ok", "version": "0.3.1",
             "embedding": getattr(store.encoder, "model", "local-or-test"),
             "llm": "gpt-4o-mini" if store.add_indexer is not None or os.getenv("AE_PLANNER") == "1" else "none",
             "add_llm": getattr(store.add_indexer, "model", "none"),

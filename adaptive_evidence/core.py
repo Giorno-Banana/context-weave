@@ -8,10 +8,12 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import math
 import re
 import sqlite3
 import threading
+import time
 from collections import Counter, OrderedDict, defaultdict
 from contextlib import closing
 from dataclasses import asdict, dataclass, field
@@ -20,6 +22,8 @@ from pathlib import Path
 from typing import Protocol
 
 import numpy as np
+
+LOG = logging.getLogger(__name__)
 
 
 class Encoder(Protocol):
@@ -154,9 +158,16 @@ class MemoryStore:
                     index_text TEXT NOT NULL);
                 CREATE INDEX IF NOT EXISTS source_scope ON sources(user_id);
                 CREATE INDEX IF NOT EXISTS chunk_source ON chunks(source_id);
+                CREATE TABLE IF NOT EXISTS pending_adds(
+                    user_id TEXT NOT NULL,request_id TEXT NOT NULL,payload_hash TEXT NOT NULL,
+                    PRIMARY KEY(user_id,request_id));
+                CREATE TABLE IF NOT EXISTS add_batches(
+                    user_id TEXT NOT NULL,request_id TEXT NOT NULL,offset INTEGER NOT NULL,
+                    index_texts TEXT NOT NULL,vectors BLOB,
+                    PRIMARY KEY(user_id,request_id,offset));
             """)
             identity = digest({"encoder": encoder.identity, "chunk_chars": self.config.chunk_chars,
-                               "overlap_chars": self.config.overlap_chars, "schema": 2,
+                               "overlap_chars": self.config.overlap_chars, "schema": 3,
                                "add_indexer": getattr(add_indexer, "identity", None)})
             existing = db.execute("SELECT value FROM metadata WHERE key='identity'").fetchone()
             if existing and existing[0] != identity:
@@ -207,23 +218,60 @@ class MemoryStore:
             sources.append((source_id, user_id, request_id, session_id, position,
                             message["role"], message["timestamp"], message["content"]))
             for start, end in split_spans(message["content"], self.config.chunk_chars, self.config.overlap_chars):
+                if not message["content"][start:end].strip():
+                    continue
                 chunk_id = digest([source_id, start, end])
                 chunks.append((chunk_id, source_id, start, end))
                 texts.append(message["content"][start:end])
-        index_texts = self.add_indexer.enrich(texts) if self.add_indexer is not None else texts
-        if len(index_texts) != len(texts) or any(not isinstance(t, str) or not t for t in index_texts):
-            raise ValueError("Invalid Add indexing result")
-        if texts:
-            with self.encoder_lock:
-                matrix = np.asarray(self.encoder.encode(index_texts), dtype=np.float32)
-            if matrix.ndim != 2 or len(matrix) != len(texts) or matrix.shape[1] == 0 or not np.isfinite(matrix).all():
-                raise ValueError("Invalid embedding matrix")
-            norms = np.linalg.norm(matrix, axis=1, keepdims=True)
-            if np.any(norms == 0):
-                raise ValueError("Zero embeddings")
-            matrix = matrix / norms
-        else:
-            matrix = []
+        # Reserve this request identity before paid work. Persisted batches are
+        # private scratch data and never appear in Search until atomic commit.
+        with closing(self.connect()) as db:
+            db.execute("INSERT OR IGNORE INTO pending_adds VALUES (?,?,?)", (user_id, request_id, fingerprint))
+            prior = db.execute("SELECT payload_hash FROM pending_adds WHERE user_id=? AND request_id=?",
+                               (user_id, request_id)).fetchone()
+            if prior[0] != fingerprint:
+                raise ConflictError("Request ID has different pending payload")
+            db.commit()
+        index_texts, matrices = [], []
+        batch_size = getattr(self.add_indexer, "batch_size", 8)
+        for offset in range(0, len(texts), batch_size):
+            batch = texts[offset:offset + batch_size]
+            with closing(self.connect()) as db:
+                cached = db.execute("SELECT index_texts,vectors FROM add_batches WHERE user_id=? AND request_id=? AND offset=?",
+                                    (user_id, request_id, offset)).fetchone()
+            started = time.monotonic()
+            if cached:
+                indexed = json.loads(cached[0])
+            else:
+                indexed = self.add_indexer.enrich(batch) if self.add_indexer is not None else batch
+                if len(indexed) != len(batch) or any(not isinstance(t, str) or not t for t in indexed):
+                    raise ValueError("Invalid Add indexing result")
+                with closing(self.connect()) as db:
+                    db.execute("INSERT INTO add_batches VALUES (?,?,?,?,NULL)",
+                               (user_id, request_id, offset, json.dumps(indexed, ensure_ascii=False)))
+                    db.commit()
+            if cached and cached[1] is not None:
+                matrix = np.frombuffer(cached[1], dtype=np.float32).reshape(len(batch), -1).copy()
+            else:
+                # Release between small batches so long Adds cannot monopolize
+                # the encoder while other requests wait.
+                with self.encoder_lock:
+                    matrix = np.asarray(self.encoder.encode(indexed), dtype=np.float32)
+                if matrix.ndim != 2 or len(matrix) != len(batch) or matrix.shape[1] == 0 or not np.isfinite(matrix).all():
+                    raise ValueError("Invalid embedding matrix")
+                norms = np.linalg.norm(matrix, axis=1, keepdims=True)
+                if np.any(norms == 0):
+                    raise ValueError("Zero embeddings")
+                matrix = matrix / norms
+                with closing(self.connect()) as db:
+                    db.execute("UPDATE add_batches SET vectors=? WHERE user_id=? AND request_id=? AND offset=?",
+                               (matrix.astype(np.float32).tobytes(), user_id, request_id, offset))
+                    db.commit()
+            index_texts.extend(indexed)
+            matrices.append(matrix)
+            LOG.info("add_batch_complete offset=%s chunks=%s cached=%s seconds=%.2f",
+                     offset, len(batch), bool(cached), time.monotonic() - started)
+        matrix = np.concatenate(matrices) if matrices else []
         with closing(self.connect()) as db:
             try:
                 db.execute("BEGIN IMMEDIATE")
@@ -239,6 +287,8 @@ class MemoryStore:
                                [(*chunk, vector.astype(np.float32).tobytes(), text)
                                 for chunk, vector, text in zip(chunks, matrix, index_texts)])
                 db.execute("INSERT INTO scopes VALUES (?,1) ON CONFLICT(user_id) DO UPDATE SET revision=revision+1", (user_id,))
+                db.execute("DELETE FROM add_batches WHERE user_id=? AND request_id=?", (user_id, request_id))
+                db.execute("DELETE FROM pending_adds WHERE user_id=? AND request_id=?", (user_id, request_id))
                 db.commit()
             except Exception:
                 db.rollback()
@@ -396,6 +446,8 @@ class MemoryStore:
             db.execute("DELETE FROM chunks WHERE source_id IN (SELECT id FROM sources WHERE user_id=?)", (user_id,))
             db.execute("DELETE FROM sources WHERE user_id=?", (user_id,))
             db.execute("DELETE FROM requests WHERE user_id=?", (user_id,))
+            db.execute("DELETE FROM add_batches WHERE user_id=?", (user_id,))
+            db.execute("DELETE FROM pending_adds WHERE user_id=?", (user_id,))
             db.execute("DELETE FROM scopes WHERE user_id=?", (user_id,))
             db.commit()
         with self.cache_lock:
