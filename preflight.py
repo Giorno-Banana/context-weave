@@ -37,7 +37,7 @@ def configuration_report():
                if not os.getenv(name, "").strip()]
     problems = []
     if os.getenv("AE_ADD_INDEXER", "0") != "1":
-        problems.append("Version 0.3.0 candidate requires AE_ADD_INDEXER=1")
+        problems.append("Version 0.3.1 candidate requires AE_ADD_INDEXER=1")
     if os.getenv("AE_EMBEDDING_URL"):
         try:
             validate_endpoint(os.environ["AE_EMBEDDING_URL"])
@@ -69,7 +69,7 @@ def configuration_report():
                 encoder.close()
             if indexer is not None:
                 indexer.close()
-    return {"track": "textual", "division": "open-source", "version": "0.3.0",
+    return {"track": "textual", "division": "open-source", "version": "0.3.1",
             "add_llm": "openai/gpt-4o-mini", "llm_provider": "openrouter",
             "embedding": "text-embedding-v4", "missing_environment": missing,
             "configuration_problems": problems, "ready_for_live_probe": not missing and not problems,

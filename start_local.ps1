@@ -32,9 +32,9 @@ if ($EmbeddingBackend -eq 'bge') {
     throw 'Set DASHSCOPE_API_KEY and AE_EMBEDDING_URL before starting the Cycle 2 service.'
 }
 # Windows uses a separate local data directory, not Docker's /data mount.
-$env:AE_DATABASE = Join-Path $PSScriptRoot "runs\context-weave-v030-$EmbeddingBackend\memory.sqlite3"
+$env:AE_DATABASE = Join-Path $PSScriptRoot "runs\context-weave-v031-$EmbeddingBackend\memory.sqlite3"
 $env:AE_ADD_INDEXER = '1'
-if (-not $env:OPENROUTER_API_KEY) { throw 'Set OPENROUTER_API_KEY before starting version 0.3.0.' }
+if (-not $env:OPENROUTER_API_KEY) { throw 'Set OPENROUTER_API_KEY before starting version 0.3.1.' }
 $env:AE_DEVICE = $Device
 $env:AE_MODE = $Mode
 $env:AE_CONTEXT_CHARS = [string]$ContextChars

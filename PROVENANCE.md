@@ -25,3 +25,7 @@ API 契约依据 [AML API Guide](https://agentmemories.ai/api-guide)。历史规
 ## 0.3.0 Add 阶段更新（2026-10-06）
 
 新增通过 [OpenRouter Chat Completions](https://openrouter.ai/docs/quickstart) 调用 `openai/gpt-4o-mini` 的适配器。新增的 Add 索引处理使用模型选择原文短语，代码验证其为原文子串，再用于向量与 BM25 索引加权；未复制第三方实现。模型输出不会作为新事实或最终答案返回。提供方固定为 OpenAI，使用[结构化输出](https://openrouter.ai/docs/guides/features/structured-outputs)及[提供方参数约束](https://openrouter.ai/docs/guides/routing/provider-selection)。这是新的方法配置，其效果需要单独验证；历史基线分数不能直接移作本版本成绩。
+
+## 0.3.1 reliability update (2026-10-08)
+
+The same authors replaced free-form cue copying with integer selection of deterministic source spans, added private per-request batch checkpoints and sanitized diagnostic logs. No third-party implementation was copied. This changes the method identity and requires an independently bound version and a fresh database. It does not claim a measured quality improvement.

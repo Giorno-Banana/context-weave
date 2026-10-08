@@ -1,4 +1,4 @@
-# 运行与复现：Context Weave 0.3.0
+# 运行与复现：Context Weave 0.3.1
 
 需要 Python 3.10+。本候选在 Add 阶段通过 OpenRouter 调用 `openai/gpt-4o-mini`，Embedding 使用百炼 `text-embedding-v4`。Search 的可选规划器关闭。
 
@@ -29,7 +29,7 @@ Windows 在仓库根目录运行：
 .\start_local.ps1 -EnvFile .\.env
 ```
 
-启动器依次查找本目录 `.venv-cycle2`、上级目录 `models/.venv` 和 PATH 中的 Python，监听 `127.0.0.1:18081`，数据写入本目录 `runs/context-weave-v030-dashscope/`。它不会设置开机自启；电脑和服务需持续运行。已有 Tailscale Funnel 可继续代理同一端口，接口仍需服务 Key。
+启动器依次查找本目录 `.venv-cycle2`、上级目录 `models/.venv` 和 PATH 中的 Python，监听 `127.0.0.1:18081`，数据写入本目录 `runs/context-weave-v031-dashscope/`。它不会设置开机自启；电脑和服务需持续运行。已有 Tailscale Funnel 可继续代理同一端口，接口仍需服务 Key。
 
 Docker 方式使用 `.env` 和新数据库路径：
 
@@ -43,7 +43,7 @@ docker compose up -d --build memory
 
 ```bash
 python probe_http.py --base-url http://127.0.0.1:18081 --env-file .env --output runs/http-probe.json
-python evaluate_retrieval.py --env-file .env --embedding-backend dashscope --data-dir /path/to/public-data --output runs/v030-pilot --limit 20 --modes hybrid_window
+python evaluate_retrieval.py --env-file .env --embedding-backend dashscope --data-dir /path/to/public-data --output runs/v031-pilot --limit 20 --modes hybrid_window
 ```
 
 这些命令只使用自行准备的合成或公开数据。公开诊断会先写入所选对话的完整历史，费用不只取决于问题数。更改源码、模型、索引配置必须使用新输出目录和数据库。PILOT_RESULTS.md 是历史 0.2.0 基线报告，不是新版本结果。

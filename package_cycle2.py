@@ -9,7 +9,7 @@ from pathlib import Path
 def main():
     root = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=root / "dist/context-weave-0.3.0-cycle2-source.zip")
+    parser.add_argument("--output", type=Path, default=root / "dist/context-weave-0.3.1-cycle2-source.zip")
     target = parser.parse_args().output.resolve()
     files = {name: root / name for name in (
         "OPERATIONS.md", "PROVENANCE.md", "CYCLE2_STATUS.md", "SUBMISSION.md", "LICENSE",

@@ -1,41 +1,35 @@
 # Context Weave
 
-Text memory service for the Agent Memory Challenge, Open-source Methods / textual track. Version `0.3.0` (candidate; official version binding and Smoke pending).
+Text memory service for the Agent Memory Challenge, Open-source Methods / textual track. Version `0.3.1`; official version binding and Smoke are pending at release preparation.
 
 Submission contact: 秦天朗. Team: recursive roll. Repository: [Giorno-Banana/context-weave](https://github.com/Giorno-Banana/context-weave).
 
-The service persists source text through Add and returns evidence passages through Search. Retrieval combines `text-embedding-v4`, BM25, reciprocal rank fusion, and adjacent source windows. Answer generation and evaluation are handled by the competition platform.
+## Method
 
-## Configuration
+Add preserves original source text, role, session and timestamp. Chunks contain at most 1,000 characters, with 120-character overlap. Each chunk is deterministically divided into original spans of at most 96 characters. OpenRouter `openai/gpt-4o-mini`, pinned to the OpenAI provider without fallback, selects up to three span IDs per chunk. Structured output uses per-chunk integer enums and three selection slots; the program resolves selected IDs back to exact source spans. Generated text never becomes evidence. Selected original spans reinforce embedding and BM25 indexing.
 
-- Embedding: Bailian DashScope native HTTP API, `text-embedding-v4`, 1024 dimensions, document/query input types, L2 normalization.
-- Chunks: 1,000 characters with 120-character overlap.
-- Search: `hybrid_window`, at most the requested `top_k` (up to 100), with a local 24,000-character context budget.
-- Add LLM: OpenRouter `openai/gpt-4o-mini`, pinned to the OpenAI provider with no provider or model fallback. Each batch contains at most eight chunks. The model selects up to three exact source phrases per chunk; validated phrases reinforce both embedding input and BM25 indexing.
-- Search returns original source text, never generated text. The separate optional Search planner remains disabled.
-- Storage: single-process FastAPI and SQLite WAL, with per-user isolation and a four-user cache. Embedding requests are serialized inside the store.
+Bailian `text-embedding-v4` supplies 1,024-dimensional, L2-normalized document/query embeddings. Search combines dense and BM25 rankings with reciprocal rank fusion and adjacent source windows. The `hybrid_window` profile returns at most the requested top_k (maximum 100) and uses a local 24,000-character context budget. Search returns original source passages only; final answers and evaluation belong to the competition platform. The separate Search planner stays disabled.
 
-## Run
+## Reliability and storage
 
-Install `requirements.txt`, copy `env.example` to a private `.env`, and configure the service key, Bailian embedding credentials, and `OPENROUTER_API_KEY`. Keep `AE_ADD_INDEXER=1` and `AE_PLANNER=0` for this candidate. Start with a fresh database: version 0.3.0 rejects older database profiles. Then run:
+The service uses single-process FastAPI and SQLite WAL. Successful GPT and embedding batches are checkpointed separately from completed memories. Checkpoints are scoped to user, request, payload and database model profile; interrupted retries reuse completed work after process restart. A changed payload cannot reuse a pending request ID. No source is searchable until the whole Add commits atomically; temporary work is removed at commit or local user purge. Embedding access is serialized per small batch, releasing the lock between batches. A four-user retrieval cache is invalidated after each completed Add.
+
+Provider HTTP status, timeout/validation category, attempts, batch offsets and timings are logged without credentials, source content or user/request identifiers. Failures return 503 with Retry-After; there is no fallback to another model or to non-LLM indexing. Version 0.3.1 requires a fresh database and rejects older profiles.
+
+## Run and verification
+
+Install `requirements.txt`, copy `env.example` to a private `.env`, and configure the service key, Bailian endpoint/key and `OPENROUTER_API_KEY`. Keep `AE_ADD_INDEXER=1` and `AE_PLANNER=0`. Follow [OPERATIONS.md](OPERATIONS.md); Python entry points remain under `adaptive_evidence`.
 
 ```bash
 python preflight.py --env-file .env
 python -m unittest discover -s tests -v
+python preflight.py --env-file .env --live
 ```
 
-Follow [OPERATIONS.md](OPERATIONS.md) for deployment. The Python package and command names remain as supplied in the code; follow the documented `adaptive_evidence` entry points.
+On 2026-10-08, 50 mocked regression tests and the small live synthetic preflight passed. Tests cover exact source selection, routing, failure recovery, pending-data invisibility, restart checkpoints, payload conflicts, scope isolation, log redaction and original-source Search results. Additional load/deployment checks and the official Smoke are tracked separately. These checks do not establish Full capacity or retrieval quality. The earlier 0.3.0 Smoke ended with Add HTTP 503 without a score; its exact trigger was not recoverable from the old logs. Historical public-data diagnostics in [PILOT_RESULTS.md](PILOT_RESULTS.md) describe the 0.2.0 baseline.
 
-`preflight.py --env-file .env --live` performs a small synthetic test using real embedding and GPT-4o-mini calls. It does not start an official evaluation. Historical version 0.2.0 public-data retrieval diagnostics are documented in [PILOT_RESULTS.md](PILOT_RESULTS.md); they are not version 0.3.0 results or official answer scores. Full-scale runtime and capacity still require validation.
+## License and references
 
-## License and method references
+Code copyright: 王子铭. The original [MIT license](LICENSE) is retained. Submission contact and copyright identify different roles. [PROVENANCE.md](PROVENANCE.md) records method references and licensing boundaries. The repository excludes keys, memory databases, private evaluation data and model weights. See [SUBMISSION.md](SUBMISSION.md) for deployment details.
 
-Code copyright: 王子铭. The original [MIT license](LICENSE) is retained. Submission contact and code copyright identify different roles. Method references and third-party licensing boundaries are documented in [PROVENANCE.md](PROVENANCE.md).
-
-This repository includes service code, tests, configuration examples, and public-data sample identifiers. It excludes credentials, memory databases, model weights, private evaluation data, and answer datasets. Submission details are in [SUBMISSION.md](SUBMISSION.md).
-
-## Version 0.3.0 validation
-
-46 mocked regression tests pass, including Add-time routing, rejection of invented or cross-source quotes, atomic failure, user isolation, concurrent request idempotence, restart compatibility, and source-only output. On 2026-10-06, a real synthetic preflight passed with 3 GPT-4o-mini requests and 7 embedding requests. A separate HTTP probe passed, followed by 16 concurrent Add requests (128 synthetic chunks, 32.03 seconds total) and 16 concurrent Search requests (1.58 seconds total). These small probes do not establish Full-scale capacity or quality. Official version binding, Smoke, and Full remain pending at release preparation; no measured quality improvement is claimed.
-
-OpenRouter reference: [Quickstart](https://openrouter.ai/docs/quickstart), [Structured outputs](https://openrouter.ai/docs/guides/features/structured-outputs), [Provider routing](https://openrouter.ai/docs/guides/routing/provider-selection).
+OpenRouter: [Quickstart](https://openrouter.ai/docs/quickstart), [Structured outputs](https://openrouter.ai/docs/guides/features/structured-outputs), [Provider routing](https://openrouter.ai/docs/guides/routing/provider-selection).

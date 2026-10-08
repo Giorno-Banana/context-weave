@@ -1,7 +1,7 @@
 services:
   memory:
     build: .
-    image: context-weave:0.3.0
+    image: context-weave:0.3.1
     restart: unless-stopped
     env_file: .env
     ports:
