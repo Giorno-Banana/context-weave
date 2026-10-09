@@ -1,38 +1,32 @@
-# Context Weave
+# Context Weave 0.5.0
 
-Version **0.4.1** is published as the complete [source bundle](context-weave-0.4.1-source.zip). Extract the versioned bundle into a new directory to run it. The loose Python files at the repository root are historical; use this bundle for 0.4.1. Model weights, credentials and private memories are excluded.
+Source-preserving memory retrieval for the Agent Memory Leaderboard Add/Search protocol.
+Use the complete `context-weave-0.5.0-source.zip` bundle for this version. Older loose files and bundles remain historical versions.
 
-Bundle SHA-256: `f146ef9466e570fa5563874e58fd23506976c5ec48e3ed7bd929cd4974d2815e`. Its `SHA256SUMS.json` covers 62 files. Pin the commit containing this archive and verify both the archive digest and per-file checksums. The older [0.4.0 bundle](context-weave-0.4.0-source.zip) remains unchanged.
+## Deployment profile
 
-## Current local-model profile
+- Add: local Qwen3.5-4B, BF16, thinking disabled, greedy decoding, two chunks per request. The supervised 0.4.1 model runtime is unchanged; its weights and runtime hashes are in `local_runtime/MODEL_MANIFEST.json`.
+- Embeddings: Bailian text-embedding-v4, 1024 dimensions.
+- Search: bounded dense, BM25, Porter and neighboring-context rank fusion; mild diversity; local CPU cross-encoder reranking; reserved character/slot budgets for source neighbors.
+- Reranker: cross-encoder/ms-marco-MiniLM-L6-v2, CPU, 384-token input, 96 candidates. It scores passages and generates no text. The manifest identifies the exact downloaded model files.
+- Original source text is retained. Calendar annotations are separately marked metadata anchored only to source timestamps or explicit source date prefixes. Calendar months/years retain their granularity. Overview queries include representatives from different sessions.
+- Evidence is scoped to the supplied user. Search does not generate a final answer, use test labels, or reuse evidence across users.
+- Candidate endpoints: `https://wzm.tail36b9f2.ts.net/v050/add` and `/v050/search`; credentials are supplied privately. Add/Search concurrency 16/16, top_k 100, returned text budget 24,000 characters including metadata.
 
-- Add: local **Qwen3.5-4B**, BF16, thinking disabled, greedy decoding, two source chunks per call, LLM concurrency 1, no cloud fallback.
-- Runtime revision: `sha256-82566a6da25518d98b91c78ce9a7c5a3d09aee59dd25db5b123f65811ed8acfe`. Exact runtime source, model file hashes and generation configuration are included in `local_runtime/`.
-- Single and batch generation release temporary GPU allocations after each request. A separate model process is supervised, with a bounded queue, queue-inclusive deadlines, disconnect cancellation and automatic recovery after a worker failure.
-- Original source spans remain the evidence. Embedding uses Bailian `text-embedding-v4`, 1024 dimensions. Search uses dense + BM25 RRF and adjacent source windows without an LLM planner.
-- Official bound endpoints remain `https://wzm.tail36b9f2.ts.net/add` and `https://wzm.tail36b9f2.ts.net/search`. The new evaluation uses its own database. Service authentication is provided privately.
-- Official Smoke uses Add/Search concurrency 16/16 and top_k 100; local model concurrency remains 1 with persistent Add batch checkpoints.
+## Run
 
-## 0.4.1 validation and evaluation status
+Install `requirements.txt` for the API and the documented model-runtime requirements for local models. Download the reranker from [its publisher](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2) and verify `local_runtime/RERANKER_MANIFEST.json`. Start `local_runtime/rerank_server.py --model <local-weights-directory>` with the model Python environment; it binds only to 127.0.0.1:18092. Start the unchanged Qwen supervisor using `local_runtime/start_supervised.ps1`. Overlay `local_runtime/profile.txt` on a private credential file, then run `start_local.ps1` on an available port. No cloud LLM fallback is enabled.
 
-[Local validation report](context-weave-0.4.1-validation.md): 71 regression tests passed. A continuous four-hour synthetic test completed **5123 requests with zero failures and zero worker restarts** on 2026-10-09. Post-request allocated GPU memory stayed at 8029.99 MiB; reserved memory stayed at 8052 MiB. Identical-input latency medians were 2.617 seconds initially and 2.512 seconds at the end, with identical outputs.
+## Evidence and status
 
-Separate real-model fault tests verified disconnect recovery and recovery after deliberately terminating the model worker. A local end-to-end Add/Search check with embeddings passed. These are local validation results, not retrieval-quality scores or a guarantee of multi-day Full capacity. An earlier long-test attempt was interrupted externally after approximately 90 minutes and is not counted as the completed four-hour test.
+83 regression tests passed on 2026-10-09. The initial public LoCoMo-Refined diagnostic used 306 questions from two previously examined conversations, 305 with evidence annotations, with raw text-embedding-v4 indices and no Add LLM enrichment. This is retrospective retrieval validation, not a blind holdout or an official answer score.
 
-Official 0.4.1 Smoke is being prepared; no 0.4.1 official score or Full result is claimed. The historical score below belongs only to 0.4.0. The 0.4.1 runtime is frozen for the new evaluation.
+At a 24,000-character budget, complete evidence coverage was 88.85% for the deployed 0.4.1 retrieval policy and 91.48% for the new evidence policy with reranking. In the first 6,000 returned characters, exact complete-source coverage rose from 74.75% to 81.64%. The reranked searches had approximately 0.69-second median latency in that diagnostic. These figures precede the separately tested calendar/overview additions; the final frozen diagnostic report is included with this release when complete.
 
-## Official Smoke result (2026-10-08)
+Official 0.4.1 Smoke: 58.82, 46/46 items, 38m10s, task `teval_aa63aa25ac0b8d97`. Its runtime completed without model restarts or HTTP 503 errors. No official 0.5.0 score is claimed until the platform finishes the new Smoke. The requested 90+ score is a target, not a validated result. No Full has been started.
 
-Version 0.4.0 completed official textual Smoke job `teval_cb6f667914fdc768`: **Succeeded, 59.47, 46/46 items, 1/1 task**. It ran from 18:30:36 to 21:17:44 (UTC+08:00), taking 2 hours 47 minutes 8 seconds. The frozen source bundle is pinned by commit `de31aa98831e440c4a0d985df64c48906f320724` and the digest above. The bundled preparation notes describe the pre-run snapshot; this section records the completed run.
+The actual Add model is disclosed as local Qwen. The participant reports organizer permission for this configuration; this repository does not independently certify an exception to the published academic-model rule.
 
-During sustained operation, local inference slowed with near-full VRAM and shared GPU memory use. One restart of the unchanged model service restored roughly 3-second batches. The original platform job recovered through retries and persistent Add checkpoints. The service recorded two HTTP 503 responses during the timeout/restart episode; this was a successful recovered run, not an uninterrupted error-free run. All 134 Add requests were committed, with no pending Adds or batch checkpoints left at completion. No code, model or configuration was changed during the job.
+See `PROVENANCE.md` for method references and limitations. MIT license; original copyright notices are retained.
 
-The precise cause of the slowdown has not been isolated. Sustained inference performance and automatic recovery need improvement before Full. **No Full run has been started for version 0.4.0.**
-
-The frozen 0.3.1 official Smoke using GPT-4o-mini scored 53.64 on 46 items in 13 minutes. The 0.4.0 score is 5.83 points higher in these two Smoke runs. This is not a Full leaderboard comparison or proof that one model is generally better.
-
-The [published competition FAQ](https://agentmemories.ai/competition/) requires GPT-4o-mini for academic LLM components. Academic use of a local model is subject to applicable organizer permission; this release discloses the actual Qwen configuration and does not certify an exception. No account creation or official job submission is automated by the source bundle.
-
-## Attribution and license
-
-Submission contact: 秦天朗. Team: recursive roll. Code copyright: 王子铭. The original MIT license and full provenance are retained in the source bundle. Qwen model weights remain subject to their own model license and are not redistributed.
+Final frozen public diagnostic (same 306 questions, 305 annotated): complete-evidence coverage 91.15%, macro recall 95.52%, median search 0.75 seconds. Runtime source hashes remained unchanged throughout the test. Calendar/overview metadata is enabled in this final configuration. See `local_runtime/RETRIEVAL_VALIDATION.json`.

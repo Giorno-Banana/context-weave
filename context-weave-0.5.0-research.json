@@ -1,0 +1,30 @@
+[
+  {
+    "local_repository": "InvMem",
+    "commit": "31ab7bf9cfa3ee3c4f986e82f6e7a00b134ba8ca"
+  },
+  {
+    "local_repository": "ReFind",
+    "commit": "a80175ca0eeb52a938d7cab7a602bc780de8a577"
+  },
+  {
+    "local_repository": "ActiveMemoryIndex",
+    "commit": "b5b7a2b000f2b123a5560f9ed5c685275d68b77b"
+  },
+  {
+    "local_repository": "MemMachine",
+    "commit": "6fe7c2f91753cf5601ae8ffb15fa4009d407f856"
+  },
+  {
+    "local_repository": "M-flow",
+    "commit": "0d585cda2f588af69fb872ae6914caba0c217816"
+  },
+  {
+    "local_repository": "memfusion-memory",
+    "commit": "1d75e573c13eeec97df9a77ff7da828a91068d4a"
+  },
+  {
+    "local_repository": "mem0",
+    "commit": "8d5b7865bd0521e75fe9ab1b260eeccc83f8a378"
+  }
+]

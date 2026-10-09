@@ -1,0 +1,70 @@
+{
+  "kind": "retrospective_public_retrieval_only",
+  "official_score": false,
+  "unseen_holdout": false,
+  "add_llm_enrichment": false,
+  "embedding": "text-embedding-v4:17de93f1007bb080800b69d5e2a38cc4df6f2bd3789b33121082ba529fb48f43",
+  "reranker": "ms-marco-MiniLM-L6-v2:5ca6ab3517aedc38064c156c0612311d2fd235749f475dbd2a6103d91eb9970d",
+  "source_sha256": {
+    "add_indexer.py": "a7f24a29392db5f6b4bccb8900716ec58c9209c1c0f58d920e5d2e92f71edd65",
+    "api.py": "ef5d0a377a705bbf52f24aa0c849bfd9daedb38c462e63f215f279122f366269",
+    "core.py": "ad0d45495744ee200606feeb32163160bd092bade2dcdd4c91d5505606bdde73",
+    "encoder.py": "775a9d45ba261d666ab3d5ea026ba9ab0c6c69107cd289b481277fe04f5c1b13",
+    "evidence.py": "5c230382c4f748d3c5b250ade2af281f0727b7b1064a4f573d91f2b8718a8f2f",
+    "planner.py": "a962448072d8f698cc2879cc4be6800993734d41a20dae0f7805e30bdd55ad07",
+    "remote_encoder.py": "daf3482fd9232598138a5ce24b2998d706f97a7de53329cb02a191495a0c1b5c",
+    "reranker.py": "6a98ef4abebeb1538adae5411fcb876d71f66226530001b82f867b1a0095f2b3",
+    "retrieval_views.py": "e65dc438d66e4efc26075fd86da567c9715a4cd91cc37fef88d6ca3de6b78aa6",
+    "temporal.py": "3535777f9c6c8ad17422db91ad30086be61c15301449f36a5a0b1726db1d5712",
+    "__init__.py": "0b597a3212b2032110f72aa481e35a41b8e4d342d1f1ea3b8f730c0ac4158c6f"
+  },
+  "source_unchanged_during_run": true,
+  "questions": 306,
+  "by_mode": {
+    "evidence": {
+      "n": 305,
+      "recall": 0.9551912568306011,
+      "all_hit": 0.9114754098360656,
+      "mean_chars": 21510.96405228758,
+      "median_ms": 750.0
+    }
+  },
+  "by_category": {
+    "evidence": {
+      "1": {
+        "n": 49,
+        "recall": 0.8673469387755102,
+        "all_hit": 0.6938775510204082,
+        "mean_chars": 21092.816326530614,
+        "median_ms": 733.9999999385327
+      },
+      "2": {
+        "n": 54,
+        "recall": 0.9614197530864198,
+        "all_hit": 0.9259259259259259,
+        "mean_chars": 20605.35185185185,
+        "median_ms": 719.0000000409782
+      },
+      "3": {
+        "n": 14,
+        "recall": 0.8035714285714286,
+        "all_hit": 0.6428571428571429,
+        "mean_chars": 21806.866666666665,
+        "median_ms": 718.9999999245629
+      },
+      "4": {
+        "n": 188,
+        "recall": 0.9875886524822695,
+        "all_hit": 0.9840425531914894,
+        "mean_chars": 21856.462765957447,
+        "median_ms": 765.999999945052
+      }
+    }
+  },
+  "seconds": 230.3279999999795,
+  "embedding_usage": {
+    "requests": 0,
+    "reported_total_tokens": 0,
+    "max_requests_this_process": 0
+  }
+}
