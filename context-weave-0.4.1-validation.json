@@ -1,0 +1,84 @@
+{
+  "runtime_version": "0.4.1",
+  "official_evaluation": false,
+  "regression_tests_passed": 71,
+  "pilot": {
+    "status": "passed",
+    "requests": 89,
+    "elapsed_seconds": 301.61,
+    "allocated_mib": {
+      "min": 8029.99,
+      "max": 8029.99
+    },
+    "reserved_mib": {
+      "min": 8032.0,
+      "max": 8032.0
+    },
+    "anchor_comparison": {
+      "first_median_seconds": 3.4462374999999996,
+      "last_median_seconds": 3.0923865,
+      "last_over_first": 0.8973,
+      "identical_outputs": true
+    }
+  },
+  "faults": {
+    "status": "passed",
+    "disconnect_recovery_seconds": 0.625,
+    "disconnect_memory_recovered": true,
+    "crash_recovery_seconds": 19.156,
+    "worker_replaced": true
+  },
+  "http": {
+    "status": "passed",
+    "wall_seconds": 55.031,
+    "requests": [
+      {
+        "synthetic_user": 0,
+        "messages": 16,
+        "source_characters": 15040,
+        "add_seconds": 51.266,
+        "idempotent_retry_seconds": 0.0,
+        "search_hits": 10,
+        "source_integrity": true,
+        "scope_isolation": true
+      },
+      {
+        "synthetic_user": 1,
+        "messages": 16,
+        "source_characters": 15040,
+        "add_seconds": 54.891,
+        "idempotent_retry_seconds": 0.015,
+        "search_hits": 10,
+        "source_integrity": true,
+        "scope_isolation": true
+      }
+    ]
+  },
+  "soak": {
+    "status": "passed",
+    "requests": 5123,
+    "elapsed_seconds": 14400.8,
+    "requested_seconds": 14400.0,
+    "failures": [],
+    "allocated_mib": {
+      "min": 8029.99,
+      "max": 8029.99
+    },
+    "reserved_mib": {
+      "min": 8052.0,
+      "max": 8052.0
+    },
+    "anchor_comparison": {
+      "first_median_seconds": 2.6171575000000002,
+      "last_median_seconds": 2.5119755,
+      "last_over_first": 0.9598,
+      "identical_outputs": true
+    },
+    "acceptance": {
+      "no_failures": true,
+      "memory_plateau": true,
+      "anchor_stable": true,
+      "no_restarts": true
+    }
+  }
+}

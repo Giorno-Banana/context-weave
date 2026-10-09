@@ -1,23 +1,25 @@
 # Context Weave
 
-Version **0.4.0** is published as the complete [reproducible source bundle](context-weave-0.4.0-source.zip) committed in this repository. Extract that bundle into a new directory to run this version. It includes all memory-service code, 58 regression tests, configuration examples, documentation and the exact local model-server source snapshot. Model weights, private memories and credentials are excluded.
+Version **0.4.1** is published as the complete [source bundle](context-weave-0.4.1-source.zip). Extract the versioned bundle into a new directory to run it. The loose Python files at the repository root are historical; use this bundle for 0.4.1. Model weights, credentials and private memories are excluded.
 
-Bundle SHA-256: `e620cf902a72bc4b56fe9fd90bd62e7299594e7d162f7c093b3ca84efeb01cc6`.
-
-The bundle contains its own `SHA256SUMS.json` covering 51 source files. Pin the Git commit containing this bundle and verify both the bundle digest and its per-file manifest. The loose Python files at the repository root retain the historical 0.3.1 release; use the versioned bundle for 0.4.0.
+Bundle SHA-256: `f146ef9466e570fa5563874e58fd23506976c5ec48e3ed7bd929cd4974d2815e`. Its `SHA256SUMS.json` covers 62 files. Pin the commit containing this archive and verify both the archive digest and per-file checksums. The older [0.4.0 bundle](context-weave-0.4.0-source.zip) remains unchanged.
 
 ## Current local-model profile
 
-- Add: local **Qwen3.5-4B**, BF16, thinking disabled, temperature 0, two source chunks per call, LLM concurrency 1, no cloud fallback.
-- Model/runtime revision: `sha256-8267024d0feba058a3f26e5602a829432fe3d1da84bad553f98985b004f047d8`. The full fingerprint and runtime source are inside `local_runtime/` in the bundle.
-- Add selects IDs of original source spans. Generated text never becomes evidence.
-- Embedding: Bailian `text-embedding-v4`, 1024 dimensions.
-- Search: dense + BM25 RRF with adjacent original-source windows; no LLM planner.
-- Alternate configuration: OpenRouter `openai/gpt-4o-mini`, OpenAI provider only. It uses a separate database and never silently replaces the local model.
-- Official bound Add/Search URLs: `https://wzm.tail36b9f2.ts.net/add` and `https://wzm.tail36b9f2.ts.net/search`. The platform keeps these endpoints immutable for an existing key. The `/v040/add` and `/v040/search` aliases reach the same frozen deployment. Service authentication is supplied privately.
-- Official Smoke concurrency: Add 16 / Search 16, the platform minimum. Local LLM concurrency remains 1; incoming Add requests queue and use persistent batch checkpoints.
+- Add: local **Qwen3.5-4B**, BF16, thinking disabled, greedy decoding, two source chunks per call, LLM concurrency 1, no cloud fallback.
+- Runtime revision: `sha256-82566a6da25518d98b91c78ce9a7c5a3d09aee59dd25db5b123f65811ed8acfe`. Exact runtime source, model file hashes and generation configuration are included in `local_runtime/`.
+- Single and batch generation release temporary GPU allocations after each request. A separate model process is supervised, with a bounded queue, queue-inclusive deadlines, disconnect cancellation and automatic recovery after a worker failure.
+- Original source spans remain the evidence. Embedding uses Bailian `text-embedding-v4`, 1024 dimensions. Search uses dense + BM25 RRF and adjacent source windows without an LLM planner.
+- Official bound endpoints remain `https://wzm.tail36b9f2.ts.net/add` and `https://wzm.tail36b9f2.ts.net/search`. The new evaluation uses its own database. Service authentication is provided privately.
+- Official Smoke uses Add/Search concurrency 16/16 and top_k 100; local model concurrency remains 1 with persistent Add batch checkpoints.
 
-58 regression tests, a real Qwen plus embedding preflight and a 32-chunk synthetic HTTP check passed on 2026-10-08. The latter completed in 43.531 seconds. These short checks do not establish Full capacity.
+## 0.4.1 validation and evaluation status
+
+[Local validation report](context-weave-0.4.1-validation.md): 71 regression tests passed. A continuous four-hour synthetic test completed **5123 requests with zero failures and zero worker restarts** on 2026-10-09. Post-request allocated GPU memory stayed at 8029.99 MiB; reserved memory stayed at 8052 MiB. Identical-input latency medians were 2.617 seconds initially and 2.512 seconds at the end, with identical outputs.
+
+Separate real-model fault tests verified disconnect recovery and recovery after deliberately terminating the model worker. A local end-to-end Add/Search check with embeddings passed. These are local validation results, not retrieval-quality scores or a guarantee of multi-day Full capacity. An earlier long-test attempt was interrupted externally after approximately 90 minutes and is not counted as the completed four-hour test.
+
+Official 0.4.1 Smoke is being prepared; no 0.4.1 official score or Full result is claimed. The historical score below belongs only to 0.4.0. The 0.4.1 runtime is frozen for the new evaluation.
 
 ## Official Smoke result (2026-10-08)
 
