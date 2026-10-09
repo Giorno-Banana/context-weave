@@ -1,0 +1,99 @@
+{
+  "version": "0.10.0",
+  "job_id": "teval_6905c09567762a3d",
+  "score": 60.31,
+  "status": "succeeded",
+  "completed_items": 46,
+  "total_items": 46,
+  "duration_seconds": 2567,
+  "completed_at": "2026-10-10T02:09:02+08:00",
+  "capability_scores": {
+    "A_explicit_fact_recall": 60,
+    "B_compositional_inference": 66.67,
+    "C_temporal_event_reasoning": 40,
+    "D_memory_governance": 36.67,
+    "E_personalization_care": 100,
+    "G_context_learning_execution": 55,
+    "H_safety_privacy": 50,
+    "I_streaming": 62.5
+  },
+  "prior_best": {
+    "version": "0.6.1",
+    "score": 61.77,
+    "job_id": "teval_4bfee59d2dfd1d6a",
+    "complete": "46/46"
+  },
+  "difference_from_prior_best": -1.46,
+  "improved_best": false,
+  "target_met": false,
+  "source_commit": "ac9d32f1611ed886d0244417510f235ab5489838",
+  "concurrency_amendment_commit": "e5ebdb360081231f8f7d18aa561ba70aea371ba6",
+  "archive_sha256": "ef945e04d2e9ee2317944642358d333ae220ba0d1362c2e8bbeef46f5afea0b9",
+  "model": "Local Qwen3.5-4B runtime042",
+  "embedding": "Bailian text-embedding-v4",
+  "add_concurrency": 16,
+  "search_concurrency": 16,
+  "top_k": 100,
+  "full_started": false,
+  "new_openrouter_calls": 0,
+  "private_payloads_inspected": false,
+  "operations": {
+    "observed_at": "2026-10-09T18:10:54.249815+00:00",
+    "job_id": "teval_6905c09567762a3d",
+    "model_status": "ready",
+    "queue_depth": 0,
+    "model_delta": {
+      "completed": 953,
+      "failed": 0,
+      "cancelled": 0,
+      "hard_recycles": 0,
+      "starts": 0
+    },
+    "last_model_metrics": {
+      "generation_seconds": 1.433453,
+      "batch_size": 1,
+      "prompt_tokens": 2696,
+      "completion_tokens": 8,
+      "peak_allocated_mib": 8374.2,
+      "peak_reserved_mib": 8494.0,
+      "allocated_mib": 8029.99,
+      "reserved_mib": 8052.0,
+      "lifecycle_seconds": 1.523098,
+      "queue_seconds": 0.0
+    },
+    "api_request_counts": {
+      "/add:405": 1,
+      "/search:405": 1,
+      "/add:200": 136,
+      "/search:200": 48
+    },
+    "successful_api_seconds": {
+      "/add": {
+        "count": 136,
+        "median": 25.064999999999998,
+        "max": 205.12
+      },
+      "/search": {
+        "count": 48,
+        "median": 12.32,
+        "max": 187.39
+      }
+    },
+    "planner_expansion_fallbacks": 7,
+    "planner_selection_fallbacks": 1,
+    "source_files_checked": 68,
+    "changed_source_files": [],
+    "changed_active_runtime_files": [],
+    "archive_sha256": "ef945e04d2e9ee2317944642358d333ae220ba0d1362c2e8bbeef46f5afea0b9",
+    "profile_unchanged": true,
+    "private_payloads_inspected": false,
+    "weights_verified": true,
+    "weight_files_verified": 9,
+    "captured_before_other_model_work": true
+  },
+  "limitations": [
+    "Smoke is not Full.",
+    "Public development checks do not establish official generalization.",
+    "Local model and runtime are disclosed; competition eligibility is not independently certified."
+  ]
+}

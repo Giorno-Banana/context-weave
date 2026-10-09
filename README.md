@@ -1,3 +1,13 @@
+# Context Weave — completed 0.10.0 Smoke
+
+Official Textual Smoke **60.31**, **46/46** completed in **42m 47s**, task `teval_6905c09567762a3d`. Completed `2026-10-10T02:09:02+08:00`. The previous best was **61.77** (0.6.1); change **-1.46**. The target above 70 is not met.
+
+This run used local Qwen3.5-4B runtime042, text-embedding-v4, Add16/Search16. No Full or new OpenRouter calls occurred. Frozen source, active runtime, external model files and deployment profile were rechecked after evaluation. [Aggregate result](context-weave-0.10.0-official-smoke.json).
+
+The source archive remains unchanged at commit `ac9d32f1611ed886d0244417510f235ab5489838`, SHA256 `ef945e04d2e9ee2317944642358d333ae220ba0d1362c2e8bbeef46f5afea0b9`. The pre-run documentation below is historical; this dated result supersedes its pending-score status.
+
+## Historical pre-run documentation
+
 # Context Weave 0.10.0 — bounded evidence candidates
 
 This release separates the internal candidate pool from the final response character budget. Evidence at lower retrieval ranks can reach the selector before text truncation. Search returns complete original source chunks and metadata; it does not generate answers or new memory facts.
