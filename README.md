@@ -1,4 +1,9 @@
-# Context Weave 0.5.1
+# Context Weave — evaluated candidates
+**2026-10-09 official result:** 0.5.1 completed all 46 Smoke items in 39m24s and scored **51.56**, below the stable 0.4.1 score of **58.82**. It did not meet the 90+ target and is retained as an unsuccessful experiment, not promoted for Full. The original 0.5.1 source remains frozen at commit `0940fbde4a57b0f8589d0ee71e7ee31452718a5e`, archive SHA256 `ec2161399be8afcc6a58c37c94b226ce1d6db17a84859cdd4821ea7fd2ce9b66`. The public root endpoint has been restored to stable 0.4.1; `/v051` keeps the experimental version available for comparison. No Full has been submitted.
+
+The run completed 134 Add and 48 Search HTTP requests with no 503 errors or model restarts. Temporal reasoning improved from 35 to 45 and Streaming from 58.33 to 62.50, but compositional inference fell from 66.67 to 33.33, governance from 36.67 to 20, and context execution from 55 to 30. These aggregates do not isolate which individual change caused the regression. Public retrieval coverage near 98% did not translate into official answer quality. Full machine-readable results are in `context-weave-0.5.1-official-smoke.json`.
+
+## Frozen 0.5.1 experiment
 
 Use `context-weave-0.5.1-source.zip` for the complete fixed source. Older loose files are historical.
 
@@ -12,10 +17,11 @@ The official LDBD key has immutable endpoints, so `/add` and `/search` at `https
 
 ## Validation and limits
 
-Version 0.4.1 completed official Smoke with 58.82. The 0.5.0 Smoke task `teval_8f1b30715f47d766` failed with Search HTTP 503 after 33m57s and has no score. A synthetic test reproduced HTTP 422 for queries longer than 6,000 characters in its reranker, which the API maps to 503; the exact private failing query was not inspected. No 0.5.1 official score is claimed before completion. The participant's requested 90+ score is a target, not a measured result. No Full has started.
+Version 0.4.1 completed official Smoke with 58.82. The 0.5.0 Smoke task `teval_8f1b30715f47d766` failed with Search HTTP 503 after 33m57s and has no score. A synthetic test reproduced HTTP 422 for queries longer than 6,000 characters in its reranker, which the API maps to 503; the exact private failing query was not inspected. The completed 0.5.1 score is 51.56. The participant's requested 90+ target was not achieved. No Full has started.
 
 Public retrospective retrieval diagnostics use four LoCoMo-Refined conversations (607 questions, 606 with evidence annotations), raw v4 indices without Add LLM enrichment, and no official evaluation data. The two previously examined conversations had 91.15% complete-evidence coverage with individual 24k results; bundle96k reached 98.36%. An additional pair had 91.03% versus 98.34%. The mean contexts grew to about 86k and 82k characters. These are retrieval coverage figures, not question-answer accuracy, a blind holdout, or AML scores. Wider context can add noise; official Smoke is required to measure its impact. The frozen comparison and source hashes are in `local_runtime/BUNDLE_VALIDATION.json`.
 
 The actual Add model is disclosed as local Qwen. The participant reports organizer permission; this repository does not independently certify an exception to the published academic-model rule. See `PROVENANCE.md` for inspected repositories, exact revisions where known, and limitations. MIT; original copyright notices are retained.
 
 86 regression tests passed on 2026-10-09. Live reranker probes with synthetic queries of 500, 6,001 and 30,000 characters returned HTTP 200 and finite scores.
+

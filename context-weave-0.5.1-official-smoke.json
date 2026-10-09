@@ -1,0 +1,51 @@
+{
+  "version": "0.5.1",
+  "commit": "0940fbde4a57b0f8589d0ee71e7ee31452718a5e",
+  "task": "teval_d11187d947d721dd",
+  "mode": "smoke",
+  "started": "2026-10-09T16:40:50+08:00",
+  "status": "succeeded",
+  "score": 51.56,
+  "goal_90_met": false,
+  "official_add_url": "https://wzm.tail36b9f2.ts.net/add",
+  "official_search_url": "https://wzm.tail36b9f2.ts.net/search",
+  "archive_sha256": "ec2161399be8afcc6a58c37c94b226ce1d6db17a84859cdd4821ea7fd2ce9b66",
+  "tests_passed": 86,
+  "public_http": "passed",
+  "context_chars": 96000,
+  "bundled_context": true,
+  "completed": "2026-10-09T17:20:15+08:00",
+  "duration_seconds": 2364,
+  "completed_items": 46,
+  "total_items": 46,
+  "previous_stable_version": "0.4.1",
+  "previous_stable_score": 58.82,
+  "delta_vs_stable": -7.26,
+  "recommended_for_full": false,
+  "capabilities": {
+    "A": 60.0,
+    "B": 33.33,
+    "C": 45.0,
+    "D": 20.0,
+    "E": 100.0,
+    "G": 30.0,
+    "H": 50.0,
+    "I": 62.5
+  },
+  "subcapabilities": {
+    "C1": 26.67,
+    "C2": 80.0,
+    "C3": 100.0,
+    "D1": 0.0,
+    "D2": 40.0,
+    "F1": 0.0
+  },
+  "source_unchanged_after_evaluation": true,
+  "runtime": {
+    "warnings_since_start": 0,
+    "http_503_since_start": 0,
+    "add_http_200_since_start": 134,
+    "search_http_200_since_start": 48,
+    "qwen_recycles": 0
+  }
+}
