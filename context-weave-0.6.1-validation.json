@@ -1,0 +1,178 @@
+{
+  "version": "0.6.1",
+  "official_score": null,
+  "target": {
+    "official_mode": "smoke",
+    "operator": ">",
+    "value": 70
+  },
+  "regression_tests_passed": 77,
+  "semantic_checks": {
+    "synthetic_only": true,
+    "passed": true,
+    "cases": [
+      {
+        "case": "unrelated_batch",
+        "selected": [],
+        "passed": true
+      },
+      {
+        "case": "update_pair",
+        "selected": [
+          41,
+          42
+        ],
+        "passed": true
+      },
+      {
+        "case": "named_person",
+        "selected": [
+          32
+        ],
+        "passed": true
+      },
+      {
+        "case": "chinese_rule",
+        "selected": [
+          11,
+          12
+        ],
+        "passed": true
+      },
+      {
+        "case": "empty_fact",
+        "selected": [],
+        "passed": true
+      },
+      {
+        "case": "quoted_injection",
+        "selected": [
+          22
+        ],
+        "passed": true
+      }
+    ],
+    "usage": {
+      "identity": "local/qwen35-evidence-planner-v2:ce4a951a85276f9de41429740e4ea28f136947815fdb70fed609fe04bdab7009",
+      "calls": 6,
+      "failures": 0,
+      "prompt_tokens": 2639,
+      "completion_tokens": 56
+    }
+  },
+  "local_http": {
+    "status": "passed",
+    "synthetic_only": true,
+    "health": {
+      "status": "ok",
+      "version": "0.6.1",
+      "embedding": "text-embedding-v4",
+      "llm": "Qwen3.5-4B",
+      "add_llm": "Qwen3.5-4B",
+      "llm_provider": "local",
+      "add_indexer_identity": "local/source-span-ids-prompt-schema-v1:1fbe413d1b1d83ae7d7545bfc248f866861e00cd4db2da640b42dac55afd6da4",
+      "search_planner": "Qwen3.5-4B",
+      "search_planner_expansion": true,
+      "selected_context_chars": 12000
+    },
+    "concurrent_searches": 4,
+    "median_search_seconds": 17.281500000040978,
+    "max_search_seconds": 19.75,
+    "long_query_tested": true,
+    "scope_isolation": true,
+    "idempotent_add": true,
+    "auth_required": true
+  },
+  "public_qa": {
+    "official_score": false,
+    "questions": 50,
+    "by_dataset": {
+      "locomo": {
+        "baseline": 21,
+        "candidate": 19
+      },
+      "longmemeval_bge_transfer": {
+        "baseline": 8,
+        "candidate": 11
+      }
+    },
+    "wins": 9,
+    "losses": 8,
+    "paired_95_bootstrap": [
+      -0.14,
+      0.18
+    ],
+    "all_valid": true,
+    "advance_to_official_smoke": false,
+    "manual_review_required": true,
+    "source_unchanged": true,
+    "planner_usage": {
+      "identity": "local/qwen35-evidence-planner-v2:ce4a951a85276f9de41429740e4ea28f136947815fdb70fed609fe04bdab7009",
+      "calls": 153,
+      "failures": 4,
+      "prompt_tokens": 518465,
+      "completion_tokens": 2308
+    },
+    "embedding_usage": {
+      "requests": 37,
+      "reported_total_tokens": 453,
+      "max_requests_this_process": 0
+    }
+  },
+  "public_qa_limitations": [
+    "Previously inspected public development questions, not unseen holdout",
+    "Same local Qwen3.5-4B answerer and judge; demonstrated judgment errors",
+    "LoCoMo uses text-embedding-v4; LongMemEval transfer uses BGE; neither public stratum uses Add LLM enrichment",
+    "Baselines reused exactly from prior frozen 50-question public comparison",
+    "No private official payload inspected or used for optimization"
+  ],
+  "manual_review": {
+    "public_only": true,
+    "differing_outcomes_reviewed": 17,
+    "automatic_scores_preserved": true,
+    "reliable_score_improvement_established": false,
+    "notes": [
+      "Same-reference/model judgment caveats from 0.6.0 persist. Anchored relative dates are equivalent on conv-43#q0014 and conv-50#q0054; auto-judge treats formats inconsistently.",
+      "conv-41#q0091 has source-supported additional detail and is unfairly marked wrong; conv-41#q0021 baseline is incomplete despite its positive automatic grade.",
+      "lme:cc06de0d returned both the user correction ($6) and taxi price ($12), but the local answerer used the older assistant estimate. The wrong answer is not evidence of absent retrieved correction.",
+      "Other actual wins and losses remain. This small reused development sample is not a holdout and cannot certify official improvement."
+    ],
+    "decision": "Exploratory platform Smoke only, under the prospectively recorded probe plan; public statistical advancement criterion remains NOT MET."
+  },
+  "probe_plan": {
+    "recorded_at": "2026-10-09T11:04:48.677864+00:00",
+    "candidate": "0.6.1",
+    "recorded_before_candidate_answers_or_judgments": true,
+    "purpose": "One exploratory official Smoke to measure the fixed platform Answer/Eval behavior, not automatic promotion or Full",
+    "rationale": "v060 public comparison is inconclusive and its same-4B judge makes demonstrable errors; public datasets/reader differ from official suite. Preserve the original statistical gate results as failed, do not reclassify them as passed.",
+    "conditions": [
+      "77 regression tests pass",
+      "Synthetic API/auth/isolation and long-query checks pass",
+      "All 50 public pairs complete and source remains frozen",
+      "No invalid source output or major public QA regression greater than 5/50 against frozen baseline",
+      "Manually inspect public differing outcomes before submitting",
+      "Publish source and exact configuration and bind a new version",
+      "No active official task before routing"
+    ],
+    "official_acceptance": {
+      "mode": "smoke",
+      "score_strictly_greater_than": 70,
+      "complete": true,
+      "source_unchanged": true
+    },
+    "no_full": true,
+    "promotion": "Only after verified official improvement; restore stable root if exploratory candidate underperforms",
+    "protocol_note": "This exploratory platform probe is separate from, and does not claim to satisfy, the public statistical advancement gate."
+  },
+  "source_sha256": {
+    "adaptive_evidence\\add_indexer.py": "a7f24a29392db5f6b4bccb8900716ec58c9209c1c0f58d920e5d2e92f71edd65",
+    "adaptive_evidence\\api.py": "4ef453eaf4e3d0ac29bddc06082c59b8108e737f1a94922aabf78098ec0303e1",
+    "adaptive_evidence\\core.py": "cab9512c9e01f85d389aebd9f79a23ed5127bfdd2ef68eb86864ab0d269262cd",
+    "adaptive_evidence\\encoder.py": "775a9d45ba261d666ab3d5ea026ba9ab0c6c69107cd289b481277fe04f5c1b13",
+    "adaptive_evidence\\local_planner.py": "17bf6b6c2bc386fde449e5bde46951e323b9ef4e1c676d40a3d2947ba19457c6",
+    "adaptive_evidence\\planner.py": "a962448072d8f698cc2879cc4be6800993734d41a20dae0f7805e30bdd55ad07",
+    "adaptive_evidence\\remote_encoder.py": "daf3482fd9232598138a5ce24b2998d706f97a7de53329cb02a191495a0c1b5c",
+    "adaptive_evidence\\retrieval_views.py": "e65dc438d66e4efc26075fd86da567c9715a4cd91cc37fef88d6ca3de6b78aa6",
+    "adaptive_evidence\\__init__.py": "b569eb16d681e46a6b41e043d66c6f971314c633d22e587b72cb20bf21c6610d"
+  }
+}
