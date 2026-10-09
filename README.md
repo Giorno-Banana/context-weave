@@ -1,6 +1,10 @@
 # Context Weave 0.6.1 — local evidence planner candidate
 
-Use context-weave-0.6.1-source.zip for this complete frozen candidate; older loose source files are historical. This is an experimental candidate based on frozen 0.4.1. Its acceptance target is an official Textual Smoke score strictly above 70. It has not yet been officially evaluated. The currently deployed public root remains 0.4.1 (58.82); the historical best observed score is 59.47 from 0.4.0.
+Use context-weave-0.6.1-source.zip for this complete frozen candidate; older loose source files are historical. The official Textual Smoke completed on 2026-10-09 with **61.77**, all **46/46** items finished in **49m 33s**. This is 2.30 points above the previous observed best of 59.47, and 2.95 above the stable 0.4.1 result of 58.82. The requested target, strictly above 70, **has not been met**. The public API root currently runs this tested 0.6.1 candidate. No Full was started.
+
+The evaluated source archive is unchanged from commit `70a0ca133d540d103f86a461d7214d2ab953396d`; SHA256 is `a356f32f420f48bc3fd6ab58c05f33eb5e7e754c9f744750674acb93652fa936`. Post-run checks matched all 67 source files and the 9 actual model-runtime files. See [official result](context-weave-0.6.1-official-smoke.json), task `teval_4bfee59d2dfd1d6a`.
+
+Runtime limitations: two local model generations timed out, and the existing supervisor automatically recycled the worker twice. The API continued using original-retrieval fallback; the platform job succeeded. There were seven query-expansion fallback events and five selection fallback events (counts are events, not necessarily distinct questions). This run establishes an observed improvement, not a guarantee of future scores or fault-free operation.
 
 ## Method
 
