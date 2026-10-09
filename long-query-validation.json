@@ -1,0 +1,17 @@
+[
+  {
+    "synthetic_query_chars": 500,
+    "http_status": 200,
+    "finite_score": true
+  },
+  {
+    "synthetic_query_chars": 6001,
+    "http_status": 200,
+    "finite_score": true
+  },
+  {
+    "synthetic_query_chars": 30000,
+    "http_status": 200,
+    "finite_score": true
+  }
+]

@@ -1,32 +1,21 @@
-# Context Weave 0.5.0
+# Context Weave 0.5.1
 
-Source-preserving memory retrieval for the Agent Memory Leaderboard Add/Search protocol.
-Use the complete `context-weave-0.5.0-source.zip` bundle for this version. Older loose files and bundles remain historical versions.
+Use `context-weave-0.5.1-source.zip` for the complete fixed source. Older loose files are historical.
 
-## Deployment profile
+Add runs local Qwen3.5-4B through the unchanged supervised 0.4.1 runtime. Embeddings are Bailian text-embedding-v4 (1024 dimensions). Search uses dense/BM25/Porter/context fusion, a local CPU cross-encoder, conservative source-anchored calendar metadata, and overview diversity. Adjacent original spans are now bundled within the same ordered Add request. Source text, role, and timestamps are retained; bundle IDs derive from their member source IDs. Each bundle is capped at 4,000 characters, the total at 96,000 characters, and result count at the supplied top_k (100 for AML). No final answer is generated. No cross-user memory, benchmark labels, or official evaluation payloads are used for tuning.
 
-- Add: local Qwen3.5-4B, BF16, thinking disabled, greedy decoding, two chunks per request. The supervised 0.4.1 model runtime is unchanged; its weights and runtime hashes are in `local_runtime/MODEL_MANIFEST.json`.
-- Embeddings: Bailian text-embedding-v4, 1024 dimensions.
-- Search: bounded dense, BM25, Porter and neighboring-context rank fusion; mild diversity; local CPU cross-encoder reranking; reserved character/slot budgets for source neighbors.
-- Reranker: cross-encoder/ms-marco-MiniLM-L6-v2, CPU, 384-token input, 96 candidates. It scores passages and generates no text. The manifest identifies the exact downloaded model files.
-- Original source text is retained. Calendar annotations are separately marked metadata anchored only to source timestamps or explicit source date prefixes. Calendar months/years retain their granularity. Overview queries include representatives from different sessions.
-- Evidence is scoped to the supplied user. Search does not generate a final answer, use test labels, or reuse evidence across users.
-- Candidate endpoints: `https://wzm.tail36b9f2.ts.net/v050/add` and `/v050/search`; credentials are supplied privately. Add/Search concurrency 16/16, top_k 100, returned text budget 24,000 characters including metadata.
+The reranker is `cross-encoder/ms-marco-MiniLM-L6-v2`, CPU, six threads, batches of 16, 384 model input tokens. Version 0.5.1 removes an incompatible 6,000-character query schema limit. Long questions are accepted and tokenized with the same bounded model input; the returned source text is unchanged. Failures log only an exception class and HTTP status. Exact model hashes and runtime sources are included; weights are excluded.
 
-## Run
+Install `requirements.txt` for the API and the local-model runtime dependencies. Start the Qwen supervisor as documented in `local_runtime/`. Download reranker weights from https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2 and verify the manifest, then run `local_runtime/rerank_server.py --model <weights> --port 18093` with the model environment. Overlay `local_runtime/profile.txt` on a private credentials file and start `start_local.ps1` on an available local port. No cloud LLM fallback is enabled.
 
-Install `requirements.txt` for the API and the documented model-runtime requirements for local models. Download the reranker from [its publisher](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2) and verify `local_runtime/RERANKER_MANIFEST.json`. Start `local_runtime/rerank_server.py --model <local-weights-directory>` with the model Python environment; it binds only to 127.0.0.1:18092. Start the unchanged Qwen supervisor using `local_runtime/start_supervised.ps1`. Overlay `local_runtime/profile.txt` on a private credential file, then run `start_local.ps1` on an available port. No cloud LLM fallback is enabled.
+The official LDBD key has immutable endpoints, so `/add` and `/search` at `https://wzm.tail36b9f2.ts.net` are switched to the selected bound version only while no job is running. The version-specific `/v051` prefix is also provided for verification. Credentials remain private. The previous 0.4.1 and 0.5.0 deployments remain available locally for comparison.
 
-## Evidence and status
+## Validation and limits
 
-83 regression tests passed on 2026-10-09. The initial public LoCoMo-Refined diagnostic used 306 questions from two previously examined conversations, 305 with evidence annotations, with raw text-embedding-v4 indices and no Add LLM enrichment. This is retrospective retrieval validation, not a blind holdout or an official answer score.
+Version 0.4.1 completed official Smoke with 58.82. The 0.5.0 Smoke task `teval_8f1b30715f47d766` failed with Search HTTP 503 after 33m57s and has no score. A synthetic test reproduced HTTP 422 for queries longer than 6,000 characters in its reranker, which the API maps to 503; the exact private failing query was not inspected. No 0.5.1 official score is claimed before completion. The participant's requested 90+ score is a target, not a measured result. No Full has started.
 
-At a 24,000-character budget, complete evidence coverage was 88.85% for the deployed 0.4.1 retrieval policy and 91.48% for the new evidence policy with reranking. In the first 6,000 returned characters, exact complete-source coverage rose from 74.75% to 81.64%. The reranked searches had approximately 0.69-second median latency in that diagnostic. These figures precede the separately tested calendar/overview additions; the final frozen diagnostic report is included with this release when complete.
+Public retrospective retrieval diagnostics use four LoCoMo-Refined conversations (607 questions, 606 with evidence annotations), raw v4 indices without Add LLM enrichment, and no official evaluation data. The two previously examined conversations had 91.15% complete-evidence coverage with individual 24k results; bundle96k reached 98.36%. An additional pair had 91.03% versus 98.34%. The mean contexts grew to about 86k and 82k characters. These are retrieval coverage figures, not question-answer accuracy, a blind holdout, or AML scores. Wider context can add noise; official Smoke is required to measure its impact. The frozen comparison and source hashes are in `local_runtime/BUNDLE_VALIDATION.json`.
 
-Official 0.4.1 Smoke: 58.82, 46/46 items, 38m10s, task `teval_aa63aa25ac0b8d97`. Its runtime completed without model restarts or HTTP 503 errors. No official 0.5.0 score is claimed until the platform finishes the new Smoke. The requested 90+ score is a target, not a validated result. No Full has been started.
+The actual Add model is disclosed as local Qwen. The participant reports organizer permission; this repository does not independently certify an exception to the published academic-model rule. See `PROVENANCE.md` for inspected repositories, exact revisions where known, and limitations. MIT; original copyright notices are retained.
 
-The actual Add model is disclosed as local Qwen. The participant reports organizer permission for this configuration; this repository does not independently certify an exception to the published academic-model rule.
-
-See `PROVENANCE.md` for method references and limitations. MIT license; original copyright notices are retained.
-
-Final frozen public diagnostic (same 306 questions, 305 annotated): complete-evidence coverage 91.15%, macro recall 95.52%, median search 0.75 seconds. Runtime source hashes remained unchanged throughout the test. Calendar/overview metadata is enabled in this final configuration. See `local_runtime/RETRIEVAL_VALIDATION.json`.
+86 regression tests passed on 2026-10-09. Live reranker probes with synthetic queries of 500, 6,001 and 30,000 characters returned HTTP 200 and finite scores.

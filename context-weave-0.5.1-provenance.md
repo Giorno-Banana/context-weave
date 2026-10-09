@@ -1,0 +1,63 @@
+# 来源与方法边界
+
+作者与维护者：王子铭（[Giorno-Banana](https://github.com/Giorno-Banana)）。本项目新代码采用 [MIT 许可证](LICENSE)。
+
+2026-09-29：0.2.0 默认 Embedding 改为百炼 `text-embedding-v4`（1024 维）；BGE 仅保留在历史实验路径。适配器依据[百炼原生文本向量同步 API](https://help.aliyun.com/zh/model-studio/text-embedding-synchronous-api/)独立实现，未包含其模型权重。方法与验证范围见 README、SUBMISSION 和 PILOT_RESULTS。
+
+本目录的实现依据本项目历史实验和公开方法思想重新编写，没有复制四个上游仓库的源文件或提示词。历史复现代码仍位于项目原来的 `repos/` 和 `benchmarks/`，与本目录分开。
+
+方法来源应随正式提交披露：
+
+- [InvMem / vanilla-rag-memory](https://github.com/wenxiaof345-ctrl/vanilla-rag-memory)：原始记忆、稠密/词法混合检索与 RRF 的参照。
+- [ActiveMemoryIndex](https://github.com/linxuhao/ActiveMemoryIndex)：原文优先和相邻原文窗口的参照；本候选尚未迁移 AMI 事实抽取。
+- [ReFind](https://github.com/imlrz/ReFind)：按问题搜集多处证据的参照；本候选规划模块是有界的两阶段实现，不是 ReFind 原四步状态机。
+- [Mem0](https://github.com/mem0ai/mem0)：记忆更新、实体与历史证据保留的研究参照；本候选不包含 Mem0 SDK 或其托管优化。
+- 本项目 `benchmarks/hybrid_combinations`：Adaptive-All4 的自适应检索及上下文预算实验。
+- 2026-09-07 小样本研究新增 [FlowGrid](https://github.com/dlxeva/flowgrid-aml-retriever) 的来源关联多视图、[aml-memory-mvp](https://github.com/0xboyu/aml-memory-mvp) 的互补证据选择，以及 [LongMemEval](https://arxiv.org/html/2410.10813v2) 的多键索引思路参照；新代码为独立实现，没有复制其源文件。SQLite FTS5 Porter 为标准库运行时能力。上下文向量由现有 BGE 向量池化，未复现论文的事实抽取或 HippoRAG 2 的知识图谱。
+- 历史研究工作区另存了前十仓库版本、文件 SHA 与论文链接；发布包不包含该历史实验记录。公开主分支不一定等于榜单评分版本。
+- [BGE-small-en-v1.5](https://huggingface.co/BAAI/bge-small-en-v1.5)：历史实验使用的嵌入模型；发布模型时需保留模型自己的许可证与模型卡。0.2.0 拟提交配置使用 text-embedding-v4。
+- [LoCoMo-Refined](https://github.com/mem-eval-suite/LoCoMo_refined)：本地公开诊断数据，发布候选包不附带数据或答案。
+
+API 契约依据 [AML API Guide](https://agentmemories.ai/api-guide)。历史规划模块接口依据 [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs) 和 [GPT-4o-mini](https://developers.openai.com/api/docs/models/gpt-4o-mini)。第二期规则已于 2026-09-29 重新核验，当前按赛事 FAQ 的模型要求准备，详见 README_CYCLE2.md。
+
+本项目的 MIT 许可仅覆盖新代码，不改变上述项目、第三方依赖、模型和数据的许可。发布包不包含上游仓库、模型权重、原始诊断数据或标准答案。
+
+## 0.3.0 Add 阶段更新（2026-10-06）
+
+新增通过 [OpenRouter Chat Completions](https://openrouter.ai/docs/quickstart) 调用 `openai/gpt-4o-mini` 的适配器。新增的 Add 索引处理使用模型选择原文短语，代码验证其为原文子串，再用于向量与 BM25 索引加权；未复制第三方实现。模型输出不会作为新事实或最终答案返回。提供方固定为 OpenAI，使用[结构化输出](https://openrouter.ai/docs/guides/features/structured-outputs)及[提供方参数约束](https://openrouter.ai/docs/guides/routing/provider-selection)。这是新的方法配置，其效果需要单独验证；历史基线分数不能直接移作本版本成绩。
+
+## 0.3.1 reliability update (2026-10-08)
+
+The same authors replaced free-form cue copying with integer selection of deterministic source spans, added private per-request batch checkpoints and sanitized diagnostic logs. No third-party implementation was copied. This changes the method identity and requires an independently bound version and a fresh database. It does not claim a measured quality improvement.
+
+## 0.4.0 local model option (2026-10-08)
+
+Added an explicitly selected loopback Chat Completions backend, actual-model reporting and model/runtime profile isolation. Shared source-span validation and the original OpenRouter GPT-4o-mini request behavior are retained. Local compatibility adds the schema to the prompt and has its own identity.
+
+Local validation used existing [Qwen3.5-4B](https://huggingface.co/Qwen/Qwen3.5-4B) weights; its local model card declares Apache-2.0. Model weights, tokenizer and third-party library binaries are not redistributed in this package. local_runtime/ contains the exact existing project model-server source and a runtime/weight hash manifest; the model remains subject to its own license. This profile is not covered by the 0.3.1 official Smoke result.
+
+## 0.4.1 runtime reliability update (2026-10-08)
+
+Added a supervised GPU worker process, bounded request queue, cancellation/deadlines, shared single/batch tensor cleanup and sanitized runtime metrics. These are original project changes. The original 0.4.0 loading helpers remain, while supervised serving uses the new generation lifecycle. All nine external model/tokenizer file hashes were rechecked and match 0.4.0. Source-span prompts, indexing/retrieval behavior and cloud fallback policy are unchanged. The runtime identity and database are new; the 0.4.0 official Smoke score does not certify this version.
+
+
+## 2026-10-09 retrieval revision
+
+Cycle 1 academic textual board, published August 12, 2026, was read at https://agentmemories.ai/leaderboard/academic/textual . Overall top three: InvMem 45.06, Refind 44.97, ActiveMemoryIndex 44.84. Single-capability leaders included MemMachine (fact 63.47, compositional 53.11, temporal 37.92, governance 38.73), M-flow (personalization 58.32), memfusion (context execution 30.88), and an entry named agent-memory-leaderboard (safety 67.74). Raw Memory also ranked highly in governance/personalization. We could not establish a reliable repository mapping for the last safety winner or Raw Memory, so no code is attributed to those entries. Their scores do not imply broad superiority.
+
+The following implementations were inspected. This revision independently implements method ideas; no upstream source files or prompts were copied. A default-branch implementation is not proof of the code that produced the Cycle 1 score.
+
+- https://github.com/wenxiaof345-ctrl/vanilla-rag-memory , commit 31ab7bf9cfa3ee3c4f986e82f6e7a00b134ba8ca, `src/vanilla_rag/memory_store.py`: raw-span hybrid retrieval, cross-encoder reranking, source neighbors and explicit relative-time metadata.
+- https://github.com/imlrz/ReFind , commit a80175ca0eeb52a938d7cab7a602bc780de8a577, `app/retriever.py`: bounded iterative evidence collection and keyword/session views. We do not run its planner or copy its prompts.
+- https://github.com/linxuhao/ActiveMemoryIndex , commit b5b7a2b000f2b123a5560f9ed5c685275d68b77b, `app/main.py`: raw evidence first, scoped neighbors and evidence-budget tradeoffs. We do not reproduce its fact writer or recall-query LLM.
+- https://github.com/MemMachine/MemMachine , commit 6fe7c2f91753cf5601ae8ffb15fa4009d407f856, `packages/server/src/memmachine_server/common/reranker/rrf_hybrid_reranker.py` and `episodic_memory/episodic_memory.py`: reranker rank fusion and episodic context expansion. The scored submission revision is unverified.
+- https://github.com/FlowElement-xinliuyuansu/m_flow , commit 0d585cda2f588af69fb872ae6914caba0c217816, `m_flow/retrieval/episodic/bundle_search.py`: multiple retrieval granularities, source-connected evidence bundles and time-aware candidate breadth. We do not implement or claim its graph/path-cost algorithm. The scored submission revision is unverified.
+- https://github.com/huangpengtao00-dotcom/memfusion-memory , commit 1d75e573c13eeec97df9a77ff7da828a91068d4a, `wiki_store.py` and `explore_agent.py`: bounded hybrid admission, Porter lexical normalization, reserved neighbor capacity, speaker/time preservation. Its audited README distinguishes the active single-pass search from unused exploration code. The scored submission revision is unverified.
+- https://github.com/mem0ai/mem0 , locally pinned revision recorded in the research manifest, `mem0/memory/main.py`: additive extraction, explicit metadata and filtered retrieval. No Mem0 code is included.
+
+The CPU reranker is separately licensed Apache-2.0 by its publisher. Model weights are downloaded externally and excluded from this MIT source archive. All reference scores above are full Cycle 1 leaderboard metrics, not directly comparable to this submission's small Smoke result.
+
+
+## 0.5.1 original context-bundle implementation
+
+Adjacent original-source packing independently applies the source-context ideas attributed above. It groups only inside an ordered Add request, preserves text and dates, and never infers chronology from opaque IDs. The AML API Guide rechecked on 2026-10-09 permits 117,760 Answer input tokens; the former 24k-character limit was an internal choice. The new source budget is 96k characters. The reranker accepts long query strings; model input remains capped at 384 tokens. Official answer quality is still unverified.

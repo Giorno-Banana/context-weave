@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "synthetic_only": true,
+  "health": {
+    "status": "ok",
+    "version": "0.5.1",
+    "embedding": "text-embedding-v4",
+    "llm": "Qwen3.5-4B",
+    "add_llm": "Qwen3.5-4B",
+    "llm_provider": "local",
+    "add_indexer_identity": "local/source-span-ids-prompt-schema-v1:1fbe413d1b1d83ae7d7545bfc248f866861e00cd4db2da640b42dac55afd6da4",
+    "search_mode": "evidence",
+    "reranker": "ms-marco-MiniLM-L6-v2:5ca6ab3517aedc38064c156c0612311d2fd235749f475dbd2a6103d91eb9970d",
+    "temporal_metadata": true,
+    "overview_diversity": true,
+    "bundled_context": true,
+    "context_chars": 96000
+  },
+  "add_seconds": [
+    2.98499999998603,
+    2.640999999945052
+  ],
+  "concurrent_searches": 16,
+  "search_median_seconds": 0.8050000000512227,
+  "search_max_seconds": 1.562000000034459,
+  "scope_isolation": true,
+  "idempotent_add": true,
+  "calendar_anchor": true,
+  "budget_enforced": true,
+  "source_matches_bundle": true,
+  "archive_sha256": "ec2161399be8afcc6a58c37c94b226ce1d6db17a84859cdd4821ea7fd2ce9b66"
+}

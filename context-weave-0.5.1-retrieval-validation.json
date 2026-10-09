@@ -1,0 +1,100 @@
+{
+  "protocol": {
+    "official_score": false,
+    "newly_unseen_holdout": false,
+    "data": "public LoCoMo-Refined",
+    "budgets": [
+      24000,
+      64000,
+      96000
+    ],
+    "source_sha256": {
+      "add_indexer.py": "a7f24a29392db5f6b4bccb8900716ec58c9209c1c0f58d920e5d2e92f71edd65",
+      "api.py": "ef5d0a377a705bbf52f24aa0c849bfd9daedb38c462e63f215f279122f366269",
+      "bundles.py": "93c80e7ad7dcde1dd2188c47f5b234afa143165e9955e0552a864d97eda88548",
+      "core.py": "e5b9f442b4d17f5c69846516f90c0d8457e6835ab50542e1e143c65f9a3683a7",
+      "encoder.py": "775a9d45ba261d666ab3d5ea026ba9ab0c6c69107cd289b481277fe04f5c1b13",
+      "evidence.py": "5c230382c4f748d3c5b250ade2af281f0727b7b1064a4f573d91f2b8718a8f2f",
+      "planner.py": "a962448072d8f698cc2879cc4be6800993734d41a20dae0f7805e30bdd55ad07",
+      "remote_encoder.py": "daf3482fd9232598138a5ce24b2998d706f97a7de53329cb02a191495a0c1b5c",
+      "reranker.py": "6a98ef4abebeb1538adae5411fcb876d71f66226530001b82f867b1a0095f2b3",
+      "retrieval_views.py": "e65dc438d66e4efc26075fd86da567c9715a4cd91cc37fef88d6ca3de6b78aa6",
+      "temporal.py": "3535777f9c6c8ad17422db91ad30086be61c15301449f36a5a0b1726db1d5712",
+      "__init__.py": "0b597a3212b2032110f72aa481e35a41b8e4d342d1f1ea3b8f730c0ac4158c6f"
+    },
+    "selection_policy": "all four conversations with cached v4 vectors, no official data",
+    "add_llm_enrichment": false
+  },
+  "source_unchanged": true,
+  "by_set": {
+    "prior": {
+      "individual": {
+        "n": 306,
+        "annotated": 305,
+        "all_hit": 0.9114754098360656,
+        "recall": 0.9551912568306011,
+        "mean_chars": 21510.96405228758,
+        "mean_source_chunks": 98.93464052287581
+      },
+      "bundle24k": {
+        "n": 306,
+        "annotated": 305,
+        "all_hit": 0.9245901639344263,
+        "recall": 0.9518032786885245,
+        "mean_chars": 23973.02614379085,
+        "mean_source_chunks": 109.56209150326798
+      },
+      "bundle64k": {
+        "n": 306,
+        "annotated": 305,
+        "all_hit": 0.9606557377049181,
+        "recall": 0.9816939890710382,
+        "mean_chars": 63972.464052287585,
+        "mean_source_chunks": 292.1830065359477
+      },
+      "bundle96k": {
+        "n": 306,
+        "annotated": 305,
+        "all_hit": 0.9836065573770492,
+        "recall": 0.9923497267759562,
+        "mean_chars": 86010.9248366013,
+        "mean_source_chunks": 398.32026143790847
+      }
+    },
+    "additional": {
+      "individual": {
+        "n": 301,
+        "annotated": 301,
+        "all_hit": 0.9102990033222591,
+        "recall": 0.9426356589147287,
+        "mean_chars": 19932.996677740863,
+        "mean_source_chunks": 99.84385382059801
+      },
+      "bundle24k": {
+        "n": 301,
+        "annotated": 301,
+        "all_hit": 0.9401993355481728,
+        "recall": 0.9619601328903654,
+        "mean_chars": 23976.6146179402,
+        "mean_source_chunks": 121.09634551495017
+      },
+      "bundle64k": {
+        "n": 301,
+        "annotated": 301,
+        "all_hit": 0.9700996677740864,
+        "recall": 0.9846622369878184,
+        "mean_chars": 63974.259136212626,
+        "mean_source_chunks": 319.7308970099668
+      },
+      "bundle96k": {
+        "n": 301,
+        "annotated": 301,
+        "all_hit": 0.9833887043189369,
+        "recall": 0.9914174972314507,
+        "mean_chars": 82076.06976744186,
+        "mean_source_chunks": 411.92691029900334
+      }
+    }
+  },
+  "seconds": 505.21899999992456
+}
