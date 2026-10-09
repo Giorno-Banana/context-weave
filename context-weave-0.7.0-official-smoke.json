@@ -1,0 +1,70 @@
+{
+  "job_id": "teval_1d33fe2565bafa28",
+  "version": "0.7.0",
+  "track": "Textual",
+  "mode": "smoke",
+  "run_label": "v070-gpt4omini-budget1-smoke-20261009",
+  "status": "succeeded",
+  "started_at": "2026-10-09T21:25:44+08:00",
+  "completed_at": "2026-10-09T21:39:58+08:00",
+  "duration_seconds": 854,
+  "add_concurrency": 16,
+  "search_concurrency": 16,
+  "top_k": 100,
+  "score": 59.28,
+  "completed_items": 46,
+  "total_items": 46,
+  "previous_official_best": 61.77,
+  "delta_from_previous_best": -2.49,
+  "target_met": false,
+  "target": ">70 official complete Smoke",
+  "full_started": false,
+  "private_payloads_inspected": false,
+  "capability_scores": {
+    "A_explicit_fact_recall": 60,
+    "B_compositional_inference": 66.67,
+    "C_temporal_event_reasoning": 50,
+    "D_memory_governance": 42.22,
+    "E_personalization_care": 100,
+    "G_context_learning_execution": 30,
+    "H_safety_privacy": 66.67,
+    "I_streaming": 64.58
+  },
+  "archive_sha256": "92a576fe17fbda961d633955570fb4c419f5b135d2a48ec0e2fcb5b87dc6c2be",
+  "source_commit": "5e4b53878432a53ee041fa27b620f8f5805b4415",
+  "source_unchanged_after_evaluation": true,
+  "profile_unchanged_after_evaluation": true,
+  "source_files_verified": 71,
+  "openrouter_budget": {
+    "cap_usd": 1.0,
+    "held_or_spent_usd": 0.1115622,
+    "confirmed_cost_usd": 0.1115622,
+    "requests": 447,
+    "unknown_or_pending_requests": 0,
+    "halted": false
+  },
+  "fallback_events": {
+    "search_planner_expansion_fallback": 0,
+    "search_planner_selection_fallback": 4,
+    "add_llm_failure": 0,
+    "add_failure": 0,
+    "embedding_failure": 0
+  },
+  "cloud_api_stopped_after_single_authorized_comparison": true,
+  "public_root_restored_to": "0.6.1 local model",
+  "observed_tradeoff": "Faster, but lower total score. Changes in both Add and Search mean model-only causation is not established.",
+  "release_gate": {
+    "eligible_for_promotion": false,
+    "goal_90_met": false,
+    "target_met": false,
+    "target_operator": ">",
+    "score": 59.28,
+    "previous_official_best": 61.77,
+    "delta": -2.49,
+    "target": 70,
+    "reasons": [
+      "score did not exceed previous official best"
+    ],
+    "limitation": "An observed result, not a guarantee of future performance; no deployment action performed."
+  }
+}

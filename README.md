@@ -1,6 +1,12 @@
 # Context Weave 0.7.0 — bounded GPT-4o-mini comparison
 
-Use `context-weave-0.7.0-source.zip` for the complete frozen source; older loose files and archives are historical. This candidate has no official result yet. The observed best is **61.77** from the local 0.6.1 Smoke (46/46 completed, task `teval_4bfee59d2dfd1d6a`). The target, strictly above 70, remains unmet. This experiment authorizes one Textual Smoke; no Full.
+Use `context-weave-0.7.0-source.zip` for the complete frozen source; older loose files and archives are historical. The official Textual Smoke completed on 2026-10-09 with **59.28**, all **46/46** items finished in **14m 14s** (task `teval_1d33fe2565bafa28`). This is **2.49 points below** the best local 0.6.1 score of **61.77**. The target, strictly above 70, **has not been met**. No Full was started. The cloud candidate was not promoted: its paid API was stopped after this one authorized comparison, and the public root was restored to local 0.6.1.
+
+Total OpenRouter charge was **USD 0.1115622**, including all preflight and official Add/Search calls, below the USD 1 authorization. All 447 calls were accounted for with no pending/unknown charges. There were four source-selection fallback events, zero expansion fallback events, and zero Add/embedding failures. Two HTTP 405 method probes were observed separately. All 71 frozen source files and the deployment profile matched after evaluation. [Full aggregate result](context-weave-0.7.0-official-smoke.json).
+
+Timing improved from 49m 33s to 14m 14s. The largest aggregate regression was Context Learning & Execution (55 to 30); temporal reasoning rose from 40 to 50, governance from 39.44 to 42.22, safety from 58.33 to 66.67, and streaming fell from 67.71 to 64.58. Fact recall, compositional inference and personalization were unchanged. These aggregates do not establish which internal call caused the changes.
+
+The evaluated source archive remains unchanged from commit `5e4b53878432a53ee041fa27b620f8f5805b4415`, SHA256 `92a576fe17fbda961d633955570fb4c419f5b135d2a48ec0e2fcb5b87dc6c2be`. The frozen archive retains its truthful pre-run status; this root README and the aggregate result record the completed evaluation.
 
 ## Method and controlled changes
 
@@ -24,4 +30,4 @@ Install `requirements.txt`. Set private `OPENROUTER_API_KEY`, `DASHSCOPE_API_KEY
 
 ## Attribution and limits
 
-The original evidence-search implementation is informed by ReFind (`https://github.com/imlrz/ReFind`, inspected revision `a80175ca0eeb52a938d7cab7a602bc780de8a577`, `app/retriever.py`) and prior public select6 experiments. No upstream source or prompt was copied into these modules. See PROVENANCE.md and LICENSE (MIT). No score increase is guaranteed. The cloud configuration's official result, actual charge and all fallback events will be reported after completion.
+The original evidence-search implementation is informed by ReFind (`https://github.com/imlrz/ReFind`, inspected revision `a80175ca0eeb52a938d7cab7a602bc780de8a577`, `app/retriever.py`) and prior public select6 experiments. No upstream source or prompt was copied into these modules. See PROVENANCE.md and LICENSE (MIT). No score increase is guaranteed. The completed result and fallback events are reported above; the score target remains unmet.
