@@ -1,0 +1,82 @@
+{
+  "version": "0.9.0",
+  "mode": "smoke",
+  "track": "Textual",
+  "job_id": "teval_c6e529170b90fd75",
+  "run_label": "v090-local-qwen9b-llamacpp-smoke-20261009",
+  "started_local": "2026-10-09T23:38:03+08:00",
+  "status": "succeeded",
+  "add_concurrency": 16,
+  "search_concurrency": 16,
+  "top_k": 100,
+  "full_started": false,
+  "new_openrouter_calls": 0,
+  "source_commit": "36763036f13e1759ec0c0dc0668e20b6c4e08b23",
+  "archive_sha256": "114fa16e4ba47e271c0fee4b896ef69ed67e841f60351577bc72c7d04180ba01",
+  "official_score": 55.84,
+  "private_payloads_inspected": false,
+  "completed_at": "2026-10-10T00:02:33+08:00",
+  "duration_seconds": 1470,
+  "completed_items": 46,
+  "total_items": 46,
+  "capability_scores": {
+    "B_compositional_inference": 33.33,
+    "H_safety_privacy": 50,
+    "A_explicit_fact_recall": 60,
+    "D_memory_governance": 20,
+    "G_context_learning_execution": 55,
+    "I_streaming": 65.62,
+    "E_personalization_care": 100,
+    "C_temporal_event_reasoning": 40
+  },
+  "score": 55.84,
+  "previous_official_best": 61.77,
+  "delta_from_previous_best": -5.93,
+  "target_met": false,
+  "target": ">70 official complete Smoke",
+  "source_unchanged_after_evaluation": true,
+  "profile_unchanged_after_evaluation": true,
+  "source_files_verified": 69,
+  "runtime_binary_files_verified": 55,
+  "model_weight_verified_after_evaluation": true,
+  "model": "Qwen3.5-9B-Q5_K_M",
+  "runtime": "llama.cpp b11429 CUDA",
+  "embedding": "text-embedding-v4",
+  "fallback_events": {
+    "search_planner_expansion_fallback": 0,
+    "search_planner_selection_fallback": 1,
+    "add_llm_failure": 0
+  },
+  "api_request_counts": {
+    "/add:405": 1,
+    "/search:405": 1,
+    "/add:200": 134,
+    "/search:200": 48
+  },
+  "successful_api_seconds": {
+    "/add": {
+      "count": 134,
+      "median": 12.085,
+      "max": 167.52
+    },
+    "/search": {
+      "count": 48,
+      "median": 4.975,
+      "max": 106.16
+    }
+  },
+  "model_metric_delta": {
+    "llamacpp:prompt_tokens_total": 747484.0,
+    "llamacpp:prompt_tokens_cached_total": 0.0,
+    "llamacpp:prompt_seconds_total": 365.4767,
+    "llamacpp:tokens_predicted_total": 38183.0,
+    "llamacpp:tokens_predicted_seconds_total": 732.0678,
+    "llamacpp:n_decode_total": 39027.0,
+    "llamacpp:spec_decode_num_draft_tokens_total": 0.0,
+    "llamacpp:spec_decode_num_accepted_tokens_total": 0.0,
+    "llamacpp:spec_decode_num_drafts_total": 0.0
+  },
+  "interpretation": "One observed official Smoke result; changing both local model and serving runtime does not isolate model-only causation. No claim of guaranteed future improvement.",
+  "candidate_api_stopped": true,
+  "public_root_restored_to": "0.6.1 local Qwen3.5-4B with original runtime041"
+}
