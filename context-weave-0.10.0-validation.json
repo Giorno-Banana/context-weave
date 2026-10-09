@@ -1,0 +1,481 @@
+{
+  "version": "0.10.0",
+  "regression_tests": 80,
+  "http": {
+    "base_url": "http://127.0.0.1:18097",
+    "fixture_id": "network-probe-479fd50a5c2e423a9df9f75658d98817",
+    "transport": "network HTTP",
+    "phase": "write",
+    "synthetic_data_only": true,
+    "official_smoke": false,
+    "official_full": false,
+    "health": {
+      "status": "ok",
+      "version": "0.10.0",
+      "embedding": "text-embedding-v4",
+      "llm": "Qwen3.5-4B",
+      "add_llm": "Qwen3.5-4B",
+      "llm_provider": "local",
+      "add_indexer_identity": "local/source-span-ids-prompt-schema-v1:1991370fe43aeed7b48d72d213bfdccf34260af9748cedcc5840201c63903011",
+      "search_planner": "Qwen3.5-4B",
+      "search_planner_expansion": true,
+      "selected_context_chars": 12000
+    },
+    "status": "passed",
+    "checks": [
+      "health",
+      "missing_auth",
+      "wrong_auth",
+      "add_ids",
+      "add_ids",
+      "idempotent_retry",
+      "conflict",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-b",
+      "evidence_and_scope-b",
+      "empty_scope",
+      "private_validation_error",
+      "streaming_add",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-b",
+      "evidence_and_scope-b",
+      "search-a",
+      "evidence_and_scope-a",
+      "two_concurrent_searches"
+    ],
+    "http_requests": 15,
+    "timings": [
+      {
+        "path": "/health",
+        "status": 200,
+        "ms": 23.694599978625774
+      },
+      {
+        "path": "/add",
+        "status": 401,
+        "ms": 17.080300021916628
+      },
+      {
+        "path": "/add",
+        "status": 401,
+        "ms": 30.512599973008037
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 1890.909899957478
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 1527.9538000468165
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 7.9200000036507845
+      },
+      {
+        "path": "/add",
+        "status": 409,
+        "ms": 6.910700001753867
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 2825.659300084226
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 2524.6753999963403
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 7.130000041797757
+      },
+      {
+        "path": "/search",
+        "status": 422,
+        "ms": 3.842500038444996
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 1673.3169000362977
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 1990.0994999334216
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 6289.953200030141
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 6918.713599909097
+      }
+    ],
+    "median_search_ms": 2675.167350040283
+  },
+  "public_http": {
+    "base_url": "https://wzm.tail36b9f2.ts.net",
+    "fixture_id": "network-probe-799a138623d34fd382bb06582f86c010",
+    "transport": "network HTTP",
+    "phase": "write",
+    "synthetic_data_only": true,
+    "official_smoke": false,
+    "official_full": false,
+    "health": {
+      "status": "ok",
+      "version": "0.10.0",
+      "embedding": "text-embedding-v4",
+      "llm": "Qwen3.5-4B",
+      "add_llm": "Qwen3.5-4B",
+      "llm_provider": "local",
+      "add_indexer_identity": "local/source-span-ids-prompt-schema-v1:1991370fe43aeed7b48d72d213bfdccf34260af9748cedcc5840201c63903011",
+      "search_planner": "Qwen3.5-4B",
+      "search_planner_expansion": true,
+      "selected_context_chars": 12000
+    },
+    "status": "passed",
+    "checks": [
+      "health",
+      "missing_auth",
+      "wrong_auth",
+      "add_ids",
+      "add_ids",
+      "idempotent_retry",
+      "conflict",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-b",
+      "evidence_and_scope-b",
+      "empty_scope",
+      "private_validation_error",
+      "streaming_add",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-b",
+      "evidence_and_scope-b",
+      "two_concurrent_searches"
+    ],
+    "http_requests": 15,
+    "timings": [
+      {
+        "path": "/health",
+        "status": 200,
+        "ms": 2283.4806999890134
+      },
+      {
+        "path": "/add",
+        "status": 401,
+        "ms": 534.1181000694633
+      },
+      {
+        "path": "/add",
+        "status": 401,
+        "ms": 553.2236999133602
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 2278.3274999819696
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 2004.6055000275373
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 535.4093000059947
+      },
+      {
+        "path": "/add",
+        "status": 409,
+        "ms": 566.4075999520719
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 3101.0613000253215
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 3075.809699948877
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 510.6041000690311
+      },
+      {
+        "path": "/search",
+        "status": 422,
+        "ms": 540.168600040488
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 2319.980700034648
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 2840.5153000494465
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 2411.72909992747
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 4640.117699978873
+      }
+    ],
+    "median_search_ms": 2958.162499999162,
+    "public_ingress_ip": "103.84.155.153",
+    "tls_hostname_verification": true
+  },
+  "concurrency": {
+    "status": "passed",
+    "synthetic_only": true,
+    "health": {
+      "status": "ok",
+      "version": "0.10.0",
+      "embedding": "text-embedding-v4",
+      "llm": "Qwen3.5-4B",
+      "add_llm": "Qwen3.5-4B",
+      "llm_provider": "local",
+      "add_indexer_identity": "local/source-span-ids-prompt-schema-v1:1991370fe43aeed7b48d72d213bfdccf34260af9748cedcc5840201c63903011",
+      "search_planner": "Qwen3.5-4B",
+      "search_planner_expansion": true,
+      "selected_context_chars": 12000
+    },
+    "concurrent_searches": 16,
+    "median_search_seconds": 45.68799999996554,
+    "max_search_seconds": 51.42200000002049,
+    "long_query_tested": true,
+    "scope_isolation": true,
+    "idempotent_add": true,
+    "auth_required": true
+  },
+  "long_concurrency": {
+    "status": "passed",
+    "protocol": {
+      "public_only": true,
+      "scope": "Retrieval latency and transport, no QA scoring",
+      "query_ids": [
+        "lme:06db6396",
+        "lme:0edc2aef",
+        "lme:28bcfaac",
+        "lme:29f2956b",
+        "lme:37d43f65",
+        "lme:51a45a95",
+        "lme:59524333",
+        "lme:603deb26"
+      ],
+      "selection_rule": "first8 LongMemEval IDs in lexical order",
+      "concurrency": 8,
+      "fresh_model_calls": true,
+      "embedding": "cached public BGE query vectors or local BGE, not network",
+      "maximum_allowed_seconds": 180,
+      "model": "Qwen3.5-4B runtime042"
+    },
+    "results": [
+      {
+        "id": "lme:06db6396",
+        "seconds": 39.875,
+        "source_chunks": 854,
+        "returned_chunks": 8
+      },
+      {
+        "id": "lme:0edc2aef",
+        "seconds": 57.797,
+        "source_chunks": 863,
+        "returned_chunks": 43
+      },
+      {
+        "id": "lme:28bcfaac",
+        "seconds": 73.437,
+        "source_chunks": 857,
+        "returned_chunks": 19
+      },
+      {
+        "id": "lme:29f2956b",
+        "seconds": 99.437,
+        "source_chunks": 843,
+        "returned_chunks": 7
+      },
+      {
+        "id": "lme:37d43f65",
+        "seconds": 115.39,
+        "source_chunks": 876,
+        "returned_chunks": 5
+      },
+      {
+        "id": "lme:51a45a95",
+        "seconds": 107.609,
+        "source_chunks": 888,
+        "returned_chunks": 5
+      },
+      {
+        "id": "lme:59524333",
+        "seconds": 82.875,
+        "source_chunks": 895,
+        "returned_chunks": 10
+      },
+      {
+        "id": "lme:603deb26",
+        "seconds": 41.844,
+        "source_chunks": 846,
+        "returned_chunks": 16
+      }
+    ],
+    "max_seconds": 115.39,
+    "median_seconds": 78.156,
+    "runtime_delta": {
+      "completed": 38,
+      "failed": 0,
+      "cancelled": 0,
+      "hard_recycles": 0,
+      "starts": 0
+    },
+    "planner_usage": {
+      "identity": "local/qwen35-evidence-planner-v2:ce4a951a85276f9de41429740e4ea28f136947815fdb70fed609fe04bdab7009",
+      "calls": 38,
+      "failures": 1,
+      "prompt_tokens": 174192,
+      "completion_tokens": 532
+    },
+    "source_preserved": true,
+    "official_private_payloads_accessed": false
+  },
+  "semantics": {
+    "synthetic_only": true,
+    "passed": true,
+    "cases": [
+      {
+        "case": "unrelated_batch",
+        "selected": [],
+        "passed": true
+      },
+      {
+        "case": "update_pair",
+        "selected": [
+          41,
+          42
+        ],
+        "passed": true
+      },
+      {
+        "case": "named_person",
+        "selected": [
+          32
+        ],
+        "passed": true
+      },
+      {
+        "case": "chinese_rule",
+        "selected": [
+          11,
+          12
+        ],
+        "passed": true
+      },
+      {
+        "case": "empty_fact",
+        "selected": [],
+        "passed": true
+      },
+      {
+        "case": "quoted_injection",
+        "selected": [
+          22
+        ],
+        "passed": true
+      },
+      {
+        "case": "implicit_reply",
+        "selected": [
+          61
+        ],
+        "passed": true
+      },
+      {
+        "case": "procedure_exception",
+        "selected": [
+          71
+        ],
+        "passed": true
+      }
+    ],
+    "usage": {
+      "identity": "local/qwen35-evidence-planner-v2:ce4a951a85276f9de41429740e4ea28f136947815fdb70fed609fe04bdab7009",
+      "calls": 8,
+      "failures": 0,
+      "prompt_tokens": 3213,
+      "completion_tokens": 74
+    }
+  },
+  "public_qa": {
+    "official_score": false,
+    "questions": 50,
+    "by_dataset": {
+      "longmemeval_bge_transfer": {
+        "baseline": 11,
+        "candidate": 12
+      },
+      "locomo": {
+        "baseline": 20,
+        "candidate": 21
+      }
+    },
+    "wins": 2,
+    "losses": 0,
+    "net_correct_change": 2,
+    "all_valid": true,
+    "runtime_delta": {
+      "completed": 331,
+      "failed": 0,
+      "cancelled": 0,
+      "hard_recycles": 0,
+      "starts": 0
+    },
+    "planner_usage": {
+      "identity": "local/qwen35-evidence-planner-v2:ce4a951a85276f9de41429740e4ea28f136947815fdb70fed609fe04bdab7009",
+      "calls": 183,
+      "failures": 7,
+      "prompt_tokens": 705764,
+      "completion_tokens": 2506
+    },
+    "embedding_usage": {
+      "requests": 0,
+      "reported_total_tokens": 0,
+      "max_requests_this_process": 0
+    },
+    "paired_95_bootstrap": [
+      0.0,
+      0.1
+    ],
+    "engineering_screen_passed": false,
+    "source_unchanged": true,
+    "manual_review_required": true,
+    "eligible_for_exploratory_smoke": true
+  },
+  "official_score": null
+}

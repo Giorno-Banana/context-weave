@@ -1,29 +1,26 @@
-# Context Weave — completed 0.9.0 local 9B comparison
-The official Textual Smoke completed **46/46** on **2026-10-10 00:02:33 UTC+8**, scoring **55.84** in **24m 30s** (task `teval_c6e529170b90fd75`). This is **5.93 points below** the best result, **61.77 from 0.6.1**. The target above 70 remains unmet. The 9B candidate was not promoted: its API and model process were stopped, and the public root was restored to 0.6.1 with its original 4B runtime. No Full or new OpenRouter calls occurred.
+# Context Weave 0.10.0 — bounded evidence candidates
 
-All 134 Add and 48 Search requests succeeded. One selection fallback occurred; there were zero expansion fallbacks and zero Add LLM failures. Two HTTP 405 method probes are recorded separately. All 69 frozen source files, 55 runtime binary files, the model weight and the deployment profile matched after evaluation. [Complete aggregate result](context-weave-0.9.0-official-smoke.json).
+This release separates the internal candidate pool from the final response character budget. Evidence at lower retrieval ranks can reach the selector before text truncation. Search returns complete original source chunks and metadata; it does not generate answers or new memory facts.
 
-Compared with 0.6.1, compositional inference fell 66.67→33.33, memory governance 39.44→20, safety 58.33→50 and streaming 67.71→65.62. Fact recall 60, temporal reasoning 40, personalization 100 and context execution 55 were unchanged. The shorter runtime is an observed result; it did not produce a score gain. Changing model and serving engine together does not isolate the cause.
-
-The frozen source is `context-weave-0.9.0-source.zip`, commit `36763036f13e1759ec0c0dc0668e20b6c4e08b23`, SHA256 `114fa16e4ba47e271c0fee4b896ef69ed67e841f60351577bc72c7d04180ba01`. The archive remains unchanged and retains its pre-run status. This README and the aggregate result record the completed run.
-
-The evaluated candidate retains the retrieval algorithm and prompts of 0.6.1 and changes the local model and serving runtime. Add and Search use **Qwen3.5-9B-Q5_K_M**, served by pinned **llama.cpp b11429, CUDA**. Source text is retained; Search returns original evidence rather than generated answers.
-
-- Add selects identifiers of exact source spans and repeats those spans only for indexing. Batch size 2; model concurrency 1; timeout 180 seconds.
-- Embedding: Bailian text-embedding-v4, 1024 dimensions. No OpenRouter calls or cloud LLM fallback.
-- Search: dense/BM25 hybrid retrieval, up to 3 expansion queries and 128 candidates; up to 16 selected source IDs per batch. Final packing remains selected evidence, four baseline hits, and adjacent messages from the same ordered Add request. Selected budget 12,000 characters; fallback 24,000; top_k at most 100.
-- Local inference: temperature 0, seed 42, thinking disabled, context 8192, one slot, all model layers on GPU, prompt caching and context shifting disabled. No question or source state is shared between requests. Model output is validated against the current source-ID allowlist.
-- Weight and active binary/launcher hashes: `local_runtime/LLAMACPP_MANIFEST.json`. GGUF source: unsloth/Qwen3.5-9B-GGUF, revision 3885219b6810b007914f3a7950a8d1b469d598a5. Model and binary assets are downloaded separately, not redistributed here.
-- Historical 4B Torch runtime files remain for provenance and regression tests. `MODEL_MANIFEST.json` and `start_supervised.ps1` describe that older runtime; they are **not the active 0.9.0 serving configuration**.
-
-The preceding public development screen was 31/50 versus 31/50, with 3 wins and 3 losses. It failed the strong engineering signal gate but passed the separately preregistered exploratory Smoke condition; the official result above demonstrates that public parity did not predict official parity. See `EXPERIMENT.json` inside the frozen archive for the prospective criteria and limitations. No private official payloads were inspected. Full remains unauthorized.
+- Add and Search model: local Qwen3.5-4B, temperature0. The active supervised runtime is0.4.2 with chunked prefill above1024 tokens. Runtime code, dependencies and weight hashes are recorded in `local_runtime/MODEL_MANIFEST.json`.
+- Embedding: Bailian text-embedding-v4,1024 dimensions. No OpenRouter calls in this experiment.
+- Each original/expanded query exposes up to128 ranked source chunks internally. The final pool reserves60 direct hits and12 from each expansion before reciprocal-rank fusion, capped at128. Expansion remains capped at3 queries. Existing selection prompts and final packing are unchanged.
+- Selected output is capped at12,000 characters; selection failure falls back to the original24,000-character retrieval. API top_k is at most100. Per-user storage isolation and exact source preservation are retained.
+- Runtime042 is not bit-identical to041:7 of8 historical parity checks matched. The public study compares the combined candidate, including this runtime difference.
+- No official score exists for0.10.0 yet. Best complete prior official Smoke is61.77 (0.6.1). The0.7.0 cloud comparison scored59.28 and0.9.0 local9B scored55.84. This candidate has no guaranteed score. The target remains a complete official Smoke above70.
+- The prospective public screen and its limitations are in `EXPERIMENT.json`. It uses reused development questions and same-model grading, so its score is not an official score or evidence of statistical significance.
+- The participant reports organizer permission for a local-model academic-track exception. This repository discloses the actual model and does not independently certify eligibility. Full is not authorized in this experiment.
 
 ## Reproduce
 
-Use Python 3.10 with `requirements.txt`. Obtain the exact GGUF and llama.cpp assets identified by the runtime manifest. Launch `local_runtime/start_llamacpp.ps1 -Backend cuda -AssetDirectory PATH -LogDirectory PRIVATE_PATH`, then start the API with `start_local.ps1` and private credentials plus the `env.local.example` profile. Set absolute deployment paths explicitly. The Qwen tokenizer JSON SHA256 is 5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42; the 4B and 9B tokenizer files are identical.
+Use Python 3.10 and `requirements.txt`. Local model dependencies and settings are pinned in the runtime manifest. Download Qwen/Qwen3.5-4B and verify all recorded weight and tokenizer hashes. Configure credentials using `env.example` and paths and ports using `env.local.example`. Start `local_runtime/start_supervised.ps1` with port 18095, then start the API using `start_local.ps1`. A GPU with adequate memory is required for the published model configuration.
 
-Run `python -m unittest discover -s tests -v`. The source archive for each version is authoritative; older loose repository files are historical. Archives omit credentials, model weights, stored memories, and benchmark answers. Add/Search require the configured service token. Source, profile and runtime are frozen before official evaluation.
+Run `python -m unittest discover -s tests -v`. The published versioned source archive is authoritative; older loose repository files are historical. The archive contains no credentials, model weights, stored memories or benchmark answers. Add/Search require the configured memory-system token. Source and deployment configuration are frozen before official evaluation.
 
-## Attribution and eligibility
+## Method provenance
 
-Original project implementation informed by ReFind's bounded original-evidence search and earlier public experiments. No upstream source or prompt was copied for this model change. See `PROVENANCE.md` and `LICENSE`; third-party models and dependencies retain their licenses. The participant reports organizer permission for local-model use in the academic track. This repository does not independently certify that exception.
+This is original project code informed by ReFind's original-evidence collection and ActiveMemoryIndex's source context preservation. The change addresses premature character truncation in this project's public development diagnosis. No upstream code, prompts or benchmark answers were copied into the service. See `PROVENANCE.md` for references. Project code is MIT licensed; models and dependencies retain their own licenses.
+
+## Deployment validation
+
+80 regression tests and 8 semantic checks passed. Sixteen concurrent synthetic HTTP searches completed within 52 seconds. Eight concurrent public long-memory retrievals completed within 116 seconds with no model failures or restarts. The planned official limits are Add 16 and Search 8. These checks establish operation under the tested workload, not a score guarantee or a universal latency bound.
