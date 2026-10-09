@@ -1,0 +1,391 @@
+{
+  "version": "0.9.0",
+  "regression_tests": 78,
+  "http": {
+    "base_url": "http://127.0.0.1:18089",
+    "fixture_id": "network-probe-586ae0e692b24b2ebfab0e1773d59e4b",
+    "transport": "network HTTP",
+    "phase": "write",
+    "synthetic_data_only": true,
+    "official_smoke": false,
+    "official_full": false,
+    "health": {
+      "status": "ok",
+      "version": "0.9.0",
+      "embedding": "text-embedding-v4",
+      "llm": "Qwen3.5-9B-Q5_K_M",
+      "add_llm": "Qwen3.5-9B-Q5_K_M",
+      "llm_provider": "local",
+      "add_indexer_identity": "local/source-span-ids-prompt-schema-v1:389c717b477a2665e002196cb470f3c29a866da2ee711036e5a15a3655bf5e8b",
+      "search_planner": "Qwen3.5-9B-Q5_K_M",
+      "search_planner_expansion": true,
+      "selected_context_chars": 12000
+    },
+    "status": "passed",
+    "checks": [
+      "health",
+      "missing_auth",
+      "wrong_auth",
+      "add_ids",
+      "add_ids",
+      "idempotent_retry",
+      "conflict",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-b",
+      "evidence_and_scope-b",
+      "empty_scope",
+      "private_validation_error",
+      "streaming_add",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-b",
+      "evidence_and_scope-b",
+      "search-a",
+      "evidence_and_scope-a",
+      "two_concurrent_searches"
+    ],
+    "http_requests": 15,
+    "timings": [
+      {
+        "path": "/health",
+        "status": 200,
+        "ms": 8.309800061397254
+      },
+      {
+        "path": "/add",
+        "status": 401,
+        "ms": 21.83600002899766
+      },
+      {
+        "path": "/add",
+        "status": 401,
+        "ms": 14.737699995748699
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 944.2934999242425
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 928.9720999076962
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 33.7492999387905
+      },
+      {
+        "path": "/add",
+        "status": 409,
+        "ms": 7.678300025872886
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 654.52879993245
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 644.1652000648901
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 7.75019999127835
+      },
+      {
+        "path": "/search",
+        "status": 422,
+        "ms": 4.655900062061846
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 804.33890002314
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 673.2504999963567
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 660.4197999695316
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 1275.141300051473
+      }
+    ],
+    "median_search_ms": 657.4742999509908
+  },
+  "public_http": {
+    "base_url": "https://wzm.tail36b9f2.ts.net",
+    "fixture_id": "network-probe-05e89d32f57e4637b7e6a1994cef15b3",
+    "transport": "network HTTP",
+    "phase": "write",
+    "synthetic_data_only": true,
+    "official_smoke": false,
+    "official_full": false,
+    "health": {
+      "status": "ok",
+      "version": "0.9.0",
+      "embedding": "text-embedding-v4",
+      "llm": "Qwen3.5-9B-Q5_K_M",
+      "add_llm": "Qwen3.5-9B-Q5_K_M",
+      "llm_provider": "local",
+      "add_indexer_identity": "local/source-span-ids-prompt-schema-v1:389c717b477a2665e002196cb470f3c29a866da2ee711036e5a15a3655bf5e8b",
+      "search_planner": "Qwen3.5-9B-Q5_K_M",
+      "search_planner_expansion": true,
+      "selected_context_chars": 12000
+    },
+    "status": "passed",
+    "checks": [
+      "health",
+      "missing_auth",
+      "wrong_auth",
+      "add_ids",
+      "add_ids",
+      "idempotent_retry",
+      "conflict",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-b",
+      "evidence_and_scope-b",
+      "empty_scope",
+      "private_validation_error",
+      "streaming_add",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-a",
+      "evidence_and_scope-a",
+      "search-b",
+      "evidence_and_scope-b",
+      "two_concurrent_searches"
+    ],
+    "http_requests": 15,
+    "timings": [
+      {
+        "path": "/health",
+        "status": 200,
+        "ms": 2916.982700000517
+      },
+      {
+        "path": "/add",
+        "status": 401,
+        "ms": 441.5340000996366
+      },
+      {
+        "path": "/add",
+        "status": 401,
+        "ms": 875.2643000334501
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 1363.516699988395
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 1212.1286999899894
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 468.50700001232326
+      },
+      {
+        "path": "/add",
+        "status": 409,
+        "ms": 445.1153000118211
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 1166.2878999486566
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 1022.6559999864548
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 777.5130000663921
+      },
+      {
+        "path": "/search",
+        "status": 422,
+        "ms": 449.4443000294268
+      },
+      {
+        "path": "/add",
+        "status": 200,
+        "ms": 1418.1672000559047
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 1012.3842998873442
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 961.6964000742882
+      },
+      {
+        "path": "/search",
+        "status": 200,
+        "ms": 2787.382200011052
+      }
+    ],
+    "median_search_ms": 1017.5201499368995,
+    "public_ingress_ip": "103.84.155.153",
+    "tls_hostname_verification": true
+  },
+  "concurrency": {
+    "status": "passed",
+    "synthetic_only": true,
+    "health": {
+      "status": "ok",
+      "version": "0.9.0",
+      "embedding": "text-embedding-v4",
+      "llm": "Qwen3.5-9B-Q5_K_M",
+      "add_llm": "Qwen3.5-9B-Q5_K_M",
+      "llm_provider": "local",
+      "add_indexer_identity": "local/source-span-ids-prompt-schema-v1:389c717b477a2665e002196cb470f3c29a866da2ee711036e5a15a3655bf5e8b",
+      "search_planner": "Qwen3.5-9B-Q5_K_M",
+      "search_planner_expansion": true,
+      "selected_context_chars": 12000
+    },
+    "concurrent_searches": 16,
+    "median_search_seconds": 27.929500000027474,
+    "max_search_seconds": 32.438000000081956,
+    "long_query_tested": true,
+    "scope_isolation": true,
+    "idempotent_add": true,
+    "auth_required": true
+  },
+  "semantics": {
+    "synthetic_only": true,
+    "passed": true,
+    "cases": [
+      {
+        "case": "unrelated_batch",
+        "selected": [],
+        "passed": true
+      },
+      {
+        "case": "update_pair",
+        "selected": [
+          41,
+          42
+        ],
+        "passed": true
+      },
+      {
+        "case": "named_person",
+        "selected": [
+          32
+        ],
+        "passed": true
+      },
+      {
+        "case": "chinese_rule",
+        "selected": [
+          11,
+          12
+        ],
+        "passed": true
+      },
+      {
+        "case": "empty_fact",
+        "selected": [],
+        "passed": true
+      },
+      {
+        "case": "quoted_injection",
+        "selected": [
+          22
+        ],
+        "passed": true
+      },
+      {
+        "case": "implicit_reply",
+        "selected": [
+          61
+        ],
+        "passed": true
+      },
+      {
+        "case": "procedure_exception",
+        "selected": [
+          71
+        ],
+        "passed": true
+      }
+    ],
+    "usage": {
+      "identity": "local/qwen35-9b-q5-evidence-planner-v2:ce4a951a85276f9de41429740e4ea28f136947815fdb70fed609fe04bdab7009",
+      "calls": 8,
+      "failures": 0,
+      "prompt_tokens": 3213,
+      "completion_tokens": 58
+    }
+  },
+  "public_qa": {
+    "official_score": false,
+    "questions": 50,
+    "by_dataset": {
+      "longmemeval_bge_transfer": {
+        "baseline": 11,
+        "candidate": 10
+      },
+      "locomo": {
+        "baseline": 20,
+        "candidate": 21
+      }
+    },
+    "wins": 3,
+    "losses": 3,
+    "net_correct_change": 0,
+    "all_valid": true,
+    "runtime_delta": {
+      "completed": 164,
+      "failed": 0,
+      "cancelled": 0,
+      "hard_recycles": 0,
+      "starts": 0
+    },
+    "planner_usage": {
+      "identity": "local/qwen35-9b-q5-evidence-planner-v2:ce4a951a85276f9de41429740e4ea28f136947815fdb70fed609fe04bdab7009",
+      "calls": 160,
+      "failures": 0,
+      "prompt_tokens": 569177,
+      "completion_tokens": 2840
+    },
+    "embedding_usage": {
+      "requests": 91,
+      "reported_total_tokens": 927,
+      "max_requests_this_process": 0
+    },
+    "paired_95_bootstrap": [
+      -0.1,
+      0.1
+    ],
+    "engineering_screen_passed": false,
+    "source_unchanged": true,
+    "input_unchanged": true,
+    "manual_review_required": true,
+    "eligible_for_exploratory_smoke": true
+  },
+  "official_score": null
+}
