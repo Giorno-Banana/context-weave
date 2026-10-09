@@ -23,4 +23,8 @@ This is original project code informed by ReFind's original-evidence collection 
 
 ## Deployment validation
 
-80 regression tests and 8 semantic checks passed. Sixteen concurrent synthetic HTTP searches completed within 52 seconds. Eight concurrent public long-memory retrievals completed within 116 seconds with no model failures or restarts. The planned official limits are Add 16 and Search 8. These checks establish operation under the tested workload, not a score guarantee or a universal latency bound.
+80 regression tests and 8 semantic checks passed. Sixteen concurrent synthetic HTTP searches completed within 52 seconds. Eight concurrent public long-memory retrievals completed within 116 seconds with no model failures or restarts. The initial plan was Add 16 and Search 8; the platform subsequently required a minimum Search concurrency of 16. The final submitted limits will be Add 16 and Search 16, as disclosed below. These checks establish operation under the tested workload, not a score guarantee or a universal latency bound.
+
+## Concurrency amendment before Smoke
+
+The website rejects Search concurrency below 16. A supplementary test ran 16 concurrent public long-memory queries: maximum 229.203 seconds, no model failures or restarts. Its stricter internal 180-second target was missed; the original failed status is retained. The [current official documentation](https://agentmemories.ai/zh-cn/docs) allows a request to run up to 30 minutes. This supports an exploratory Smoke at Add 16 / Search 16; it does not establish a universal latency guarantee. See `context-weave-0.10.0-concurrency-amendment.json` for the exact result and decision. The source archive, model runtime and API profile remain unchanged. The archived source documents preserve the earlier proposed setting; this dated external run configuration supersedes that proposal. No Full has been launched.

@@ -1,0 +1,168 @@
+{
+  "version": "0.10.0",
+  "recorded_at": "2026-10-10T01:15:53.022583+08:00",
+  "official_run_started": false,
+  "original_planned_add_concurrency": 16,
+  "original_planned_search_concurrency": 8,
+  "actual_add_concurrency": 16,
+  "actual_search_concurrency": 16,
+  "reason": "The evaluation UI rejected8 and requires Search concurrency from16 to256. No task was started with8.",
+  "source_archive_unchanged": true,
+  "archive_sha256": "ef945e04d2e9ee2317944642358d333ae220ba0d1362c2e8bbeef46f5afea0b9",
+  "private_api_profile_unchanged": true,
+  "model_runtime_unchanged": true,
+  "stress_test": {
+    "status": "failed",
+    "protocol": {
+      "public_only": true,
+      "scope": "Retrieval latency and transport, no QA scoring",
+      "query_ids": [
+        "lme:06db6396",
+        "lme:0edc2aef",
+        "lme:28bcfaac",
+        "lme:29f2956b",
+        "lme:37d43f65",
+        "lme:51a45a95",
+        "lme:59524333",
+        "lme:603deb26",
+        "lme:6e984302",
+        "lme:80ec1f4f",
+        "lme:89527b6b",
+        "lme:91b15a6e",
+        "lme:95228167",
+        "lme:afdc33df",
+        "lme:c9f37c46",
+        "lme:cc06de0d"
+      ],
+      "selection_rule": "first16 LongMemEval IDs in lexical order",
+      "concurrency": 16,
+      "fresh_model_calls": true,
+      "embedding": "cached public BGE query vectors or local BGE, not network",
+      "maximum_allowed_seconds": 180,
+      "model": "Qwen3.5-4B runtime042"
+    },
+    "results": [
+      {
+        "id": "lme:06db6396",
+        "seconds": 56.391,
+        "source_chunks": 854,
+        "returned_chunks": 8
+      },
+      {
+        "id": "lme:0edc2aef",
+        "seconds": 96.75,
+        "source_chunks": 863,
+        "returned_chunks": 43
+      },
+      {
+        "id": "lme:28bcfaac",
+        "seconds": 57.61,
+        "source_chunks": 857,
+        "returned_chunks": 19
+      },
+      {
+        "id": "lme:29f2956b",
+        "seconds": 113.032,
+        "source_chunks": 843,
+        "returned_chunks": 7
+      },
+      {
+        "id": "lme:37d43f65",
+        "seconds": 120.938,
+        "source_chunks": 876,
+        "returned_chunks": 5
+      },
+      {
+        "id": "lme:51a45a95",
+        "seconds": 79.063,
+        "source_chunks": 888,
+        "returned_chunks": 5
+      },
+      {
+        "id": "lme:59524333",
+        "seconds": 160.734,
+        "source_chunks": 895,
+        "returned_chunks": 10
+      },
+      {
+        "id": "lme:603deb26",
+        "seconds": 80.969,
+        "source_chunks": 846,
+        "returned_chunks": 16
+      },
+      {
+        "id": "lme:6e984302",
+        "seconds": 208.938,
+        "source_chunks": 829,
+        "returned_chunks": 9
+      },
+      {
+        "id": "lme:80ec1f4f",
+        "seconds": 193.734,
+        "source_chunks": 862,
+        "returned_chunks": 15
+      },
+      {
+        "id": "lme:89527b6b",
+        "seconds": 220.844,
+        "source_chunks": 836,
+        "returned_chunks": 4
+      },
+      {
+        "id": "lme:91b15a6e",
+        "seconds": 185.469,
+        "source_chunks": 857,
+        "returned_chunks": 12
+      },
+      {
+        "id": "lme:95228167",
+        "seconds": 229.203,
+        "source_chunks": 860,
+        "returned_chunks": 20
+      },
+      {
+        "id": "lme:afdc33df",
+        "seconds": 143.359,
+        "source_chunks": 887,
+        "returned_chunks": 12
+      },
+      {
+        "id": "lme:c9f37c46",
+        "seconds": 144.703,
+        "source_chunks": 843,
+        "returned_chunks": 6
+      },
+      {
+        "id": "lme:cc06de0d",
+        "seconds": 169.781,
+        "source_chunks": 831,
+        "returned_chunks": 11
+      }
+    ],
+    "max_seconds": 229.203,
+    "median_seconds": 144.031,
+    "runtime_delta": {
+      "completed": 78,
+      "failed": 0,
+      "cancelled": 0,
+      "hard_recycles": 0,
+      "starts": 0
+    },
+    "planner_usage": {
+      "identity": "local/qwen35-evidence-planner-v2:ce4a951a85276f9de41429740e4ea28f136947815fdb70fed609fe04bdab7009",
+      "calls": 78,
+      "failures": 2,
+      "prompt_tokens": 360327,
+      "completion_tokens": 1049
+    },
+    "source_preserved": true,
+    "official_private_payloads_accessed": false
+  },
+  "internal_180_second_target_met": false,
+  "official_documented_request_limit_seconds": 1800,
+  "official_limit_source": "https://agentmemories.ai/zh-cn/docs",
+  "capacity_decision": "All16 public requests completed without model failures or restarts and with exact source preservation, below the documented30-minute request limit. Preserve the stricter180-second internal-test status as originally computed; do not relabel a missed latency target as passed. Proceed only with exploratory Smoke, no Full.",
+  "official_score": null,
+  "full_allowed": false,
+  "new_openrouter_calls": 0
+}
