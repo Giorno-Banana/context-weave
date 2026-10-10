@@ -1,0 +1,101 @@
+{
+  "version": "0.17.1",
+  "job_id": "teval_5fab8ab3aa2df587",
+  "score": 59.99,
+  "status": "succeeded",
+  "completed_items": 46,
+  "total_items": 46,
+  "duration_seconds": 3025,
+  "completed_at": "2026-10-10T14:00:46+08:00",
+  "capability_scores": {
+    "A": 60.0,
+    "B": 66.67,
+    "C": 35.0,
+    "D": 36.67,
+    "E": 100.0,
+    "G": 55.0,
+    "H": 50.0,
+    "I": 67.71
+  },
+  "prior_best": {
+    "version": "0.6.1",
+    "score": 61.77,
+    "job_id": "teval_4bfee59d2dfd1d6a",
+    "complete": "46/46"
+  },
+  "difference_from_prior_best": -1.78,
+  "improved_best": false,
+  "target_met": false,
+  "source_commit": "553881a93314a32ecd3edacc173358d269252b36",
+  "archive_sha256": "6e9d1747d5e09f2058ed501549b393c22da73b65412442c35c75cf25922f721e",
+  "model": "Local Qwen3.5-4B runtime042",
+  "embedding": "Bailian text-embedding-v4",
+  "add_concurrency": 16,
+  "search_concurrency": 16,
+  "top_k": 100,
+  "full_started": false,
+  "new_openrouter_calls": 0,
+  "private_payloads_inspected": false,
+  "operations": {
+    "observed_at": "2026-10-10T06:03:46.851361+00:00",
+    "job_id": "teval_5fab8ab3aa2df587",
+    "model_status": "ready",
+    "queue_depth": 0,
+    "model_delta": {
+      "completed": 953,
+      "failed": 0,
+      "cancelled": 0,
+      "hard_recycles": 0,
+      "starts": 0
+    },
+    "last_model_metrics": {
+      "generation_seconds": 2.151736,
+      "batch_size": 1,
+      "prompt_tokens": 2678,
+      "completion_tokens": 13,
+      "peak_allocated_mib": 8374.2,
+      "peak_reserved_mib": 8534.0,
+      "allocated_mib": 8029.99,
+      "reserved_mib": 8052.0,
+      "lifecycle_seconds": 2.252347,
+      "queue_seconds": 0.0
+    },
+    "api_request_counts": {
+      "/add:405": 1,
+      "/search:405": 1,
+      "/add:200": 134,
+      "/search:200": 48
+    },
+    "successful_api_seconds": {
+      "/add": {
+        "count": 134,
+        "median": 30.54,
+        "max": 354.02
+      },
+      "/search": {
+        "count": 48,
+        "median": 17.98,
+        "max": 222.33
+      }
+    },
+    "planner_expansion_fallbacks": 7,
+    "planner_selection_fallbacks": 1,
+    "add_cue_failed_attempts": 0,
+    "add_raw_fallback_events": 0,
+    "add_raw_fallback_chunks": 0,
+    "source_files_checked": 70,
+    "changed_source_files": [],
+    "changed_active_runtime_files": [],
+    "archive_sha256": "6e9d1747d5e09f2058ed501549b393c22da73b65412442c35c75cf25922f721e",
+    "profile_unchanged": true,
+    "private_payloads_inspected": false,
+    "weights_verified": true,
+    "weight_files_verified": 9,
+    "captured_before_other_model_work": true
+  },
+  "limitations": [
+    "Smoke is not Full.",
+    "Public development checks do not establish official generalization.",
+    "Local model and runtime are disclosed; competition eligibility is not independently certified."
+  ]
+}

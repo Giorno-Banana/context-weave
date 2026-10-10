@@ -1,3 +1,13 @@
+# Context Weave — completed 0.17.1 Smoke
+
+Official Textual Smoke **59.99**, **46/46** completed in **50m 25s**, task `teval_5fab8ab3aa2df587`. Completed `2026-10-10T14:00:46+08:00`. The previous best was **61.77** (0.6.1); change **-1.78**. The target of at least 70 is not met.
+
+This run used local Qwen3.5-4B runtime042, text-embedding-v4, Add16/Search16. No Full or new OpenRouter calls occurred. Frozen source, active runtime, external model files and deployment profile were rechecked after evaluation. [Aggregate result](context-weave-0.17.1-official-smoke.json).
+
+The source archive remains unchanged at commit `553881a93314a32ecd3edacc173358d269252b36`, SHA256 `6e9d1747d5e09f2058ed501549b393c22da73b65412442c35c75cf25922f721e`. The pre-run documentation below is historical; this dated result supersedes its pending-score status.
+
+## Historical pre-run documentation
+
 # Context Weave 0.17.1
 
 Search restores continuity within original messages: after hybrid retrieval and local evidence selection, overlapping selected chunks are merged and ordered by original source offset. Disconnected spans keep their gaps. Different messages retain first-hit relevance order. The selected source text is preserved without adding unselected parent content or generating answers.
