@@ -1,3 +1,13 @@
+# Context Weave — completed 0.25.1 Smoke
+
+Official Textual Smoke **53.51**, **46/46** completed in **58m 36s**, task `teval_2a68c3514e9a587d`. Completed `2026-10-10T20:30:56+08:00`. The previous best was **61.77** (0.6.1); change **-8.26**. The target of at least 70 is not met.
+
+This run used local Qwen3.5-4B runtime042, text-embedding-v4, Add16/Search16. No Full or new OpenRouter calls occurred. Frozen source, active runtime, external model files and deployment profile were rechecked after evaluation. [Aggregate result](context-weave-0.25.1-official-smoke.json).
+
+The source archive remains unchanged at commit `cd634672069d274b460886c9dda8534c0d1b5452`, SHA256 `a091770517ada6c2684d11e8fdcbb01ad49034ac3b83d6774486a0abae71f4f6`. The pre-run documentation below is historical; this dated result supersedes its pending-score status.
+
+## Historical pre-run documentation
+
 # Context Weave 0.25.1
 
 Search uses scoped hybrid retrieval and local source selection. The primary selector recovers only a missing final object brace after a completed JSON array, validates every returned identifier before bounding the retained list, and uses validated batch-local identifiers. A bounded original-user statement reserve preserves relevant constraints, changes and standing instructions with conservative transcript speaker attribution. Only original source text is returned, with selected overlapping spans merged. No generated answer text or benchmark-specific rules are inserted into memory.
