@@ -1,40 +1,15 @@
-# Context Weave — completed 0.10.0 Smoke
+# Context Weave 0.17.1
 
-Official Textual Smoke **60.31**, **46/46** completed in **42m 47s**, task `teval_6905c09567762a3d`. Completed `2026-10-10T02:09:02+08:00`. The previous best was **61.77** (0.6.1); change **-1.46**. The target above 70 is not met.
+Search restores continuity within original messages: after hybrid retrieval and local evidence selection, overlapping selected chunks are merged and ordered by original source offset. Disconnected spans keep their gaps. Different messages retain first-hit relevance order. The selected source text is preserved without adding unselected parent content or generating answers.
 
-This run used local Qwen3.5-4B runtime042, text-embedding-v4, Add16/Search16. No Full or new OpenRouter calls occurred. Frozen source, active runtime, external model files and deployment profile were rechecked after evaluation. [Aggregate result](context-weave-0.10.0-official-smoke.json).
+Add persists original messages. Local Qwen3.5-4B selects exact source spans for optional indexing weight. If optional local cue selection fails after bounded retries, unchanged original chunks are indexed. This changed Add identity requires a fresh database. Search remains scoped by user and original source.
 
-The source archive remains unchanged at commit `ac9d32f1611ed886d0244417510f235ab5489838`, SHA256 `ef945e04d2e9ee2317944642358d333ae220ba0d1362c2e8bbeef46f5afea0b9`. The pre-run documentation below is historical; this dated result supersedes its pending-score status.
+Actual models: Bailian text-embedding-v4,1024 dimensions; local Qwen3.5-4B with supervised runtime0.4.2 for Add cues and Search planning. Frozen hashes are in local_runtime/MODEL_MANIFEST.json. No OpenRouter calls are enabled. The participant reports organizer permission for a local-model exception; actual models are disclosed here without independently certifying eligibility.
 
-## Historical pre-run documentation
-
-# Context Weave 0.10.0 — bounded evidence candidates
-
-This release separates the internal candidate pool from the final response character budget. Evidence at lower retrieval ranks can reach the selector before text truncation. Search returns complete original source chunks and metadata; it does not generate answers or new memory facts.
-
-- Add and Search model: local Qwen3.5-4B, temperature0. The active supervised runtime is0.4.2 with chunked prefill above1024 tokens. Runtime code, dependencies and weight hashes are recorded in `local_runtime/MODEL_MANIFEST.json`.
-- Embedding: Bailian text-embedding-v4,1024 dimensions. No OpenRouter calls in this experiment.
-- Each original/expanded query exposes up to128 ranked source chunks internally. The final pool reserves60 direct hits and12 from each expansion before reciprocal-rank fusion, capped at128. Expansion remains capped at3 queries. Existing selection prompts and final packing are unchanged.
-- Selected output is capped at12,000 characters; selection failure falls back to the original24,000-character retrieval. API top_k is at most100. Per-user storage isolation and exact source preservation are retained.
-- Runtime042 is not bit-identical to041:7 of8 historical parity checks matched. The public study compares the combined candidate, including this runtime difference.
-- No official score exists for0.10.0 yet. Best complete prior official Smoke is61.77 (0.6.1). The0.7.0 cloud comparison scored59.28 and0.9.0 local9B scored55.84. This candidate has no guaranteed score. The target remains a complete official Smoke above70.
-- The prospective public screen and its limitations are in `EXPERIMENT.json`. It uses reused development questions and same-model grading, so its score is not an official score or evidence of statistical significance.
-- The participant reports organizer permission for a local-model academic-track exception. This repository discloses the actual model and does not independently certify eligibility. Full is not authorized in this experiment.
+Public validation:50 reused development questions remain38/50 in both arms, with0 wins and0 losses under published AML prompts and a local4B reader/judge. A separately generated24-question long-source panel improves16 to20 correct, with4 wins and0 losses using deterministic identifier checking. These are local proxies, not official scores. Best prior completed official Smoke is61.77 (0.6.1);0.10.0 scored60.31. Official0.17.1 is pending. See EXPERIMENT.json for limitations and checks.
 
 ## Reproduce
 
-Use Python 3.10 and `requirements.txt`. Local model dependencies and settings are pinned in the runtime manifest. Download Qwen/Qwen3.5-4B and verify all recorded weight and tokenizer hashes. Configure credentials using `env.example` and paths and ports using `env.local.example`. Start `local_runtime/start_supervised.ps1` with port 18095, then start the API using `start_local.ps1`. A GPU with adequate memory is required for the published model configuration.
+Use Python3.10 and requirements.txt. Configure credentials privately and settings from env.local.example. Start the frozen local runtime on loopback18095, then API18098 with a fresh database. Add/Search require the configured token. Run `python -m unittest discover -s tests -v`. Keep source, configuration and runtime unchanged during evaluation.
 
-Run `python -m unittest discover -s tests -v`. The published versioned source archive is authoritative; older loose repository files are historical. The archive contains no credentials, model weights, stored memories or benchmark answers. Add/Search require the configured memory-system token. Source and deployment configuration are frozen before official evaluation.
-
-## Method provenance
-
-This is original project code informed by ReFind's original-evidence collection and ActiveMemoryIndex's source context preservation. The change addresses premature character truncation in this project's public development diagnosis. No upstream code, prompts or benchmark answers were copied into the service. See `PROVENANCE.md` for references. Project code is MIT licensed; models and dependencies retain their own licenses.
-
-## Deployment validation
-
-80 regression tests and 8 semantic checks passed. Sixteen concurrent synthetic HTTP searches completed within 52 seconds. Eight concurrent public long-memory retrievals completed within 116 seconds with no model failures or restarts. The initial plan was Add 16 and Search 8; the platform subsequently required a minimum Search concurrency of 16. The final submitted limits will be Add 16 and Search 16, as disclosed below. These checks establish operation under the tested workload, not a score guarantee or a universal latency bound.
-
-## Concurrency amendment before Smoke
-
-The website rejects Search concurrency below 16. A supplementary test ran 16 concurrent public long-memory queries: maximum 229.203 seconds, no model failures or restarts. Its stricter internal 180-second target was missed; the original failed status is retained. The [current official documentation](https://agentmemories.ai/zh-cn/docs) allows a request to run up to 30 minutes. This supports an exploratory Smoke at Add 16 / Search 16; it does not establish a universal latency guarantee. See `context-weave-0.10.0-concurrency-amendment.json` for the exact result and decision. The source archive, model runtime and API profile remain unchanged. The archived source documents preserve the earlier proposed setting; this dated external run configuration supersedes that proposal. No Full has been launched.
+The versioned archive is authoritative; older loose repository files describe earlier releases. The archive excludes credentials, model weights, stored memories and benchmark answers. Source is MIT licensed; dependencies and models retain their licenses. Source continuity and local Add fallback are original changes. Earlier research attribution is in PROVENANCE.md.
