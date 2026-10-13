@@ -1,0 +1,12 @@
+{
+  "system": "SourceTrail",
+  "version": "0.27.0",
+  "archive": "sourcetrail-0.27.0-source.zip",
+  "sha256": "18b0e6b5706b43572b8a61ef674bb44285c9a5890eaf454d8f7bbdbd89bed5f8",
+  "bytes": 44222,
+  "source_files": 28,
+  "python_and_runtime_config_match_deployed": true,
+  "license": "MIT",
+  "original_author": "王子铭 (Giorno-Banana)",
+  "contains_credentials_or_evaluation_data": false
+}
