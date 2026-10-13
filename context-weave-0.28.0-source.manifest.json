@@ -1,0 +1,10 @@
+{
+  "version": "0.28.0",
+  "archive": "context-weave-0.28.0-source.zip",
+  "source_files": 29,
+  "bytes": 45581,
+  "sha256": "fd54d2b8c971727a4f5dd118fbba457466fc5f16aaa75cf37f89ecd344098c4f",
+  "verified": true,
+  "official_submission": false,
+  "contains_datasets_or_credentials": false
+}
