@@ -1,0 +1,10 @@
+{
+  "version": "0.31.0",
+  "archive": "C:\\Users\\wzm_d\\Desktop\\agent memory challenge\\competition\\runs\\context-weave-v310-query-documents-20261014\\context-weave-0.31.0-source.zip",
+  "source_files": 36,
+  "bytes": 62750,
+  "sha256": "ce1a0f0d230c321393edc72adda4b63cffa3059ee9115e1cab926a85799db9eb",
+  "verified": true,
+  "official_submission": false,
+  "contains_datasets_or_credentials": false
+}
