@@ -1,0 +1,10 @@
+{
+  "version": "0.29.0",
+  "archive": "C:\\Users\\wzm_d\\Desktop\\agent memory challenge\\competition\\runs\\context-weave-v290-focused-evidence-20261013\\context-weave-0.29.0-source.zip",
+  "source_files": 32,
+  "bytes": 53463,
+  "sha256": "ea69f3707af4eb2d792ace59b43af5914fdf7c09291421e7b5e1bd96a8b7379e",
+  "verified": true,
+  "official_submission": false,
+  "contains_datasets_or_credentials": false
+}
