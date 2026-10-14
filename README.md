@@ -14,10 +14,13 @@ Add/Search use original-source storage, embeddings and deterministic retrieval w
 | 0.28.0 | 60.96 | 46/46 | 12m22s |
 | 0.29.0 | 63.94 | 46/46 | 14m49s |
 | 0.30.0 | 63.29 | 46/46 | 5m13s |
-| 0.31.0 | **68.54** | 46/46 | 4m29s |
+| 0.31.0 | 68.54 | 46/46 | 4m29s |
+| 0.32.0 | **68.67** | 46/46 | 5m10s |
 
 These are Smoke results, not Full. 0.30's document prior did not activate in its official run; its changed sub-scores do not prove an algorithmic gain. 0.31 public CL development has one confirmed complete-answer gain and a second rubric-only gain with a factuality caveat. Confirmation is incomplete due to local Answer timeouts and has no paired complete-answer gain. The public improvement gate failed; Smoke is exploratory. Public BEAM contexts and LoCoMo evidence hits are unchanged. See versioned documentation for reproducibility, method sources, checks and limits.
 
 0.31 official Textual Smoke completed on 2026-10-14 with **68.54**, up 4.60 points from the previous best and 7.58 from the optimization starting baseline. It completed 46/46 evaluations in 269 seconds. Aggregate source routing activated for six searches (two direct, four reference); Add/Search generative calls remained zero. This is one Smoke result, not a Full result or a repeatability guarantee. The 70-point target is not yet reached. [Official aggregate record](context-weave-0.31.0-official-smoke.json).
 
 Candidate **0.32.0**: [source archive](context-weave-0.32.0-source.zip), [documentation](README_SOURCE_0.32.0.md), [checksum manifest](context-weave-0.32.0-source.manifest.json). It protects direct evidence before source expansion, retaining 0.31 ranking and existing call counts. Public regression panels retain BEAM contexts and LoCoMo evidence hits; CL diagnostics are incomplete and show no established complete-answer gain. The strict public improvement gate failed; the next official Smoke is exploratory, with no score claim before completion.
+
+0.32 official Textual Smoke completed on 2026-10-14: **68.67**, 46/46 in 310 seconds; change from 0.31 is +0.13. Add/Search generative calls remained zero. The 70-point target is not yet reached. This is a single Smoke result, not Full or repeatability proof. [Aggregate record](context-weave-0.32.0-official-smoke.json).

@@ -1,0 +1,46 @@
+{
+  "version": "0.32.0",
+  "track": "Textual",
+  "mode": "smoke",
+  "run_label": "sourcetrail-v320-smoke-20261014",
+  "status": "succeeded",
+  "job_id": "teval_0ae75df0a685100e",
+  "repository_commit": "e84af580a3a9a21f1eab6328d41e8b93bb52552e",
+  "source_archive_sha256": "bff4443ee3cbdf4a5e320dfa56fb8e65ca7775d857550c4112de7ddb7a9c74fa",
+  "source_tests": 64,
+  "Add_Search_generative_calls": 0,
+  "embedding": "text-embedding-v4,1024dims,batch10",
+  "retrieval_mode": "query_document_evidence",
+  "context_chars": 24000,
+  "concurrency": {
+    "add": 16,
+    "search": 16
+  },
+  "public_gate_passed": false,
+  "exploratory_smoke": true,
+  "official_score": 68.67,
+  "official_payloads_inspected": false,
+  "official_started_at": "2026-10-14T13:47:18+08:00",
+  "official_completed_at": "2026-10-14T13:52:28+08:00",
+  "duration_seconds": 310,
+  "evaluations_completed": 46,
+  "evaluations_total": 46,
+  "capability_scores": {
+    "A": 80.0,
+    "B": 100.0,
+    "C": 60.0,
+    "D": 53.33,
+    "E": 100.0,
+    "G": 55.0,
+    "H": 50.0,
+    "I": 59.38
+  },
+  "delta_vs_v310": 0.13,
+  "goal_70_reached": false,
+  "document_routing_aggregate": {
+    "document_prior_rankings": 6,
+    "document_direct_rankings": 2,
+    "document_reference_rankings": 4
+  },
+  "interpretation": "One official Textual Smoke; no attribution, repeatability or Full performance claim."
+}
