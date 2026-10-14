@@ -1,0 +1,10 @@
+{
+  "version": "0.32.0",
+  "archive": "C:\\Users\\wzm_d\\Desktop\\agent memory challenge\\competition\\runs\\context-weave-v320-evidence-budget-20261014\\context-weave-0.32.0-source.zip",
+  "source_files": 37,
+  "bytes": 63528,
+  "sha256": "bff4443ee3cbdf4a5e320dfa56fb8e65ca7775d857550c4112de7ddb7a9c74fa",
+  "verified": true,
+  "official_submission": false,
+  "contains_datasets_or_credentials": false
+}
