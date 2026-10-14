@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-10-14T06:39:02.578279+00:00",
+  "public_only": true,
+  "official_payloads_inspected": false,
+  "release_retained": "0.32.0",
+  "official_best_score": 68.67,
+  "target_70_reached": false,
+  "prototype_tests_passed": 71,
+  "new_official_tasks_after_0_32": 0,
+  "memory_service_generation_calls": 0,
+  "query_embedding_calls_per_search": "same one existing call",
+  "prototypes": {
+    "source_constraints": {
+      "selected": false,
+      "complete_answer_net_gain_on_reused_BEAM": 0,
+      "LoCoMo_complete_evidence": "unchanged137/152,137/153",
+      "reason": "No complete-answer improvement."
+    },
+    "explicit_chronology": {
+      "selected": false,
+      "complete_answer_net_gain_in_changed_answers": 0,
+      "representations_checked": [
+        "two-message Add",
+        "original published array order in one isolated Add"
+      ],
+      "reason": "No complete-answer improvement in either public representation."
+    },
+    "personal_user_provenance": {
+      "selected": false,
+      "development_complete_answer_losses_at_least": 2,
+      "development_loss_gate_max": 1,
+      "lost_capabilities": [
+        "Correct abstention became unsupported answer",
+        "Correct date interval became incorrect"
+      ],
+      "confirmation_answer_generation_completed": true,
+      "confirmation_semantic_score": "not assigned after development rejection",
+      "reason": "Failed nonregression gate; existing assistant information remains necessary."
+    }
+  },
+  "public_context_changes": {
+    "beam-development-query_document_constraints": 0,
+    "beam-development-query_document_provenance": 18,
+    "beam-confirmation-query_document_constraints": 19,
+    "beam-confirmation-query_document_provenance": 18,
+    "cl-development-query_document_constraints": 0,
+    "cl-development-query_document_provenance": 0,
+    "cl-confirmation-query_document_constraints": 0,
+    "cl-confirmation-query_document_provenance": 0
+  },
+  "public_diagnostic_Answer": {
+    "model": "Qwen3.5-4B",
+    "runtime": "0.4.2",
+    "new_calls": 104,
+    "records": 240,
+    "exact_prompt_reuse": 136,
+    "judge_calls": 0,
+    "official_reader": false
+  },
+  "limits": [
+    "Reused public research panels, not independent unseen evaluation",
+    "Semantic review by Codex, no independent human or judge API",
+    "One Smoke result does not establish repeatable gain or Full score"
+  ],
+  "service_source_profile_hashes_match": true,
+  "public_service_version": "0.32.0"
+}
