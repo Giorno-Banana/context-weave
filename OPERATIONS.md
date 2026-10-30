@@ -1,57 +1,40 @@
-# 运行与复现：Context Weave 0.3.1
+# Run the terminal Full source
 
-需要 Python 3.10+。本候选在 Add 阶段通过 OpenRouter 调用 `openai/gpt-4o-mini`，Embedding 使用百炼 `text-embedding-v4`。Search 的可选规划器关闭。
-
-## 私有配置
-
-复制 `env.example` 为 `.env`，填入 `MEMORY_API_KEY`、`DASHSCOPE_API_KEY`、百炼原生 HTTP `AE_EMBEDDING_URL` 和 `OPENROUTER_API_KEY`。Key 均不得提交仓库。保持 `AE_ADD_INDEXER=1`、`AE_PLANNER=0`，使用全新 `AE_DATABASE` 路径。旧版本数据库不会自动迁移或清空，配置不匹配会拒绝启动。
-
-OpenRouter 请求固定为 `https://openrouter.ai/api/v1/chat/completions` 和 `openai/gpt-4o-mini`。只允许 OpenAI provider，不启用模型或提供方回退，要求支持 JSON Schema 的 endpoint。上游不可用、响应被截断、出现无效引用等情况会让 Add 返回 503，且不会提交部分记忆。
-
-## 安装和验证
-
-在仓库根目录运行：
-
-```bash
-python -m pip install -r requirements.txt
-python preflight.py --env-file .env
-python -m unittest discover -s tests -v
-python preflight.py --env-file .env --live --output runs/live-probe.json
-```
-
-默认 preflight 不访问网络。`--live` 会用临时数据库和合成数据调用真实 Embedding 与 GPT-4o-mini，产生少量上游用量；它不是官方 Smoke，不消耗 Full 次数。报告只记录检查结果和上游用量，不记录 Key 或原始模型对话。`/health` 显示本地配置，不代表上游余额、额度或调用一定成功。
-
-## 启动
-
-Windows 在仓库根目录运行：
+These instructions supplement the frozen source without modifying it. Use Python3.10–3.12 with SQLite FTS5. The historical live service used Python3.10; the supplied Dockerfile was not the Full deployment. Install the pinned requirements from the exact release tree in a fresh virtual environment.
 
 ```powershell
-.\start_local.ps1 -EnvFile .\.env
+cd releases/sourcetrail-0.32.0-full
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+Copy-Item env.example .env
+# Edit .env privately: MEMORY_API_KEY, DASHSCOPE_API_KEY, AE_EMBEDDING_URL.
+# Use the participant's text-embedding-v4 provider endpoint, not a chat endpoint.
+# Set AE_DATABASE to a fresh isolated absolute path; never reuse the official DB for tests.
+.\start_local.ps1 -Port 18098 -PythonPath .\.venv\Scripts\python.exe -EnvFile @('.env')
 ```
 
-启动器依次查找本目录 `.venv-cycle2`、上级目录 `models/.venv` 和 PATH 中的 Python，监听 `127.0.0.1:18081`，数据写入本目录 `runs/context-weave-v031-dashscope/`。它不会设置开机自启；电脑和服务需持续运行。已有 Tailscale Funnel 可继续代理同一端口，接口仍需服务 Key。
+Keep `AE_EMBEDDING_BACKEND=dashscope`, dimensions1024,batch10, `AE_MODE=query_document_evidence`, `AE_CONTEXT_CHARS=24000`. The launcher forces generative Add/Search flags off. API keys are different credentials: the service needs the participant Memory System Key and embedding provider key; an AML Eval Key is not needed by the memory implementation.
 
-Docker 方式使用 `.env` 和新数据库路径：
+For an offline synthetic regression run from this release directory:
 
-```bash
-docker compose up -d --build memory
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests
 ```
 
-如使用 Caddy 公网 profile，配置 `AE_DOMAIN` 后运行 `docker compose --profile public up -d`。本次未声称完成 Docker 镜像构建。
+71 frozen tests passed at recovery. The compatibility test also loads the supplied sibling directory `../context-weave-v320-evidence-budget-20261014/`; keep that original tree beside the recovery tree. The unchanged standalone recovery ZIP does not include this sibling; extract the original archive into that sibling directory if using ZIPs rather than the Git checkout. Reproduction test results are recorded separately from historical tests and scores. `preflight.py --env-file .env --live` sends synthetic data to the configured paid embedding provider and uses temporary isolated storage; run only under the operator's authorized provider budget. Do not send or inspect official evaluation records in diagnostics.
 
-## HTTP 检查和公开诊断
+## API and capacity
 
-```bash
-python probe_http.py --base-url http://127.0.0.1:18081 --env-file .env --output runs/http-probe.json
-python evaluate_retrieval.py --env-file .env --embedding-backend dashscope --data-dir /path/to/public-data --output runs/v031-pilot --limit 20 --modes hybrid_window
-```
+Expose authenticated POST `/add` and `/search`, plus unauthenticated GET `/health`, behind a valid HTTPS proxy. Keep the registered Add/Search URLs unchanged. The expected terminal-source health marker is `embedding_length_recovery=provider-confirmed-lossless-v1`, version0.32.0, embedding text-embedding-v4, zero generative calls, raw_source Add and query_document_evidence Search. A2xx health check alone does not prove the correct source.
 
-这些命令只使用自行准备的合成或公开数据。公开诊断会先写入所选对话的完整历史，费用不只取决于问题数。更改源码、模型、索引配置必须使用新输出目录和数据库。PILOT_RESULTS.md 是历史 0.2.0 基线报告，不是新版本结果。
+Successful Add returns success=true plus the exact request_id/user_id/session_id. Search returns a JSON object containing ranked data records with stable nonempty id/content, at most requested top_k (maximum100); an empty result is data=[]. Timestamp units are source Unix milliseconds. Authentication failures return401; validation422; duplicate-payload conflicts409; embedding failures503 with Retry-After. Access logs are disabled; the application records only path/status/duration and sanitized provider categories, not request bodies or IDs.
 
-## 并发、费用和持久化
+Declared Add/Search concurrency is16/16. Upstream embedding batches are serialized, so actual latency depends on input length and provider limits. Historical configuration uses60s per upstream attempt,3 attempts and no fixed process request budget; these are upstream limits, not an end-to-end API timeout. Provider-confirmed length recovery may issue extra segment calls. The organizer currently permits up to30minutes per Add/Search request; the operator must provision proxy timeouts and capacity accordingly, without implying the service enforces a30minute internal deadline. Maintain one Uvicorn worker and persistent writable storage. Do not promise a measured throughput SLA.
 
-平台初始并发配置为 Add 16 / Search 16；本地 Add LLM 并发默认 4，Embedding 仍在存储层串行调用。每次模型请求最多 8 个、每个最多 1000 字符的分块，最多重试 3 次。模型输出的短语会增加 Embedding 输入长度，Add 阶段也增加 GPT-4o-mini 费用。不能把基准总 Token 数直接当成实际计费用量或单用户内存规模。
+## Persistence, isolation and retention
 
-`AE_ADD_LLM_MAX_REQUESTS` 和 `AE_EMBEDDING_MAX_REQUESTS` 为进程内次数上限，0 表示无限制；重启会重置，不能替代提供方账户额度。已成功 Add 的同一 request_id 重试不会重复调用模型；并发重复请求在单进程内合并，数据库事务防止部分写入。
+Never change official source/profile or clear data during an active/uncertain evaluation. Before maintenance, reconcile active tasks for every account sharing the root endpoint. Preserve pending requests and idempotency state during restarts. Use separate databases for local tests; never copy official data into a public artifact.
 
-官方数据仅用于当前评测，使用独立数据库，按赛事要求清除到期数据与备份。Full 前须先批准该版本并通过该版本的 Smoke；评测期间保持源码、模型配置、数据库和运行服务稳定。
+Limit access to necessary operators. Delete official data and derived copies within30days after each task ends unless the organizer has given prior written permission. This includes SQLite main/WAL/SHM files, vector/cache backups and copied evaluation bodies. Shared storage requires the earliest relevant task deadline, not simply the latest write date. Full deadline:2026-11-15 03:02:32 UTC+8. Retain only sanitized operational counts, hashes and aggregate score evidence where permitted. Arrange an actual bounded deletion procedure before that deadline; this document is not an automated purge or a completed-deletion attestation.
+
+Do not use the frozen `compose.yaml` as a current deployment declaration: its image/volume/port labels were inherited from0.28. The source archive is intentionally unchanged. The Windows launcher above is the evidenced Full deployment path.

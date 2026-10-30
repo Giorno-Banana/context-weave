@@ -1,26 +1,20 @@
-# Context Weave / SourceTrail
+# SourceTrail 0.32.0 — completed Textual Full disclosure
 
-Original author: 王子铭 (Giorno-Banana), MIT. SourceTrail is a submission alias; official display is Adaptive Evidence.
+SourceTrail is the submission name of the Context Weave implementation. The current submission team is **Qhc‘s team**. Original code author and copyright holder: **王子铭 (Giorno-Banana)**; [MIT license](LICENSE). Older documentation uses other submission aliases and contacts; those describe historical registrations, not this Full submission.
 
-Best measured release **0.32.0**: [authoritative source archive](context-weave-0.32.0-source.zip), [release documentation](README_SOURCE_0.32.0.md), and [checksum manifest](context-weave-0.32.0-source.manifest.json). Historical root code and older archives remain for provenance; use the versioned archive to reproduce this release.
+The official Full task `teval_6c99618ea0916224` completed **9,602/9,602** evaluations with **52.79** on 2026-10-16 (UTC+8). A fresh official GET confirmed success on 2026-10-31. Full success does not establish organizer approval or public-list eligibility. The matching SourceTrail-account prerequisite Smoke scored **63.68**; the historical **68.67** best Smoke belongs to a different account and must not be presented as this Full score.
 
-Add/Search use original-source storage, embeddings and deterministic retrieval with **zero generative LLM calls**. Embeddings remain text-embedding-v4, 1024 dimensions, batch 10. Search retains one query/option embedding call. The external evaluator owns Answer. 0.31 changes query-local long-document ranking and bounded original context, while preserving 0.29 ordinary-conversation ranking and every stored role. No benchmark data, answers, credentials, databases, or model weights are packaged.
+## Fixed source and recovery disclosure
 
-## Official Textual Smoke history
+* Original 0.32 source: commit [`e84af580a3a9a21f1eab6328d41e8b93bb52552e`](https://github.com/Giorno-Banana/context-weave/tree/e84af580a3a9a21f1eab6328d41e8b93bb52552e), [original archive](context-weave-0.32.0-source.zip).
+* Exact terminal Full source: [readable frozen tree](releases/sourcetrail-0.32.0-full/), [unchanged recovery archive](sourcetrail-0.32.0-full-recovery-source.zip), [SHA-256 file manifest](sourcetrail-0.32.0-full-source.manifest.json).
+* Recovery archive SHA-256: `4cded88da43103edf9b656c22ca6ecc4e0a024e696eb74e65347af06c1e7a6f6`.
+* [Recovery explanation](docs/FULL_RECOVERY.md) describes a long-input embedding compatibility change applied while resuming the same Full task. It is **not byte-identical to the originally submitted source**. Organizer acceptance of that change must be verified; this repository does not assert that a successful task waives version consistency review.
 
-| Version | Score | Completion | Duration |
-|---|---:|---:|---:|
-| 0.27.0 | 60.31 | 46/46 | 5m16s |
-| 0.28.0 | 60.96 | 46/46 | 12m22s |
-| 0.29.0 | 63.94 | 46/46 | 14m49s |
-| 0.30.0 | 63.29 | 46/46 | 5m13s |
-| 0.31.0 | 68.54 | 46/46 | 4m29s |
-| 0.32.0 | **68.67** | 46/46 | 5m10s |
+Add stores original messages, roles, source order and timestamps. Search uses text-embedding-v4 (1,024 dimensions), dense/lexical reciprocal-rank fusion and deterministic original-source packing with a 24,000-character budget and at most top_k=100 records. Add/Search make **zero generative LLM calls**. Embedding API calls remain enabled. The external AML evaluator owns final Answer and grading.
 
-These are Smoke results, not Full. 0.30's document prior did not activate in its official run; its changed sub-scores do not prove an algorithmic gain. 0.31 public CL development has one confirmed complete-answer gain and a second rubric-only gain with a factuality caveat. Confirmation is incomplete due to local Answer timeouts and has no paired complete-answer gain. The public improvement gate failed; Smoke is exploratory. Public BEAM contexts and LoCoMo evidence hits are unchanged. See versioned documentation for reproducibility, method sources, checks and limits.
+## Reproduce and review
 
-0.31 official Textual Smoke completed on 2026-10-14 with **68.54**, up 4.60 points from the previous best and 7.58 from the optimization starting baseline. It completed 46/46 evaluations in 269 seconds. Aggregate source routing activated for six searches (two direct, four reference); Add/Search generative calls remained zero. This is one Smoke result, not a Full result or a repeatability guarantee. The 70-point target is not yet reached. [Official aggregate record](context-weave-0.31.0-official-smoke.json).
+Use [OPERATIONS.md](OPERATIONS.md) for exact-source startup and private configuration, [SUBMISSION.md](SUBMISSION.md) for registered endpoints/capacity and source identity, [method references and change history](releases/sourcetrail-0.32.0-full/PROVENANCE.md), and the [requirements checklist](docs/COMPETITION_CHECKLIST.md). Frozen archives retain historical documentation and container labels for evidentiary integrity; use the current guide rather than their inherited 0.28 Compose template.
 
-0.32 official Textual Smoke completed on 2026-10-14: **68.67**, 46/46 in 310 seconds; change from 0.31 is +0.13. Add/Search generative calls remained zero. The 70-point target is not yet reached. This is a single Smoke result, not Full or repeatability proof. [Aggregate record](context-weave-0.32.0-official-smoke.json).
-
-Subsequent public-only research tested short user constraints, explicit chronology under two Add representations, and a bounded original-user lexical channel for personal queries. None qualified for deployment: the first two produced no complete-answer gain, and the last lost correct abstention and date reasoning. 0.32 remains deployed at 68.67. No 0.33 official evaluation was submitted. Add/Search still use zero generation. [Public aggregate research record](context-weave-0.32.0-research-followup.json).
+Repository-root Python code and historical experiments are **not** the terminal Full implementation. Do not run the root service to reproduce Full. No credentials, official request bodies, private evaluation memories, questions, answers, databases or model weights are included in this disclosure. Private account/contact updates and organizer review are separate from the code license.

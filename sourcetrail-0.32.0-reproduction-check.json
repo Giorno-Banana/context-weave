@@ -1,0 +1,19 @@
+{
+  "staged_files_checked": 90,
+  "full_source_blobs_verified": 38,
+  "original_source_archive_and_sibling_verified": true,
+  "archive_sha256": "4cded88da43103edf9b656c22ca6ecc4e0a024e696eb74e65347af06c1e7a6f6",
+  "known_credential_values_checked": 9,
+  "known_credentials_found": 0,
+  "tests": {
+    "run": 71,
+    "failures": 0,
+    "errors": 0
+  },
+  "frozen_original_and_recovery_sources_unchanged": true,
+  "official_data_or_evaluation_prompts_published": false,
+  "checked_at": "2026-10-31 UTC+8",
+  "scope": "Synthetic offline suite and staged Git blob/archive verification; no official data inspected",
+  "compatibility_sibling_required": true,
+  "organizer_approval_claimed": false
+}

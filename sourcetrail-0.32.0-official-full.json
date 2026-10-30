@@ -1,0 +1,31 @@
+{
+  "job_id": "teval_6c99618ea0916224",
+  "official_system_name": "SourceTrail",
+  "version": "0.32.0",
+  "track": "Textual",
+  "mode": "full",
+  "status": "succeeded",
+  "official_score": 52.79,
+  "capability_scores": {
+    "A": 57.09,
+    "B": 47.0,
+    "C": 46.83,
+    "D": 61.42,
+    "E": 46.18,
+    "G": 50.5,
+    "H": 63.76,
+    "I": 49.14
+  },
+  "evaluations_completed": 9602,
+  "evaluations_total": 9602,
+  "official_started_at": "2026-10-14T17:26:13+08:00",
+  "official_completed_at": "2026-10-16T03:02:32+08:00",
+  "source_archive_sha256": "4cded88da43103edf9b656c22ca6ecc4e0a024e696eb74e65347af06c1e7a6f6",
+  "rechecked_via_official_GET": "2026-10-31 Asia/Shanghai",
+  "review_status": "Not established by participant-facing API; not a claim of publication approval",
+  "matching_account_prerequisite_smoke": {
+    "evaluation_id": "teval_a35e6262923680e0",
+    "score": 63.68
+  },
+  "historical_best_smoke_on_other_account": 68.671875
+}
