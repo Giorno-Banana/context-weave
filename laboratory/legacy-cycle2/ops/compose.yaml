@@ -1,9 +1,11 @@
 services:
   memory:
-    build: .
+    build:
+      context: ..
+      dockerfile: ops/Dockerfile
     image: context-weave:0.3.1
     restart: unless-stopped
-    env_file: .env
+    env_file: ../.env
     ports:
       - "127.0.0.1:18081:8000"
     volumes:

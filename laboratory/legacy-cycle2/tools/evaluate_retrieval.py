@@ -65,7 +65,7 @@ def main():
     parser.add_argument("--database", type=Path, help="Reuse an existing compatible public-only index")
     args = parser.parse_args()
     if args.env_file:
-        from preflight import load_env
+        from tools.preflight import load_env
         load_env(args.env_file)
     args.output.mkdir(parents=True, exist_ok=True)
     config = Config(context_chars=args.context_chars)
@@ -85,8 +85,8 @@ def main():
                 "data_sha256": inputs, "config": asdict(config), "top_k": args.top_k,
                 "modes": args.modes, "limit": args.limit,
                 "sample_ids_sha256": sha(args.sample_ids) if args.sample_ids else None,
-                "source_sha256": {str(p.relative_to(Path(__file__).parent)): sha(p)
-                                   for p in (Path(__file__).parent / "adaptive_evidence").glob("*.py")},
+                "source_sha256": {str(p.relative_to(Path(__file__).resolve().parents[1])): sha(p)
+                                   for p in (Path(__file__).resolve().parents[1] / "adaptive_evidence").glob("*.py")},
                 "evaluation_script_sha256": sha(Path(__file__)),
                 "embedding_backend": args.embedding_backend, "encoder_identity": encoder.identity,
                 "add_indexer_identity": getattr(add_indexer, "identity", None),
@@ -105,7 +105,7 @@ def main():
     manifest_path.write_text(json.dumps(protocol, ensure_ascii=False, indent=2), encoding="utf-8")
     snapshot = args.output / "source_snapshot"
     snapshot.mkdir(exist_ok=True)
-    for source in (Path(__file__).parent / "adaptive_evidence").glob("*.py"):
+    for source in (Path(__file__).resolve().parents[1] / "adaptive_evidence").glob("*.py"):
         target = snapshot / "adaptive_evidence" / source.name
         target.parent.mkdir(exist_ok=True)
         shutil.copyfile(source, target)

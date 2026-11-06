@@ -4,7 +4,7 @@
 
 ## 私有配置
 
-复制 `env.example` 为 `.env`，填入 `MEMORY_API_KEY`、`DASHSCOPE_API_KEY`、百炼原生 HTTP `AE_EMBEDDING_URL` 和 `OPENROUTER_API_KEY`。Key 均不得提交仓库。保持 `AE_ADD_INDEXER=1`、`AE_PLANNER=0`，使用全新 `AE_DATABASE` 路径。旧版本数据库不会自动迁移或清空，配置不匹配会拒绝启动。
+复制 `laboratory/legacy-cycle2/env.example` 为 `.env`，填入 `MEMORY_API_KEY`、`DASHSCOPE_API_KEY`、百炼原生 HTTP `AE_EMBEDDING_URL` 和 `OPENROUTER_API_KEY`。Key 均不得提交仓库。保持 `AE_ADD_INDEXER=1`、`AE_PLANNER=0`，使用全新 `AE_DATABASE` 路径。旧版本数据库不会自动迁移或清空，配置不匹配会拒绝启动。
 
 OpenRouter 请求固定为 `https://openrouter.ai/api/v1/chat/completions` 和 `openai/gpt-4o-mini`。只允许 OpenAI provider，不启用模型或提供方回退，要求支持 JSON Schema 的 endpoint。上游不可用、响应被截断、出现无效引用等情况会让 Add 返回 503，且不会提交部分记忆。
 
@@ -13,10 +13,10 @@ OpenRouter 请求固定为 `https://openrouter.ai/api/v1/chat/completions` 和 `
 在仓库根目录运行：
 
 ```bash
-python -m pip install -r requirements.txt
-python preflight.py --env-file .env
+python -m pip install -r laboratory/legacy-cycle2/requirements.txt
+python laboratory/legacy-cycle2/tools/preflight.py --env-file .env
 python -m unittest discover -s tests -v
-python preflight.py --env-file .env --live --output runs/live-probe.json
+python laboratory/legacy-cycle2/tools/preflight.py --env-file .env --live --output runs/live-probe.json
 ```
 
 默认 preflight 不访问网络。`--live` 会用临时数据库和合成数据调用真实 Embedding 与 GPT-4o-mini，产生少量上游用量；它不是官方 Smoke，不消耗 Full 次数。报告只记录检查结果和上游用量，不记录 Key 或原始模型对话。`/health` 显示本地配置，不代表上游余额、额度或调用一定成功。
@@ -42,8 +42,8 @@ docker compose up -d --build memory
 ## HTTP 检查和公开诊断
 
 ```bash
-python probe_http.py --base-url http://127.0.0.1:18081 --env-file .env --output runs/http-probe.json
-python evaluate_retrieval.py --env-file .env --embedding-backend dashscope --data-dir /path/to/public-data --output runs/v031-pilot --limit 20 --modes hybrid_window
+python laboratory/legacy-cycle2/tools/probe_http.py --base-url http://127.0.0.1:18081 --env-file .env --output runs/http-probe.json
+python laboratory/legacy-cycle2/tools/evaluate_retrieval.py --env-file .env --embedding-backend dashscope --data-dir /path/to/public-data --output runs/v031-pilot --limit 20 --modes hybrid_window
 ```
 
 这些命令只使用自行准备的合成或公开数据。公开诊断会先写入所选对话的完整历史，费用不只取决于问题数。更改源码、模型、索引配置必须使用新输出目录和数据库。PILOT_RESULTS.md 是历史 0.2.0 基线报告，不是新版本结果。

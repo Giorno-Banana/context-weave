@@ -15,3 +15,9 @@ runs/
 *.log
 *.pem
 *.key
+
+# Development package build products
+*.egg-info/
+build/
+dist/
+__pycache__/

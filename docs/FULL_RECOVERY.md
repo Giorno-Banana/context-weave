@@ -2,6 +2,8 @@
 
 Original Full job:`teval_6c99618ea0916224`. The participant authorized repair/resume on2026-10-15. The same task was resumed; the repair did not create a new Full. The original source/archive and the final recovery archive are both preserved. The original fixed commit is e84af580a3a9a21f1eab6328d41e8b93bb52552e; the terminal Full source is the separately identified recovery snapshot.
 
+The current public frozen tree at `releases/sourcetrail-0.32.0-full/` and the recovery archive already contain the repaired terminal Full implementation. The comparison below records historical changes from the original 0.32 archive.
+
 Prior logs recorded72 upstream400responses without categories. The historical root cause cannot be fully reconstructed from those logs. Synthetic tests reproduced the provider's input-length rejection for a very long query. This does **not** prove all earlier400responses had the same cause.
 
 Compared byte-for-byte with the original0.32archive, exactly three files changed or were added:

@@ -1,0 +1,1290 @@
+{
+  "schema_version": 1,
+  "system": "SourceTrail: release catalog and research archive",
+  "before_commit": "9c1d3e5d9ac60a7a839d783b96d0f6a9bb74522d",
+  "release_paths_preserved": true,
+  "original_files": {
+    ".dockerignore": {
+      "path": ".dockerignore",
+      "before_sha256": "5883da00290e2c59528b87aca2de6dc9451846da45d1ba9b26e88918a0ec5425",
+      "adapted": false
+    },
+    ".gitattributes": {
+      "path": ".gitattributes",
+      "before_sha256": "c0516c40d9fa88873d47f03c2c56eaa3af176970f1bcf28c654bdbbc72a43cde",
+      "adapted": false
+    },
+    ".gitignore": {
+      "path": ".gitignore",
+      "before_sha256": "1c4c8704b422fdd4b5f95a96fde6694c60961cb0ac16f98d1f87d4f9c1c7827e",
+      "adapted": true
+    },
+    "CYCLE2_STATUS.md": {
+      "path": "archive/CYCLE2_STATUS.md",
+      "before_sha256": "53c71b3fd26998d5c2f476a2d842152f8a89d4d23ca2caba06fadf4a112d5a06",
+      "adapted": false
+    },
+    "Caddyfile": {
+      "path": "laboratory/legacy-cycle2/ops/Caddyfile",
+      "before_sha256": "dd935aa3add2add6878a2a559feacbfd2c653016d7332bb59558f6d5ed3187b2",
+      "adapted": false
+    },
+    "Dockerfile": {
+      "path": "laboratory/legacy-cycle2/ops/Dockerfile",
+      "before_sha256": "d90ca187726fdad50dc549231340767e79f0346b291c0ccf31b90c10dc8491d5",
+      "adapted": false
+    },
+    "LICENSE": {
+      "path": "LICENSE",
+      "before_sha256": "5e840be8e2574ddc674ea9fac785d991d2aad1327a4a9a0f560a8cb57668c530",
+      "adapted": false
+    },
+    "OPERATIONS.md": {
+      "path": "OPERATIONS.md",
+      "before_sha256": "3317bd962134d964a2f7860060f9f53fff1a1daacc8755aa7148326112259779",
+      "adapted": true
+    },
+    "PILOT_RESULTS.md": {
+      "path": "archive/PILOT_RESULTS.md",
+      "before_sha256": "e0e7f3ed90b589e339c77b8d78703135fe9e67bcf27c772e47dcbd84c2932280",
+      "adapted": true
+    },
+    "PROVENANCE.md": {
+      "path": "PROVENANCE.md",
+      "before_sha256": "9bb0facb67bfe8b7458fd8a23c52f4c66dea233ceb4132b7f91267e7501e32e4",
+      "adapted": true
+    },
+    "README.md": {
+      "path": "README.md",
+      "before_sha256": "a74356277d1b2ff439ca988c348a1625a6b6b9a329e6bd74b3d53ac2c1e3b956",
+      "adapted": true
+    },
+    "README_CYCLE2.md": {
+      "path": "archive/README_CYCLE2.md",
+      "before_sha256": "784fb0fb8b161a15b6c142525501bbc196a81f13e811c00bab1caadbdf9bd2e0",
+      "adapted": true
+    },
+    "README_SOURCE_0.29.0.md": {
+      "path": "archive/README_SOURCE_0.29.0.md",
+      "before_sha256": "6b14192c0b93c545cb0f103c8034e7282a73644fdf480ef08be0ccbc6c32fdc5",
+      "adapted": true
+    },
+    "README_SOURCE_0.30.0.md": {
+      "path": "archive/README_SOURCE_0.30.0.md",
+      "before_sha256": "94be41a8feca047c0ca5eba2d0306e8e234df3c7cad2f5f061d08a33d5593774",
+      "adapted": true
+    },
+    "README_SOURCE_0.31.0.md": {
+      "path": "archive/README_SOURCE_0.31.0.md",
+      "before_sha256": "e2581faf41f40e8ec5f7e8737262dfa6e4e6a864a81d04eddb48b720dee883c3",
+      "adapted": true
+    },
+    "README_SOURCE_0.32.0.md": {
+      "path": "archive/README_SOURCE_0.32.0.md",
+      "before_sha256": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+      "adapted": true
+    },
+    "SHA256SUMS.json": {
+      "path": "SHA256SUMS.json",
+      "before_sha256": "5a2e8fda41d668100e2e31a9bee004088066e43839263c8faa1fe522784a13d7",
+      "adapted": false
+    },
+    "SUBMISSION.md": {
+      "path": "SUBMISSION.md",
+      "before_sha256": "43474db170bef4fd7935167f1d7cebf62848edb3fbc0e55d83e834cd051b9eed",
+      "adapted": true
+    },
+    "adaptive_evidence/__init__.py": {
+      "path": "laboratory/legacy-cycle2/adaptive_evidence/__init__.py",
+      "before_sha256": "a30aedfc920dacc103423f0dae36b8d556bc8eb0bbb33d2a565f10a7813456bf",
+      "adapted": false
+    },
+    "adaptive_evidence/add_indexer.py": {
+      "path": "laboratory/legacy-cycle2/adaptive_evidence/add_indexer.py",
+      "before_sha256": "6208e8d70c28050ba80da5f379d9e96be58d58eb8a07176a86090559866b4010",
+      "adapted": false
+    },
+    "adaptive_evidence/api.py": {
+      "path": "laboratory/legacy-cycle2/adaptive_evidence/api.py",
+      "before_sha256": "b2291237ae8b522bc84db152d0a37662c7acfdb613f9d57b8a6ab97e28a9f5d2",
+      "adapted": false
+    },
+    "adaptive_evidence/core.py": {
+      "path": "laboratory/legacy-cycle2/adaptive_evidence/core.py",
+      "before_sha256": "6e2ff62d48b33f80aacd99bd348934d79a0faf79dd541a7930cd7ee4ca746ae9",
+      "adapted": false
+    },
+    "adaptive_evidence/encoder.py": {
+      "path": "laboratory/legacy-cycle2/adaptive_evidence/encoder.py",
+      "before_sha256": "775a9d45ba261d666ab3d5ea026ba9ab0c6c69107cd289b481277fe04f5c1b13",
+      "adapted": false
+    },
+    "adaptive_evidence/planner.py": {
+      "path": "laboratory/legacy-cycle2/adaptive_evidence/planner.py",
+      "before_sha256": "a962448072d8f698cc2879cc4be6800993734d41a20dae0f7805e30bdd55ad07",
+      "adapted": false
+    },
+    "adaptive_evidence/remote_encoder.py": {
+      "path": "laboratory/legacy-cycle2/adaptive_evidence/remote_encoder.py",
+      "before_sha256": "daf3482fd9232598138a5ce24b2998d706f97a7de53329cb02a191495a0c1b5c",
+      "adapted": false
+    },
+    "adaptive_evidence/retrieval_views.py": {
+      "path": "laboratory/legacy-cycle2/adaptive_evidence/retrieval_views.py",
+      "before_sha256": "e65dc438d66e4efc26075fd86da567c9715a4cd91cc37fef88d6ca3de6b78aa6",
+      "adapted": false
+    },
+    "compose.yaml": {
+      "path": "laboratory/legacy-cycle2/ops/compose.yaml",
+      "before_sha256": "3e54a726f34231bb5237e332734be5a54f85d14d9c4139a45d15491b85579ada",
+      "adapted": true
+    },
+    "context-weave-0.10.0-concurrency-amendment.json": {
+      "path": "context-weave-0.10.0-concurrency-amendment.json",
+      "before_sha256": "a8e733cafec113ee0f095b25fbb7b000444338ca00abacc209c6dd15f05c5dca",
+      "adapted": false
+    },
+    "context-weave-0.10.0-official-smoke.json": {
+      "path": "context-weave-0.10.0-official-smoke.json",
+      "before_sha256": "1bcee10b3b2c7a2b498cb5f58c90cb000d826323eb844fa98eb48efd03813aaf",
+      "adapted": false
+    },
+    "context-weave-0.10.0-source.manifest.json": {
+      "path": "context-weave-0.10.0-source.manifest.json",
+      "before_sha256": "197bf4bffbe614ab0ae73c5f9dfcef387263e67652d1ff7255ce885563c849d3",
+      "adapted": false
+    },
+    "context-weave-0.10.0-source.zip": {
+      "path": "context-weave-0.10.0-source.zip",
+      "before_sha256": "ef945e04d2e9ee2317944642358d333ae220ba0d1362c2e8bbeef46f5afea0b9",
+      "adapted": false
+    },
+    "context-weave-0.10.0-validation.json": {
+      "path": "context-weave-0.10.0-validation.json",
+      "before_sha256": "43c40e698d86d3a11b4daad82a9d45c4322ed6f1d0a7fac4704281da4bfc4c29",
+      "adapted": false
+    },
+    "context-weave-0.17.1-official-smoke.json": {
+      "path": "context-weave-0.17.1-official-smoke.json",
+      "before_sha256": "b50fc1242a5f8f987da6d1b3cb8174dff5717b0987f39253b2a8e910cbf079d2",
+      "adapted": false
+    },
+    "context-weave-0.17.1-source.manifest.json": {
+      "path": "context-weave-0.17.1-source.manifest.json",
+      "before_sha256": "1e601ca2324d17c8697028a41420eba6938a3df02447c5cbada18467577730fa",
+      "adapted": false
+    },
+    "context-weave-0.17.1-source.zip": {
+      "path": "context-weave-0.17.1-source.zip",
+      "before_sha256": "6e9d1747d5e09f2058ed501549b393c22da73b65412442c35c75cf25922f721e",
+      "adapted": false
+    },
+    "context-weave-0.17.1-validation.json": {
+      "path": "context-weave-0.17.1-validation.json",
+      "before_sha256": "60293289b0c64b8a3e5fe1885eeb6eb536021a04f51ad0fe455857c52f127502",
+      "adapted": false
+    },
+    "context-weave-0.25.1-official-smoke.json": {
+      "path": "context-weave-0.25.1-official-smoke.json",
+      "before_sha256": "a3a2cc1c227989bab901cb4b974ecc73eac815ebd821a5bebb11cd799337475c",
+      "adapted": false
+    },
+    "context-weave-0.25.1-source.manifest.json": {
+      "path": "context-weave-0.25.1-source.manifest.json",
+      "before_sha256": "0054a4d13af153467c185a9077c74400d948b9547d575bb1da95168792161f45",
+      "adapted": false
+    },
+    "context-weave-0.25.1-source.zip": {
+      "path": "context-weave-0.25.1-source.zip",
+      "before_sha256": "a091770517ada6c2684d11e8fdcbb01ad49034ac3b83d6774486a0abae71f4f6",
+      "adapted": false
+    },
+    "context-weave-0.25.1-validation.json": {
+      "path": "context-weave-0.25.1-validation.json",
+      "before_sha256": "5503bb8d4e703d21833840d5b8560bb919fc9a0153de28eaf904c26c66cfac7e",
+      "adapted": false
+    },
+    "context-weave-0.28.0-README.md": {
+      "path": "archive/context-weave-0.28.0-README.md",
+      "before_sha256": "b99f83fc7e33ee6f3503018654a273cd718d7ff83c6b6c0ad9e1245302a560b5",
+      "adapted": true
+    },
+    "context-weave-0.28.0-source.manifest.json": {
+      "path": "context-weave-0.28.0-source.manifest.json",
+      "before_sha256": "1443bb6c588bce90cd93e775e6733d32eb5b055f0d2082e176459b85f094f677",
+      "adapted": false
+    },
+    "context-weave-0.28.0-source.zip": {
+      "path": "context-weave-0.28.0-source.zip",
+      "before_sha256": "fd54d2b8c971727a4f5dd118fbba457466fc5f16aaa75cf37f89ecd344098c4f",
+      "adapted": false
+    },
+    "context-weave-0.29.0-source.manifest.json": {
+      "path": "context-weave-0.29.0-source.manifest.json",
+      "before_sha256": "519e5638acba2b0e236fd3fcf13c20ecf2e18bac1064e76b9ac891bf4f8af4a7",
+      "adapted": false
+    },
+    "context-weave-0.29.0-source.zip": {
+      "path": "context-weave-0.29.0-source.zip",
+      "before_sha256": "ea69f3707af4eb2d792ace59b43af5914fdf7c09291421e7b5e1bd96a8b7379e",
+      "adapted": false
+    },
+    "context-weave-0.30.0-source.manifest.json": {
+      "path": "context-weave-0.30.0-source.manifest.json",
+      "before_sha256": "6a6d9b18ea27f72bc1f1f00d9359c99ee66ec0d78e933aefe0778fa415d93b35",
+      "adapted": false
+    },
+    "context-weave-0.30.0-source.zip": {
+      "path": "context-weave-0.30.0-source.zip",
+      "before_sha256": "373a0f9c6544008152b341e0fbc73a773d06fab975fdf011e2243c21792eaf02",
+      "adapted": false
+    },
+    "context-weave-0.31.0-official-smoke.json": {
+      "path": "context-weave-0.31.0-official-smoke.json",
+      "before_sha256": "3833dc87aaddfd81f14f280c5f05f9408e18d65a54bd6ab6f406d40ec008431f",
+      "adapted": false
+    },
+    "context-weave-0.31.0-source.manifest.json": {
+      "path": "context-weave-0.31.0-source.manifest.json",
+      "before_sha256": "8a5a60b662697231db10cdce8c3e6dd144ca0f87c1e61cbdca7f51e9afdfd96c",
+      "adapted": false
+    },
+    "context-weave-0.31.0-source.zip": {
+      "path": "context-weave-0.31.0-source.zip",
+      "before_sha256": "ce1a0f0d230c321393edc72adda4b63cffa3059ee9115e1cab926a85799db9eb",
+      "adapted": false
+    },
+    "context-weave-0.32.0-official-smoke.json": {
+      "path": "context-weave-0.32.0-official-smoke.json",
+      "before_sha256": "5a87c640e0adf1b236a35f7d0c287b22ad5deeadbcf846e231588a0c81d41771",
+      "adapted": false
+    },
+    "context-weave-0.32.0-research-followup.json": {
+      "path": "context-weave-0.32.0-research-followup.json",
+      "before_sha256": "3e3c1a9bd63740894a245f15589a2a1ffe1b71f9f5657d26b16c3fc3d7f5dab4",
+      "adapted": false
+    },
+    "context-weave-0.32.0-source.manifest.json": {
+      "path": "context-weave-0.32.0-source.manifest.json",
+      "before_sha256": "78276888516552f0dab6711026e4c55fba6dc1ac96a58a72cdaa839f9f06ba52",
+      "adapted": false
+    },
+    "context-weave-0.32.0-source.zip": {
+      "path": "context-weave-0.32.0-source.zip",
+      "before_sha256": "bff4443ee3cbdf4a5e320dfa56fb8e65ca7775d857550c4112de7ddb7a9c74fa",
+      "adapted": false
+    },
+    "context-weave-0.4.0-source.zip": {
+      "path": "context-weave-0.4.0-source.zip",
+      "before_sha256": "e620cf902a72bc4b56fe9fd90bd62e7299594e7d162f7c093b3ca84efeb01cc6",
+      "adapted": false
+    },
+    "context-weave-0.4.1-source.zip": {
+      "path": "context-weave-0.4.1-source.zip",
+      "before_sha256": "f146ef9466e570fa5563874e58fd23506976c5ec48e3ed7bd929cd4974d2815e",
+      "adapted": false
+    },
+    "context-weave-0.4.1-validation.json": {
+      "path": "context-weave-0.4.1-validation.json",
+      "before_sha256": "30602b221027ccd90f94b59e5dbf6f570f1504feab55a9a6d7ef15952c228a59",
+      "adapted": false
+    },
+    "context-weave-0.4.1-validation.md": {
+      "path": "context-weave-0.4.1-validation.md",
+      "before_sha256": "52beaa7410a33d2384e66a4510ac105f32417e5a6bbae2219e08d78d5db10368",
+      "adapted": false
+    },
+    "context-weave-0.5.0-http-validation.json": {
+      "path": "context-weave-0.5.0-http-validation.json",
+      "before_sha256": "93f74e122623e8039d767be05a025dc891768ade6634bfc977ee68c03b4ff6e1",
+      "adapted": false
+    },
+    "context-weave-0.5.0-provenance.md": {
+      "path": "context-weave-0.5.0-provenance.md",
+      "before_sha256": "7e29d05825a799b4fcd65a9944339ea74bdd357ec1bf3ffcf4516173bd760547",
+      "adapted": false
+    },
+    "context-weave-0.5.0-research.json": {
+      "path": "context-weave-0.5.0-research.json",
+      "before_sha256": "7c95d972f4774c4735cbfc0711f5db1a4b7363f7e15579eeb1ef109d75c52291",
+      "adapted": false
+    },
+    "context-weave-0.5.0-retrieval-validation.json": {
+      "path": "context-weave-0.5.0-retrieval-validation.json",
+      "before_sha256": "ccb94076e7173c2bbd612a0d655a587829ec6c5789096129310af1bf206b2834",
+      "adapted": false
+    },
+    "context-weave-0.5.0-source.zip": {
+      "path": "context-weave-0.5.0-source.zip",
+      "before_sha256": "1c64a9f02247d22335af34dfa45d11d6ccb62c03f77670dc6f8eeb7cd6da2261",
+      "adapted": false
+    },
+    "context-weave-0.5.1-http-validation.json": {
+      "path": "context-weave-0.5.1-http-validation.json",
+      "before_sha256": "be67f7a3c25a9d942f8688b9e63a1d1e08e865c7fc58dedf61b86aa9578780fb",
+      "adapted": false
+    },
+    "context-weave-0.5.1-official-smoke.json": {
+      "path": "context-weave-0.5.1-official-smoke.json",
+      "before_sha256": "de7f1fa903e411fcc053a5a86fc6d01d77ab73778b6b4365e179bd6279ba922c",
+      "adapted": false
+    },
+    "context-weave-0.5.1-provenance.md": {
+      "path": "context-weave-0.5.1-provenance.md",
+      "before_sha256": "bbe717e2bfb7bbbd5cd969fecdb2c32198208939f3d8563390b596c152b9ddb9",
+      "adapted": false
+    },
+    "context-weave-0.5.1-retrieval-validation.json": {
+      "path": "context-weave-0.5.1-retrieval-validation.json",
+      "before_sha256": "b0997510c7fd057db712a0d28749e4b11177ee0a0b137665cb83d71b5bf9b20c",
+      "adapted": false
+    },
+    "context-weave-0.5.1-source.zip": {
+      "path": "context-weave-0.5.1-source.zip",
+      "before_sha256": "ec2161399be8afcc6a58c37c94b226ce1d6db17a84859cdd4821ea7fd2ce9b66",
+      "adapted": false
+    },
+    "context-weave-0.6.1-official-smoke.json": {
+      "path": "context-weave-0.6.1-official-smoke.json",
+      "before_sha256": "596a6e772446580b0567dde9238477d608b956d672a06cab2bff4d6258456828",
+      "adapted": false
+    },
+    "context-weave-0.6.1-provenance.md": {
+      "path": "context-weave-0.6.1-provenance.md",
+      "before_sha256": "b9210705090c72cf1df1ebd119b3378e40655ceca9af264156ec5e5d773c4da7",
+      "adapted": false
+    },
+    "context-weave-0.6.1-source.manifest.json": {
+      "path": "context-weave-0.6.1-source.manifest.json",
+      "before_sha256": "258084a5037d55c265132a99c4d428f93c2de26b809966fcd39cf4389e9d820a",
+      "adapted": false
+    },
+    "context-weave-0.6.1-source.zip": {
+      "path": "context-weave-0.6.1-source.zip",
+      "before_sha256": "a356f32f420f48bc3fd6ab58c05f33eb5e7e754c9f744750674acb93652fa936",
+      "adapted": false
+    },
+    "context-weave-0.6.1-validation.json": {
+      "path": "context-weave-0.6.1-validation.json",
+      "before_sha256": "c38f1bb896d5384f6de546251553bd1b712ad0b7f786daf20262597a5a037989",
+      "adapted": false
+    },
+    "context-weave-0.7.0-official-smoke.json": {
+      "path": "context-weave-0.7.0-official-smoke.json",
+      "before_sha256": "0082945577b7e52e27bb3bd95a8bbf06ff39f02a119a97ff9bff9071ce405861",
+      "adapted": false
+    },
+    "context-weave-0.7.0-source.manifest.json": {
+      "path": "context-weave-0.7.0-source.manifest.json",
+      "before_sha256": "43e7bdf632100dc42bb31de30f5fc6282ed3fd0d5593e192ba595f66f6ac62a9",
+      "adapted": false
+    },
+    "context-weave-0.7.0-source.zip": {
+      "path": "context-weave-0.7.0-source.zip",
+      "before_sha256": "92a576fe17fbda961d633955570fb4c419f5b135d2a48ec0e2fcb5b87dc6c2be",
+      "adapted": false
+    },
+    "context-weave-0.7.0-validation.json": {
+      "path": "context-weave-0.7.0-validation.json",
+      "before_sha256": "e39e6dd9f3b628008ce5b26990c44e8b1dd1fce0672b810308208498048d48ad",
+      "adapted": false
+    },
+    "context-weave-0.9.0-official-smoke.json": {
+      "path": "context-weave-0.9.0-official-smoke.json",
+      "before_sha256": "6f4d9ba0d2d6d664b4484914ff5f3b886ab56f557cc382b209e1dd379e38bc32",
+      "adapted": false
+    },
+    "context-weave-0.9.0-source.manifest.json": {
+      "path": "context-weave-0.9.0-source.manifest.json",
+      "before_sha256": "b21efb3476fc248b508b646d5629e1e43bc17f59edc29667c7c35360c825777d",
+      "adapted": false
+    },
+    "context-weave-0.9.0-source.zip": {
+      "path": "context-weave-0.9.0-source.zip",
+      "before_sha256": "114fa16e4ba47e271c0fee4b896ef69ed67e841f60351577bc72c7d04180ba01",
+      "adapted": false
+    },
+    "context-weave-0.9.0-validation.json": {
+      "path": "context-weave-0.9.0-validation.json",
+      "before_sha256": "7d098f83749598cac432c89d41d371f989deb4291b6419dd0d85c5a270a8d39c",
+      "adapted": false
+    },
+    "docs/COMPETITION_CHECKLIST.md": {
+      "path": "docs/COMPETITION_CHECKLIST.md",
+      "before_sha256": "14f2067331a43609706a037d8a97c080305afb604300ea9a214d5a5da62e8568",
+      "adapted": false
+    },
+    "docs/FULL_RECOVERY.md": {
+      "path": "docs/FULL_RECOVERY.md",
+      "before_sha256": "12374d4682919f51581f70dca2b940a8d08dae104e84c8307cc82dff27fd5b06",
+      "adapted": true
+    },
+    "docs/history/pre-full-disclosure-20261031/OPERATIONS.md": {
+      "path": "docs/history/pre-full-disclosure-20261031/OPERATIONS.md",
+      "before_sha256": "61d46e26f9748bc3b0f3ddfa19a514b33f4b6bebfd064605e78e1eeb51867b16",
+      "adapted": true
+    },
+    "docs/history/pre-full-disclosure-20261031/README.md": {
+      "path": "docs/history/pre-full-disclosure-20261031/README.md",
+      "before_sha256": "6f7a7bd3a0ebd9a20e23741a4188c2b8fe6a2e6465f3c1dfd680a8aa400761ce",
+      "adapted": false
+    },
+    "docs/history/pre-full-disclosure-20261031/README_CYCLE2.md": {
+      "path": "docs/history/pre-full-disclosure-20261031/README_CYCLE2.md",
+      "before_sha256": "da6d7f2ae325279c360f93e73111fd23b0eff2964378958d173d3a86bbeba3a3",
+      "adapted": true
+    },
+    "docs/history/pre-full-disclosure-20261031/SUBMISSION.md": {
+      "path": "docs/history/pre-full-disclosure-20261031/SUBMISSION.md",
+      "before_sha256": "09bde6c292944bb4e5869a829dc868b8d65f71fab37746ee2504cc61a92ea032",
+      "adapted": false
+    },
+    "env.example": {
+      "path": "laboratory/legacy-cycle2/env.example",
+      "before_sha256": "138148c352ea715feb69a56ab5ed17219d6664a02afdf0597d0ba1095f829f5d",
+      "adapted": false
+    },
+    "evaluate_retrieval.py": {
+      "path": "laboratory/legacy-cycle2/tools/evaluate_retrieval.py",
+      "before_sha256": "aec5d4676b4d126f7336bbf639e2681e6a37522fff1d841cc371d5d797f98bd4",
+      "adapted": true
+    },
+    "evaluation/pilot-20261001/sample-ids.json": {
+      "path": "evaluation/pilot-20261001/sample-ids.json",
+      "before_sha256": "8770fe9af781765472db442370b2cfc59597cf8c3a8e31316657fcabe57ba24f",
+      "adapted": false
+    },
+    "evaluation/pilot-20261001/sample-plan.json": {
+      "path": "evaluation/pilot-20261001/sample-plan.json",
+      "before_sha256": "e7b21cac569d447d37aa7c01eabc48770a5c5bd64a0692dfdaa94cda3c9610c3",
+      "adapted": false
+    },
+    "long-query-validation.json": {
+      "path": "long-query-validation.json",
+      "before_sha256": "cfe9e520a2f69ef646942aa7352a65989ec25bac3da950b4dc50985af9ad6153",
+      "adapted": false
+    },
+    "package_cycle2.py": {
+      "path": "laboratory/legacy-cycle2/tools/package_cycle2.py",
+      "before_sha256": "51597154925ef39fb5473b7831df4b4ecf60c8bb4fa43180a342e1d1ae0e5fdf",
+      "adapted": true
+    },
+    "preflight.py": {
+      "path": "laboratory/legacy-cycle2/tools/preflight.py",
+      "before_sha256": "1bbda988731fff7cdd5cfaabe9c9bfb237cab6e08a5d93441f5ea4c6d964cad1",
+      "adapted": false
+    },
+    "probe_http.py": {
+      "path": "laboratory/legacy-cycle2/tools/probe_http.py",
+      "before_sha256": "ed793237874f3be7d7588319086f461d38a986deb431b4b7cff89e11ad8a1c69",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/.dockerignore": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/.dockerignore",
+      "before_sha256": "5883da00290e2c59528b87aca2de6dc9451846da45d1ba9b26e88918a0ec5425",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/.gitattributes": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/.gitattributes",
+      "before_sha256": "9a5b3e8c93ebcd35a580f2c2cf3b51cad2f4e5c1514a6984f454f36b355dacd8",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/.gitignore": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/.gitignore",
+      "before_sha256": "32a83f758f5e34a3b4dcff75f738b9b03d0b4bb399bfd756bcaa6e9d2345b347",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/Caddyfile": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/Caddyfile",
+      "before_sha256": "dd935aa3add2add6878a2a559feacbfd2c653016d7332bb59558f6d5ed3187b2",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/Dockerfile": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/Dockerfile",
+      "before_sha256": "17570580dd2388d1f5bf4d35363efeb1e5eb9f9beeb6ae9775a3f793688dc0a3",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/LICENSE": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/LICENSE",
+      "before_sha256": "5e840be8e2574ddc674ea9fac785d991d2aad1327a4a9a0f560a8cb57668c530",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/OPERATIONS.md": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/OPERATIONS.md",
+      "before_sha256": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/PROVENANCE.md": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/PROVENANCE.md",
+      "before_sha256": "80d043698939251624f83628707336ea57c1177a5a01510677dd5eb2dc8f2cb7",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/README.md": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/README.md",
+      "before_sha256": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/SHA256SUMS.json": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/SHA256SUMS.json",
+      "before_sha256": "1164ff02d15fc48c9cf8af389e731d03cb304ef688d7372da9a5329ab10c0cd0",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/SUBMISSION.md": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/SUBMISSION.md",
+      "before_sha256": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/__init__.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/__init__.py",
+      "before_sha256": "bffb96293a3ee82cfe3742c52d9a91e8ff65e60394b09128088d6d25cfb4ebbf",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/api.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/api.py",
+      "before_sha256": "852f309c88b6a5edab2a7199e3297302fc48b1c4de24e265ae601663eb320086",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/core.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/core.py",
+      "before_sha256": "8bf823550c55dbd9c0048f55dc6d43448387450591204d0513e3717a3462579f",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/encoder.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/encoder.py",
+      "before_sha256": "9d780f9179c00168a68d75b74855ff6b07eb655f2ed106fd2c97b5ab9c3b78ae",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/evidence_windows.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/evidence_windows.py",
+      "before_sha256": "6995c2b015b75bcb626650e73612ce5e948cc8fdc04e58ca18d534ed0b978166",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/focused_packing.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/focused_packing.py",
+      "before_sha256": "4bac95a03cca7aa65807f24977b7441ddef48b83c4510da16cdfbd2d71d00116",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/passage_packing.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/passage_packing.py",
+      "before_sha256": "e0048dae8c6e6368ede7219602c24557ce524e1bd5ce6c2fc201d9ec1e49bd03",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/remote_encoder.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/remote_encoder.py",
+      "before_sha256": "684c42a960cc15c68cea710337421c716145facc2dc09c9a3fd8b1a427b9b1e3",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/retrieval_views.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/retrieval_views.py",
+      "before_sha256": "25876968cd5029ac9da816fc459ed5a427f8eed24cc4901540dadef03746bf91",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/source_links.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/source_links.py",
+      "before_sha256": "19798eb431e25c57f8f71a2524da70ac482a1e4353f1ba426bf7c0bec49b4bf0",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/source_prior.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/source_prior.py",
+      "before_sha256": "01321f13642f129dd3ff4c5be27068cff07e6096b0a9b5edd3e324adad3d4e37",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/compose.yaml": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/compose.yaml",
+      "before_sha256": "4b8257e6ba1b0a8996c62441a4e4826413859cf1079ec00fdeff2ef869ee542c",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/env.example": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/env.example",
+      "before_sha256": "8dfeb0ebe0fa2184b805116e94462fc359b335c2fe1e0cdec98d98a49ff7b46c",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/package_source.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/package_source.py",
+      "before_sha256": "ed86e201fee10c73ed034d228fa1220169d7adbade453772222d2a915ee1a577",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/preflight.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/preflight.py",
+      "before_sha256": "d4d04182cc033f8843a088ebc6115c90786b2625befc97c23354dc9893061a17",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/requirements.txt": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/requirements.txt",
+      "before_sha256": "30ce0a775c34585539d9e8bd18ca8d7557edd62c5f2c97f3d7dfa1fcc143a2cc",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/start_local.ps1": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/start_local.ps1",
+      "before_sha256": "ac3b6d8c21a265eb0ad13a0e3dc98a893b013493179d732b2ecc502f9949b606",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_adaptive.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_adaptive.py",
+      "before_sha256": "79fcd31ab327a80a1e145fded1c8f69845cb36ceb28ca1d76b34e778e14fd4d9",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_answer_only.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_answer_only.py",
+      "before_sha256": "f17cc69e098e7cb46e0fb2806f694f83173b2bcd904b73be9beeb21ee9424a8a",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_coherent_sources.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_coherent_sources.py",
+      "before_sha256": "92d715071082ca16e6340b2911666a008b9d4f44675a1370f8dee469157c1049",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_contract.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_contract.py",
+      "before_sha256": "b89cbbfc49f6fb0a7b2f2c0260e2dfa7d2335ffc3b813f31f7593260b52c96ae",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_evidence_budget.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_evidence_budget.py",
+      "before_sha256": "c41047949df0e9b65d38056de3607786ba7660a103c2b0ac3db5779645d6cd7d",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_evidence_windows.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_evidence_windows.py",
+      "before_sha256": "04fadc9a3c1b612aba1f180ad1ee2fdff3a7f260eaf4a2d6483807273e742e97",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_focused_packing.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_focused_packing.py",
+      "before_sha256": "1c68b0a961201c5cd7125b7914afa5dcdc2d498dc501741f18fb532f128b5c72",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_query_documents.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_query_documents.py",
+      "before_sha256": "e0e0d1218cf7fc99c30ae682c08ce0794e945174e46e523478c2e52a6e2d3c28",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_remote_encoder.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_remote_encoder.py",
+      "before_sha256": "8b001763ae71afe331533c03e684ccf81087223e8fafc486c8ac6d7aaa4e51c4",
+      "adapted": false
+    },
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_retrieval_views.py": {
+      "path": "releases/context-weave-v320-evidence-budget-20261014/tests/test_retrieval_views.py",
+      "before_sha256": "2f626a56be75b4293c0bf1e77ce0b6684ba159da58ebe69afea3651020e1e4a9",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/.dockerignore": {
+      "path": "releases/sourcetrail-0.32.0-full/.dockerignore",
+      "before_sha256": "5883da00290e2c59528b87aca2de6dc9451846da45d1ba9b26e88918a0ec5425",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/.gitattributes": {
+      "path": "releases/sourcetrail-0.32.0-full/.gitattributes",
+      "before_sha256": "9a5b3e8c93ebcd35a580f2c2cf3b51cad2f4e5c1514a6984f454f36b355dacd8",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/.gitignore": {
+      "path": "releases/sourcetrail-0.32.0-full/.gitignore",
+      "before_sha256": "32a83f758f5e34a3b4dcff75f738b9b03d0b4bb399bfd756bcaa6e9d2345b347",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/Caddyfile": {
+      "path": "releases/sourcetrail-0.32.0-full/Caddyfile",
+      "before_sha256": "dd935aa3add2add6878a2a559feacbfd2c653016d7332bb59558f6d5ed3187b2",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/Dockerfile": {
+      "path": "releases/sourcetrail-0.32.0-full/Dockerfile",
+      "before_sha256": "17570580dd2388d1f5bf4d35363efeb1e5eb9f9beeb6ae9775a3f793688dc0a3",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/LICENSE": {
+      "path": "releases/sourcetrail-0.32.0-full/LICENSE",
+      "before_sha256": "5e840be8e2574ddc674ea9fac785d991d2aad1327a4a9a0f560a8cb57668c530",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/OPERATIONS.md": {
+      "path": "releases/sourcetrail-0.32.0-full/OPERATIONS.md",
+      "before_sha256": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/PROVENANCE.md": {
+      "path": "releases/sourcetrail-0.32.0-full/PROVENANCE.md",
+      "before_sha256": "80d043698939251624f83628707336ea57c1177a5a01510677dd5eb2dc8f2cb7",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/README.md": {
+      "path": "releases/sourcetrail-0.32.0-full/README.md",
+      "before_sha256": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/SUBMISSION.md": {
+      "path": "releases/sourcetrail-0.32.0-full/SUBMISSION.md",
+      "before_sha256": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/__init__.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/__init__.py",
+      "before_sha256": "bffb96293a3ee82cfe3742c52d9a91e8ff65e60394b09128088d6d25cfb4ebbf",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/api.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/api.py",
+      "before_sha256": "026e0c6d1c96ef7138363206fcf1f724a36c28c1ddfca0b63e6b2bd2ffc5583f",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/core.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/core.py",
+      "before_sha256": "8bf823550c55dbd9c0048f55dc6d43448387450591204d0513e3717a3462579f",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/encoder.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/encoder.py",
+      "before_sha256": "9d780f9179c00168a68d75b74855ff6b07eb655f2ed106fd2c97b5ab9c3b78ae",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/evidence_windows.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/evidence_windows.py",
+      "before_sha256": "6995c2b015b75bcb626650e73612ce5e948cc8fdc04e58ca18d534ed0b978166",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/focused_packing.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/focused_packing.py",
+      "before_sha256": "4bac95a03cca7aa65807f24977b7441ddef48b83c4510da16cdfbd2d71d00116",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/passage_packing.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/passage_packing.py",
+      "before_sha256": "e0048dae8c6e6368ede7219602c24557ce524e1bd5ce6c2fc201d9ec1e49bd03",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/remote_encoder.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/remote_encoder.py",
+      "before_sha256": "3959e2d8c8d3d95aa1e92f553bcfe59d8670dd39ed7e2b3a6a274157beea3174",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/retrieval_views.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/retrieval_views.py",
+      "before_sha256": "25876968cd5029ac9da816fc459ed5a427f8eed24cc4901540dadef03746bf91",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/source_links.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/source_links.py",
+      "before_sha256": "19798eb431e25c57f8f71a2524da70ac482a1e4353f1ba426bf7c0bec49b4bf0",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/source_prior.py": {
+      "path": "releases/sourcetrail-0.32.0-full/adaptive_evidence/source_prior.py",
+      "before_sha256": "01321f13642f129dd3ff4c5be27068cff07e6096b0a9b5edd3e324adad3d4e37",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/compose.yaml": {
+      "path": "releases/sourcetrail-0.32.0-full/compose.yaml",
+      "before_sha256": "4b8257e6ba1b0a8996c62441a4e4826413859cf1079ec00fdeff2ef869ee542c",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/env.example": {
+      "path": "releases/sourcetrail-0.32.0-full/env.example",
+      "before_sha256": "8dfeb0ebe0fa2184b805116e94462fc359b335c2fe1e0cdec98d98a49ff7b46c",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/package_source.py": {
+      "path": "releases/sourcetrail-0.32.0-full/package_source.py",
+      "before_sha256": "ed86e201fee10c73ed034d228fa1220169d7adbade453772222d2a915ee1a577",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/preflight.py": {
+      "path": "releases/sourcetrail-0.32.0-full/preflight.py",
+      "before_sha256": "d4d04182cc033f8843a088ebc6115c90786b2625befc97c23354dc9893061a17",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/requirements.txt": {
+      "path": "releases/sourcetrail-0.32.0-full/requirements.txt",
+      "before_sha256": "30ce0a775c34585539d9e8bd18ca8d7557edd62c5f2c97f3d7dfa1fcc143a2cc",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/start_local.ps1": {
+      "path": "releases/sourcetrail-0.32.0-full/start_local.ps1",
+      "before_sha256": "ac3b6d8c21a265eb0ad13a0e3dc98a893b013493179d732b2ecc502f9949b606",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_adaptive.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_adaptive.py",
+      "before_sha256": "79fcd31ab327a80a1e145fded1c8f69845cb36ceb28ca1d76b34e778e14fd4d9",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_answer_only.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_answer_only.py",
+      "before_sha256": "f17cc69e098e7cb46e0fb2806f694f83173b2bcd904b73be9beeb21ee9424a8a",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_coherent_sources.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_coherent_sources.py",
+      "before_sha256": "92d715071082ca16e6340b2911666a008b9d4f44675a1370f8dee469157c1049",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_contract.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_contract.py",
+      "before_sha256": "b89cbbfc49f6fb0a7b2f2c0260e2dfa7d2335ffc3b813f31f7593260b52c96ae",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_embedding_length_recovery.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_embedding_length_recovery.py",
+      "before_sha256": "76dc21aeb873c2592f229eacf6cb29e87cf1c5d536c5d8c52edd3b25d445ef4f",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_evidence_budget.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_evidence_budget.py",
+      "before_sha256": "c41047949df0e9b65d38056de3607786ba7660a103c2b0ac3db5779645d6cd7d",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_evidence_windows.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_evidence_windows.py",
+      "before_sha256": "04fadc9a3c1b612aba1f180ad1ee2fdff3a7f260eaf4a2d6483807273e742e97",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_focused_packing.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_focused_packing.py",
+      "before_sha256": "1c68b0a961201c5cd7125b7914afa5dcdc2d498dc501741f18fb532f128b5c72",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_query_documents.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_query_documents.py",
+      "before_sha256": "e0e0d1218cf7fc99c30ae682c08ce0794e945174e46e523478c2e52a6e2d3c28",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_remote_encoder.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_remote_encoder.py",
+      "before_sha256": "8b001763ae71afe331533c03e684ccf81087223e8fafc486c8ac6d7aaa4e51c4",
+      "adapted": false
+    },
+    "releases/sourcetrail-0.32.0-full/tests/test_retrieval_views.py": {
+      "path": "releases/sourcetrail-0.32.0-full/tests/test_retrieval_views.py",
+      "before_sha256": "2f626a56be75b4293c0bf1e77ce0b6684ba159da58ebe69afea3651020e1e4a9",
+      "adapted": false
+    },
+    "requirements-local.txt": {
+      "path": "laboratory/legacy-cycle2/requirements-local.txt",
+      "before_sha256": "2b6dc831c424d8daca81df5d8f8fe94d2664ca8b17e52fb5923e5cd600e3ca81",
+      "adapted": false
+    },
+    "requirements.txt": {
+      "path": "laboratory/legacy-cycle2/requirements.txt",
+      "before_sha256": "8c62249b9350751d779a1218cfb783f69bf4557d70d4820f874fb11004658628",
+      "adapted": false
+    },
+    "sourcetrail-0.27.0-README.md": {
+      "path": "archive/sourcetrail-0.27.0-README.md",
+      "before_sha256": "7d7e05e33fcfed6d829a3183819e0e4e048b14ee72982da1e7b85fd0ece78aee",
+      "adapted": true
+    },
+    "sourcetrail-0.27.0-source.manifest.json": {
+      "path": "sourcetrail-0.27.0-source.manifest.json",
+      "before_sha256": "af1d2835eeb90805e58e538d663363b3f931078b528e2569c700c70ef55a7667",
+      "adapted": false
+    },
+    "sourcetrail-0.27.0-source.zip": {
+      "path": "sourcetrail-0.27.0-source.zip",
+      "before_sha256": "18b0e6b5706b43572b8a61ef674bb44285c9a5890eaf454d8f7bbdbd89bed5f8",
+      "adapted": false
+    },
+    "sourcetrail-0.32.0-full-recovery-source.zip": {
+      "path": "sourcetrail-0.32.0-full-recovery-source.zip",
+      "before_sha256": "4cded88da43103edf9b656c22ca6ecc4e0a024e696eb74e65347af06c1e7a6f6",
+      "adapted": false
+    },
+    "sourcetrail-0.32.0-full-source.manifest.json": {
+      "path": "sourcetrail-0.32.0-full-source.manifest.json",
+      "before_sha256": "975a1d80d7cc1246832f3c9bc824e06292ec5eb22e81a2bdd8a3c1ce071d6f59",
+      "adapted": false
+    },
+    "sourcetrail-0.32.0-official-full.json": {
+      "path": "sourcetrail-0.32.0-official-full.json",
+      "before_sha256": "c7b23c3afe6968ce4506e4e9488641cbe52474893c8f2327c4f1fc13ecffd58c",
+      "adapted": false
+    },
+    "sourcetrail-0.32.0-reproduction-check.json": {
+      "path": "sourcetrail-0.32.0-reproduction-check.json",
+      "before_sha256": "5896bc55ade72991e2099e539530fad9e3ff3dab7fc18c9236d3901f71527e56",
+      "adapted": false
+    },
+    "start_local.ps1": {
+      "path": "laboratory/legacy-cycle2/ops/start_local.ps1",
+      "before_sha256": "efc810edd4898da82363fc29f2b7d1eea267c417ffc886c1ac5466aafb7b62cc",
+      "adapted": true
+    },
+    "tests/test_adaptive.py": {
+      "path": "laboratory/legacy-cycle2/tests/test_adaptive.py",
+      "before_sha256": "a3b8148a37a663d616245385cf21896bb8e8ef3b5d75d78ff1c63ee5ee90e6a6",
+      "adapted": false
+    },
+    "tests/test_add_indexer.py": {
+      "path": "laboratory/legacy-cycle2/tests/test_add_indexer.py",
+      "before_sha256": "9108c630cd359e0da036a3f9349a2aa7ad0a72688f044f7f0094f40f4f216388",
+      "adapted": false
+    },
+    "tests/test_contract.py": {
+      "path": "laboratory/legacy-cycle2/tests/test_contract.py",
+      "before_sha256": "62ac861c4e372598b1b9c51697d538f0b946edfc6f4b660f4d12edf8ab99f63e",
+      "adapted": false
+    },
+    "tests/test_cycle2_evaluation.py": {
+      "path": "laboratory/legacy-cycle2/tests/test_cycle2_evaluation.py",
+      "before_sha256": "22db435a4b86584d54ab6f60fd57882ddebf722078a8d4877b5a429b9de88cf9",
+      "adapted": true
+    },
+    "tests/test_planner.py": {
+      "path": "laboratory/legacy-cycle2/tests/test_planner.py",
+      "before_sha256": "f0c338d143a1c09e6becf674235338ee6bcb9b233a727318cd10cf1953cc88f6",
+      "adapted": false
+    },
+    "tests/test_preflight.py": {
+      "path": "laboratory/legacy-cycle2/tests/test_preflight.py",
+      "before_sha256": "403cf10c945612286b1ece56db3aa8e335ec8902ef132abf12c7cc7ab4f2c637",
+      "adapted": true
+    },
+    "tests/test_remote_encoder.py": {
+      "path": "laboratory/legacy-cycle2/tests/test_remote_encoder.py",
+      "before_sha256": "cec5a61eac457dd3942e0c28085cf292cf60f352d9b9945643a3b1e09301db9b",
+      "adapted": false
+    },
+    "tests/test_retrieval_views.py": {
+      "path": "laboratory/legacy-cycle2/tests/test_retrieval_views.py",
+      "before_sha256": "ab77e7a6454546ba5124e418f804983e00df59b68b894a33f0d0a22b9647b4d0",
+      "adapted": false
+    }
+  },
+  "protected_files": {
+    "SHA256SUMS.json": "5a2e8fda41d668100e2e31a9bee004088066e43839263c8faa1fe522784a13d7",
+    "context-weave-0.10.0-concurrency-amendment.json": "a8e733cafec113ee0f095b25fbb7b000444338ca00abacc209c6dd15f05c5dca",
+    "context-weave-0.10.0-official-smoke.json": "1bcee10b3b2c7a2b498cb5f58c90cb000d826323eb844fa98eb48efd03813aaf",
+    "context-weave-0.10.0-source.manifest.json": "197bf4bffbe614ab0ae73c5f9dfcef387263e67652d1ff7255ce885563c849d3",
+    "context-weave-0.10.0-source.zip": "ef945e04d2e9ee2317944642358d333ae220ba0d1362c2e8bbeef46f5afea0b9",
+    "context-weave-0.10.0-validation.json": "43c40e698d86d3a11b4daad82a9d45c4322ed6f1d0a7fac4704281da4bfc4c29",
+    "context-weave-0.17.1-official-smoke.json": "b50fc1242a5f8f987da6d1b3cb8174dff5717b0987f39253b2a8e910cbf079d2",
+    "context-weave-0.17.1-source.manifest.json": "1e601ca2324d17c8697028a41420eba6938a3df02447c5cbada18467577730fa",
+    "context-weave-0.17.1-source.zip": "6e9d1747d5e09f2058ed501549b393c22da73b65412442c35c75cf25922f721e",
+    "context-weave-0.17.1-validation.json": "60293289b0c64b8a3e5fe1885eeb6eb536021a04f51ad0fe455857c52f127502",
+    "context-weave-0.25.1-official-smoke.json": "a3a2cc1c227989bab901cb4b974ecc73eac815ebd821a5bebb11cd799337475c",
+    "context-weave-0.25.1-source.manifest.json": "0054a4d13af153467c185a9077c74400d948b9547d575bb1da95168792161f45",
+    "context-weave-0.25.1-source.zip": "a091770517ada6c2684d11e8fdcbb01ad49034ac3b83d6774486a0abae71f4f6",
+    "context-weave-0.25.1-validation.json": "5503bb8d4e703d21833840d5b8560bb919fc9a0153de28eaf904c26c66cfac7e",
+    "context-weave-0.28.0-source.manifest.json": "1443bb6c588bce90cd93e775e6733d32eb5b055f0d2082e176459b85f094f677",
+    "context-weave-0.28.0-source.zip": "fd54d2b8c971727a4f5dd118fbba457466fc5f16aaa75cf37f89ecd344098c4f",
+    "context-weave-0.29.0-source.manifest.json": "519e5638acba2b0e236fd3fcf13c20ecf2e18bac1064e76b9ac891bf4f8af4a7",
+    "context-weave-0.29.0-source.zip": "ea69f3707af4eb2d792ace59b43af5914fdf7c09291421e7b5e1bd96a8b7379e",
+    "context-weave-0.30.0-source.manifest.json": "6a6d9b18ea27f72bc1f1f00d9359c99ee66ec0d78e933aefe0778fa415d93b35",
+    "context-weave-0.30.0-source.zip": "373a0f9c6544008152b341e0fbc73a773d06fab975fdf011e2243c21792eaf02",
+    "context-weave-0.31.0-official-smoke.json": "3833dc87aaddfd81f14f280c5f05f9408e18d65a54bd6ab6f406d40ec008431f",
+    "context-weave-0.31.0-source.manifest.json": "8a5a60b662697231db10cdce8c3e6dd144ca0f87c1e61cbdca7f51e9afdfd96c",
+    "context-weave-0.31.0-source.zip": "ce1a0f0d230c321393edc72adda4b63cffa3059ee9115e1cab926a85799db9eb",
+    "context-weave-0.32.0-official-smoke.json": "5a87c640e0adf1b236a35f7d0c287b22ad5deeadbcf846e231588a0c81d41771",
+    "context-weave-0.32.0-research-followup.json": "3e3c1a9bd63740894a245f15589a2a1ffe1b71f9f5657d26b16c3fc3d7f5dab4",
+    "context-weave-0.32.0-source.manifest.json": "78276888516552f0dab6711026e4c55fba6dc1ac96a58a72cdaa839f9f06ba52",
+    "context-weave-0.32.0-source.zip": "bff4443ee3cbdf4a5e320dfa56fb8e65ca7775d857550c4112de7ddb7a9c74fa",
+    "context-weave-0.4.0-source.zip": "e620cf902a72bc4b56fe9fd90bd62e7299594e7d162f7c093b3ca84efeb01cc6",
+    "context-weave-0.4.1-source.zip": "f146ef9466e570fa5563874e58fd23506976c5ec48e3ed7bd929cd4974d2815e",
+    "context-weave-0.4.1-validation.json": "30602b221027ccd90f94b59e5dbf6f570f1504feab55a9a6d7ef15952c228a59",
+    "context-weave-0.5.0-http-validation.json": "93f74e122623e8039d767be05a025dc891768ade6634bfc977ee68c03b4ff6e1",
+    "context-weave-0.5.0-research.json": "7c95d972f4774c4735cbfc0711f5db1a4b7363f7e15579eeb1ef109d75c52291",
+    "context-weave-0.5.0-retrieval-validation.json": "ccb94076e7173c2bbd612a0d655a587829ec6c5789096129310af1bf206b2834",
+    "context-weave-0.5.0-source.zip": "1c64a9f02247d22335af34dfa45d11d6ccb62c03f77670dc6f8eeb7cd6da2261",
+    "context-weave-0.5.1-http-validation.json": "be67f7a3c25a9d942f8688b9e63a1d1e08e865c7fc58dedf61b86aa9578780fb",
+    "context-weave-0.5.1-official-smoke.json": "de7f1fa903e411fcc053a5a86fc6d01d77ab73778b6b4365e179bd6279ba922c",
+    "context-weave-0.5.1-retrieval-validation.json": "b0997510c7fd057db712a0d28749e4b11177ee0a0b137665cb83d71b5bf9b20c",
+    "context-weave-0.5.1-source.zip": "ec2161399be8afcc6a58c37c94b226ce1d6db17a84859cdd4821ea7fd2ce9b66",
+    "context-weave-0.6.1-official-smoke.json": "596a6e772446580b0567dde9238477d608b956d672a06cab2bff4d6258456828",
+    "context-weave-0.6.1-source.manifest.json": "258084a5037d55c265132a99c4d428f93c2de26b809966fcd39cf4389e9d820a",
+    "context-weave-0.6.1-source.zip": "a356f32f420f48bc3fd6ab58c05f33eb5e7e754c9f744750674acb93652fa936",
+    "context-weave-0.6.1-validation.json": "c38f1bb896d5384f6de546251553bd1b712ad0b7f786daf20262597a5a037989",
+    "context-weave-0.7.0-official-smoke.json": "0082945577b7e52e27bb3bd95a8bbf06ff39f02a119a97ff9bff9071ce405861",
+    "context-weave-0.7.0-source.manifest.json": "43e7bdf632100dc42bb31de30f5fc6282ed3fd0d5593e192ba595f66f6ac62a9",
+    "context-weave-0.7.0-source.zip": "92a576fe17fbda961d633955570fb4c419f5b135d2a48ec0e2fcb5b87dc6c2be",
+    "context-weave-0.7.0-validation.json": "e39e6dd9f3b628008ce5b26990c44e8b1dd1fce0672b810308208498048d48ad",
+    "context-weave-0.9.0-official-smoke.json": "6f4d9ba0d2d6d664b4484914ff5f3b886ab56f557cc382b209e1dd379e38bc32",
+    "context-weave-0.9.0-source.manifest.json": "b21efb3476fc248b508b646d5629e1e43bc17f59edc29667c7c35360c825777d",
+    "context-weave-0.9.0-source.zip": "114fa16e4ba47e271c0fee4b896ef69ed67e841f60351577bc72c7d04180ba01",
+    "context-weave-0.9.0-validation.json": "7d098f83749598cac432c89d41d371f989deb4291b6419dd0d85c5a270a8d39c",
+    "docs/COMPETITION_CHECKLIST.md": "14f2067331a43609706a037d8a97c080305afb604300ea9a214d5a5da62e8568",
+    "docs/FULL_RECOVERY.md": "6e77fed94e27bd47659e018f414babdadc895a854c539ff498b4ca4d88d70583",
+    "evaluation/pilot-20261001/sample-ids.json": "8770fe9af781765472db442370b2cfc59597cf8c3a8e31316657fcabe57ba24f",
+    "evaluation/pilot-20261001/sample-plan.json": "e7b21cac569d447d37aa7c01eabc48770a5c5bd64a0692dfdaa94cda3c9610c3",
+    "long-query-validation.json": "cfe9e520a2f69ef646942aa7352a65989ec25bac3da950b4dc50985af9ad6153",
+    "releases/context-weave-v320-evidence-budget-20261014/.dockerignore": "5883da00290e2c59528b87aca2de6dc9451846da45d1ba9b26e88918a0ec5425",
+    "releases/context-weave-v320-evidence-budget-20261014/.gitattributes": "9a5b3e8c93ebcd35a580f2c2cf3b51cad2f4e5c1514a6984f454f36b355dacd8",
+    "releases/context-weave-v320-evidence-budget-20261014/.gitignore": "32a83f758f5e34a3b4dcff75f738b9b03d0b4bb399bfd756bcaa6e9d2345b347",
+    "releases/context-weave-v320-evidence-budget-20261014/Caddyfile": "dd935aa3add2add6878a2a559feacbfd2c653016d7332bb59558f6d5ed3187b2",
+    "releases/context-weave-v320-evidence-budget-20261014/Dockerfile": "17570580dd2388d1f5bf4d35363efeb1e5eb9f9beeb6ae9775a3f793688dc0a3",
+    "releases/context-weave-v320-evidence-budget-20261014/LICENSE": "5e840be8e2574ddc674ea9fac785d991d2aad1327a4a9a0f560a8cb57668c530",
+    "releases/context-weave-v320-evidence-budget-20261014/OPERATIONS.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/context-weave-v320-evidence-budget-20261014/PROVENANCE.md": "80d043698939251624f83628707336ea57c1177a5a01510677dd5eb2dc8f2cb7",
+    "releases/context-weave-v320-evidence-budget-20261014/README.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/context-weave-v320-evidence-budget-20261014/SHA256SUMS.json": "1164ff02d15fc48c9cf8af389e731d03cb304ef688d7372da9a5329ab10c0cd0",
+    "releases/context-weave-v320-evidence-budget-20261014/SUBMISSION.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/__init__.py": "bffb96293a3ee82cfe3742c52d9a91e8ff65e60394b09128088d6d25cfb4ebbf",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/api.py": "852f309c88b6a5edab2a7199e3297302fc48b1c4de24e265ae601663eb320086",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/core.py": "8bf823550c55dbd9c0048f55dc6d43448387450591204d0513e3717a3462579f",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/encoder.py": "9d780f9179c00168a68d75b74855ff6b07eb655f2ed106fd2c97b5ab9c3b78ae",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/evidence_windows.py": "6995c2b015b75bcb626650e73612ce5e948cc8fdc04e58ca18d534ed0b978166",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/focused_packing.py": "4bac95a03cca7aa65807f24977b7441ddef48b83c4510da16cdfbd2d71d00116",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/passage_packing.py": "e0048dae8c6e6368ede7219602c24557ce524e1bd5ce6c2fc201d9ec1e49bd03",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/remote_encoder.py": "684c42a960cc15c68cea710337421c716145facc2dc09c9a3fd8b1a427b9b1e3",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/retrieval_views.py": "25876968cd5029ac9da816fc459ed5a427f8eed24cc4901540dadef03746bf91",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/source_links.py": "19798eb431e25c57f8f71a2524da70ac482a1e4353f1ba426bf7c0bec49b4bf0",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/source_prior.py": "01321f13642f129dd3ff4c5be27068cff07e6096b0a9b5edd3e324adad3d4e37",
+    "releases/context-weave-v320-evidence-budget-20261014/compose.yaml": "4b8257e6ba1b0a8996c62441a4e4826413859cf1079ec00fdeff2ef869ee542c",
+    "releases/context-weave-v320-evidence-budget-20261014/env.example": "8dfeb0ebe0fa2184b805116e94462fc359b335c2fe1e0cdec98d98a49ff7b46c",
+    "releases/context-weave-v320-evidence-budget-20261014/package_source.py": "ed86e201fee10c73ed034d228fa1220169d7adbade453772222d2a915ee1a577",
+    "releases/context-weave-v320-evidence-budget-20261014/preflight.py": "d4d04182cc033f8843a088ebc6115c90786b2625befc97c23354dc9893061a17",
+    "releases/context-weave-v320-evidence-budget-20261014/requirements.txt": "30ce0a775c34585539d9e8bd18ca8d7557edd62c5f2c97f3d7dfa1fcc143a2cc",
+    "releases/context-weave-v320-evidence-budget-20261014/start_local.ps1": "ac3b6d8c21a265eb0ad13a0e3dc98a893b013493179d732b2ecc502f9949b606",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_adaptive.py": "79fcd31ab327a80a1e145fded1c8f69845cb36ceb28ca1d76b34e778e14fd4d9",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_answer_only.py": "f17cc69e098e7cb46e0fb2806f694f83173b2bcd904b73be9beeb21ee9424a8a",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_coherent_sources.py": "92d715071082ca16e6340b2911666a008b9d4f44675a1370f8dee469157c1049",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_contract.py": "b89cbbfc49f6fb0a7b2f2c0260e2dfa7d2335ffc3b813f31f7593260b52c96ae",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_evidence_budget.py": "c41047949df0e9b65d38056de3607786ba7660a103c2b0ac3db5779645d6cd7d",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_evidence_windows.py": "04fadc9a3c1b612aba1f180ad1ee2fdff3a7f260eaf4a2d6483807273e742e97",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_focused_packing.py": "1c68b0a961201c5cd7125b7914afa5dcdc2d498dc501741f18fb532f128b5c72",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_query_documents.py": "e0e0d1218cf7fc99c30ae682c08ce0794e945174e46e523478c2e52a6e2d3c28",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_remote_encoder.py": "8b001763ae71afe331533c03e684ccf81087223e8fafc486c8ac6d7aaa4e51c4",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_retrieval_views.py": "2f626a56be75b4293c0bf1e77ce0b6684ba159da58ebe69afea3651020e1e4a9",
+    "releases/sourcetrail-0.32.0-full/.dockerignore": "5883da00290e2c59528b87aca2de6dc9451846da45d1ba9b26e88918a0ec5425",
+    "releases/sourcetrail-0.32.0-full/.gitattributes": "9a5b3e8c93ebcd35a580f2c2cf3b51cad2f4e5c1514a6984f454f36b355dacd8",
+    "releases/sourcetrail-0.32.0-full/.gitignore": "32a83f758f5e34a3b4dcff75f738b9b03d0b4bb399bfd756bcaa6e9d2345b347",
+    "releases/sourcetrail-0.32.0-full/Caddyfile": "dd935aa3add2add6878a2a559feacbfd2c653016d7332bb59558f6d5ed3187b2",
+    "releases/sourcetrail-0.32.0-full/Dockerfile": "17570580dd2388d1f5bf4d35363efeb1e5eb9f9beeb6ae9775a3f793688dc0a3",
+    "releases/sourcetrail-0.32.0-full/LICENSE": "5e840be8e2574ddc674ea9fac785d991d2aad1327a4a9a0f560a8cb57668c530",
+    "releases/sourcetrail-0.32.0-full/OPERATIONS.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/sourcetrail-0.32.0-full/PROVENANCE.md": "80d043698939251624f83628707336ea57c1177a5a01510677dd5eb2dc8f2cb7",
+    "releases/sourcetrail-0.32.0-full/README.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/sourcetrail-0.32.0-full/SUBMISSION.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/__init__.py": "bffb96293a3ee82cfe3742c52d9a91e8ff65e60394b09128088d6d25cfb4ebbf",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/api.py": "026e0c6d1c96ef7138363206fcf1f724a36c28c1ddfca0b63e6b2bd2ffc5583f",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/core.py": "8bf823550c55dbd9c0048f55dc6d43448387450591204d0513e3717a3462579f",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/encoder.py": "9d780f9179c00168a68d75b74855ff6b07eb655f2ed106fd2c97b5ab9c3b78ae",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/evidence_windows.py": "6995c2b015b75bcb626650e73612ce5e948cc8fdc04e58ca18d534ed0b978166",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/focused_packing.py": "4bac95a03cca7aa65807f24977b7441ddef48b83c4510da16cdfbd2d71d00116",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/passage_packing.py": "e0048dae8c6e6368ede7219602c24557ce524e1bd5ce6c2fc201d9ec1e49bd03",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/remote_encoder.py": "3959e2d8c8d3d95aa1e92f553bcfe59d8670dd39ed7e2b3a6a274157beea3174",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/retrieval_views.py": "25876968cd5029ac9da816fc459ed5a427f8eed24cc4901540dadef03746bf91",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/source_links.py": "19798eb431e25c57f8f71a2524da70ac482a1e4353f1ba426bf7c0bec49b4bf0",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/source_prior.py": "01321f13642f129dd3ff4c5be27068cff07e6096b0a9b5edd3e324adad3d4e37",
+    "releases/sourcetrail-0.32.0-full/compose.yaml": "4b8257e6ba1b0a8996c62441a4e4826413859cf1079ec00fdeff2ef869ee542c",
+    "releases/sourcetrail-0.32.0-full/env.example": "8dfeb0ebe0fa2184b805116e94462fc359b335c2fe1e0cdec98d98a49ff7b46c",
+    "releases/sourcetrail-0.32.0-full/package_source.py": "ed86e201fee10c73ed034d228fa1220169d7adbade453772222d2a915ee1a577",
+    "releases/sourcetrail-0.32.0-full/preflight.py": "d4d04182cc033f8843a088ebc6115c90786b2625befc97c23354dc9893061a17",
+    "releases/sourcetrail-0.32.0-full/requirements.txt": "30ce0a775c34585539d9e8bd18ca8d7557edd62c5f2c97f3d7dfa1fcc143a2cc",
+    "releases/sourcetrail-0.32.0-full/start_local.ps1": "ac3b6d8c21a265eb0ad13a0e3dc98a893b013493179d732b2ecc502f9949b606",
+    "releases/sourcetrail-0.32.0-full/tests/test_adaptive.py": "79fcd31ab327a80a1e145fded1c8f69845cb36ceb28ca1d76b34e778e14fd4d9",
+    "releases/sourcetrail-0.32.0-full/tests/test_answer_only.py": "f17cc69e098e7cb46e0fb2806f694f83173b2bcd904b73be9beeb21ee9424a8a",
+    "releases/sourcetrail-0.32.0-full/tests/test_coherent_sources.py": "92d715071082ca16e6340b2911666a008b9d4f44675a1370f8dee469157c1049",
+    "releases/sourcetrail-0.32.0-full/tests/test_contract.py": "b89cbbfc49f6fb0a7b2f2c0260e2dfa7d2335ffc3b813f31f7593260b52c96ae",
+    "releases/sourcetrail-0.32.0-full/tests/test_embedding_length_recovery.py": "76dc21aeb873c2592f229eacf6cb29e87cf1c5d536c5d8c52edd3b25d445ef4f",
+    "releases/sourcetrail-0.32.0-full/tests/test_evidence_budget.py": "c41047949df0e9b65d38056de3607786ba7660a103c2b0ac3db5779645d6cd7d",
+    "releases/sourcetrail-0.32.0-full/tests/test_evidence_windows.py": "04fadc9a3c1b612aba1f180ad1ee2fdff3a7f260eaf4a2d6483807273e742e97",
+    "releases/sourcetrail-0.32.0-full/tests/test_focused_packing.py": "1c68b0a961201c5cd7125b7914afa5dcdc2d498dc501741f18fb532f128b5c72",
+    "releases/sourcetrail-0.32.0-full/tests/test_query_documents.py": "e0e0d1218cf7fc99c30ae682c08ce0794e945174e46e523478c2e52a6e2d3c28",
+    "releases/sourcetrail-0.32.0-full/tests/test_remote_encoder.py": "8b001763ae71afe331533c03e684ccf81087223e8fafc486c8ac6d7aaa4e51c4",
+    "releases/sourcetrail-0.32.0-full/tests/test_retrieval_views.py": "2f626a56be75b4293c0bf1e77ce0b6684ba159da58ebe69afea3651020e1e4a9",
+    "sourcetrail-0.27.0-source.manifest.json": "af1d2835eeb90805e58e538d663363b3f931078b528e2569c700c70ef55a7667",
+    "sourcetrail-0.27.0-source.zip": "18b0e6b5706b43572b8a61ef674bb44285c9a5890eaf454d8f7bbdbd89bed5f8",
+    "sourcetrail-0.32.0-full-recovery-source.zip": "4cded88da43103edf9b656c22ca6ecc4e0a024e696eb74e65347af06c1e7a6f6",
+    "sourcetrail-0.32.0-full-source.manifest.json": "975a1d80d7cc1246832f3c9bc824e06292ec5eb22e81a2bdd8a3c1ce071d6f59",
+    "sourcetrail-0.32.0-official-full.json": "c7b23c3afe6968ce4506e4e9488641cbe52474893c8f2327c4f1fc13ecffd58c",
+    "sourcetrail-0.32.0-reproduction-check.json": "5896bc55ade72991e2099e539530fad9e3ff3dab7fc18c9236d3901f71527e56"
+  },
+  "files_sha256": {
+    ".dockerignore": "5883da00290e2c59528b87aca2de6dc9451846da45d1ba9b26e88918a0ec5425",
+    ".gitattributes": "c0516c40d9fa88873d47f03c2c56eaa3af176970f1bcf28c654bdbbc72a43cde",
+    ".gitignore": "a7fbbacab252d8a1d0a200ad697e6a7e6b0ac35cd9d5e6feb5f1a7160dd6e327",
+    "LICENSE": "5e840be8e2574ddc674ea9fac785d991d2aad1327a4a9a0f560a8cb57668c530",
+    "OPERATIONS.md": "7aec12dd52d5617b8e49265170ea0b9c7fbfa3de60921bbc10a9e8ab5557a4e7",
+    "PROVENANCE.md": "eb1b38a21d18ee2a79be696ecccadb4ee8df205697bf97092835bf70070768c7",
+    "README.md": "1d238ff18e1c67d695f16376512af590d2263e9db655cf0e967940f5636b8e25",
+    "SHA256SUMS.json": "5a2e8fda41d668100e2e31a9bee004088066e43839263c8faa1fe522784a13d7",
+    "SUBMISSION.md": "da920cc978c8ed22921c48ba5f9bd0768e7bfdc4e9e4eb75f3659880ce49c538",
+    "archive/CYCLE2_STATUS.md": "53c71b3fd26998d5c2f476a2d842152f8a89d4d23ca2caba06fadf4a112d5a06",
+    "archive/PILOT_RESULTS.md": "b57035d9cd964d3d8b1f759863c2c94e72c3f92ed42754b157a77752b6e1a0db",
+    "archive/README_CYCLE2.md": "c9a9695872bbc8da0f19e9c24637f79d165b55c212237dc89536e1f7d6e2fc7f",
+    "archive/README_SOURCE_0.29.0.md": "3ef1baec2c5cce8b4c909d1893e9d8dd723119aa8f0d857190cc41166cfb5d90",
+    "archive/README_SOURCE_0.30.0.md": "f62ee072d376edf13f2826c96a48b2e051a32de98ae967e6e7a59097ea552a72",
+    "archive/README_SOURCE_0.31.0.md": "5cebc390e6e8886aab93e37a253582f4ee0b859e6eee3bc3933d2d9abc5ab470",
+    "archive/README_SOURCE_0.32.0.md": "a449b1540827f7dbd145bf74596c9754186dd23e31ce437df35b8bd7c0e360c9",
+    "archive/context-weave-0.28.0-README.md": "459b26eff4b46f3982802e34b56bc087443108f0df2d239b189a89c20dad74d2",
+    "archive/sourcetrail-0.27.0-README.md": "3120b478d0954550347ed960049d9fcfc9ce6d8d123f44c8a02480dc9956f7b1",
+    "catalog/verify_layout.py": "060245109105687f9237798d9928736051335bfa153b863f888cc45540359438",
+    "catalog/versions.md": "1843837033ba9f95599a4c091cd17b9f8ceb5c9b0f4030878fbb0a2dd3708d3f",
+    "context-weave-0.10.0-concurrency-amendment.json": "a8e733cafec113ee0f095b25fbb7b000444338ca00abacc209c6dd15f05c5dca",
+    "context-weave-0.10.0-official-smoke.json": "1bcee10b3b2c7a2b498cb5f58c90cb000d826323eb844fa98eb48efd03813aaf",
+    "context-weave-0.10.0-source.manifest.json": "197bf4bffbe614ab0ae73c5f9dfcef387263e67652d1ff7255ce885563c849d3",
+    "context-weave-0.10.0-source.zip": "ef945e04d2e9ee2317944642358d333ae220ba0d1362c2e8bbeef46f5afea0b9",
+    "context-weave-0.10.0-validation.json": "43c40e698d86d3a11b4daad82a9d45c4322ed6f1d0a7fac4704281da4bfc4c29",
+    "context-weave-0.17.1-official-smoke.json": "b50fc1242a5f8f987da6d1b3cb8174dff5717b0987f39253b2a8e910cbf079d2",
+    "context-weave-0.17.1-source.manifest.json": "1e601ca2324d17c8697028a41420eba6938a3df02447c5cbada18467577730fa",
+    "context-weave-0.17.1-source.zip": "6e9d1747d5e09f2058ed501549b393c22da73b65412442c35c75cf25922f721e",
+    "context-weave-0.17.1-validation.json": "60293289b0c64b8a3e5fe1885eeb6eb536021a04f51ad0fe455857c52f127502",
+    "context-weave-0.25.1-official-smoke.json": "a3a2cc1c227989bab901cb4b974ecc73eac815ebd821a5bebb11cd799337475c",
+    "context-weave-0.25.1-source.manifest.json": "0054a4d13af153467c185a9077c74400d948b9547d575bb1da95168792161f45",
+    "context-weave-0.25.1-source.zip": "a091770517ada6c2684d11e8fdcbb01ad49034ac3b83d6774486a0abae71f4f6",
+    "context-weave-0.25.1-validation.json": "5503bb8d4e703d21833840d5b8560bb919fc9a0153de28eaf904c26c66cfac7e",
+    "context-weave-0.28.0-source.manifest.json": "1443bb6c588bce90cd93e775e6733d32eb5b055f0d2082e176459b85f094f677",
+    "context-weave-0.28.0-source.zip": "fd54d2b8c971727a4f5dd118fbba457466fc5f16aaa75cf37f89ecd344098c4f",
+    "context-weave-0.29.0-source.manifest.json": "519e5638acba2b0e236fd3fcf13c20ecf2e18bac1064e76b9ac891bf4f8af4a7",
+    "context-weave-0.29.0-source.zip": "ea69f3707af4eb2d792ace59b43af5914fdf7c09291421e7b5e1bd96a8b7379e",
+    "context-weave-0.30.0-source.manifest.json": "6a6d9b18ea27f72bc1f1f00d9359c99ee66ec0d78e933aefe0778fa415d93b35",
+    "context-weave-0.30.0-source.zip": "373a0f9c6544008152b341e0fbc73a773d06fab975fdf011e2243c21792eaf02",
+    "context-weave-0.31.0-official-smoke.json": "3833dc87aaddfd81f14f280c5f05f9408e18d65a54bd6ab6f406d40ec008431f",
+    "context-weave-0.31.0-source.manifest.json": "8a5a60b662697231db10cdce8c3e6dd144ca0f87c1e61cbdca7f51e9afdfd96c",
+    "context-weave-0.31.0-source.zip": "ce1a0f0d230c321393edc72adda4b63cffa3059ee9115e1cab926a85799db9eb",
+    "context-weave-0.32.0-official-smoke.json": "5a87c640e0adf1b236a35f7d0c287b22ad5deeadbcf846e231588a0c81d41771",
+    "context-weave-0.32.0-research-followup.json": "3e3c1a9bd63740894a245f15589a2a1ffe1b71f9f5657d26b16c3fc3d7f5dab4",
+    "context-weave-0.32.0-source.manifest.json": "78276888516552f0dab6711026e4c55fba6dc1ac96a58a72cdaa839f9f06ba52",
+    "context-weave-0.32.0-source.zip": "bff4443ee3cbdf4a5e320dfa56fb8e65ca7775d857550c4112de7ddb7a9c74fa",
+    "context-weave-0.4.0-source.zip": "e620cf902a72bc4b56fe9fd90bd62e7299594e7d162f7c093b3ca84efeb01cc6",
+    "context-weave-0.4.1-source.zip": "f146ef9466e570fa5563874e58fd23506976c5ec48e3ed7bd929cd4974d2815e",
+    "context-weave-0.4.1-validation.json": "30602b221027ccd90f94b59e5dbf6f570f1504feab55a9a6d7ef15952c228a59",
+    "context-weave-0.4.1-validation.md": "52beaa7410a33d2384e66a4510ac105f32417e5a6bbae2219e08d78d5db10368",
+    "context-weave-0.5.0-http-validation.json": "93f74e122623e8039d767be05a025dc891768ade6634bfc977ee68c03b4ff6e1",
+    "context-weave-0.5.0-provenance.md": "7e29d05825a799b4fcd65a9944339ea74bdd357ec1bf3ffcf4516173bd760547",
+    "context-weave-0.5.0-research.json": "7c95d972f4774c4735cbfc0711f5db1a4b7363f7e15579eeb1ef109d75c52291",
+    "context-weave-0.5.0-retrieval-validation.json": "ccb94076e7173c2bbd612a0d655a587829ec6c5789096129310af1bf206b2834",
+    "context-weave-0.5.0-source.zip": "1c64a9f02247d22335af34dfa45d11d6ccb62c03f77670dc6f8eeb7cd6da2261",
+    "context-weave-0.5.1-http-validation.json": "be67f7a3c25a9d942f8688b9e63a1d1e08e865c7fc58dedf61b86aa9578780fb",
+    "context-weave-0.5.1-official-smoke.json": "de7f1fa903e411fcc053a5a86fc6d01d77ab73778b6b4365e179bd6279ba922c",
+    "context-weave-0.5.1-provenance.md": "bbe717e2bfb7bbbd5cd969fecdb2c32198208939f3d8563390b596c152b9ddb9",
+    "context-weave-0.5.1-retrieval-validation.json": "b0997510c7fd057db712a0d28749e4b11177ee0a0b137665cb83d71b5bf9b20c",
+    "context-weave-0.5.1-source.zip": "ec2161399be8afcc6a58c37c94b226ce1d6db17a84859cdd4821ea7fd2ce9b66",
+    "context-weave-0.6.1-official-smoke.json": "596a6e772446580b0567dde9238477d608b956d672a06cab2bff4d6258456828",
+    "context-weave-0.6.1-provenance.md": "b9210705090c72cf1df1ebd119b3378e40655ceca9af264156ec5e5d773c4da7",
+    "context-weave-0.6.1-source.manifest.json": "258084a5037d55c265132a99c4d428f93c2de26b809966fcd39cf4389e9d820a",
+    "context-weave-0.6.1-source.zip": "a356f32f420f48bc3fd6ab58c05f33eb5e7e754c9f744750674acb93652fa936",
+    "context-weave-0.6.1-validation.json": "c38f1bb896d5384f6de546251553bd1b712ad0b7f786daf20262597a5a037989",
+    "context-weave-0.7.0-official-smoke.json": "0082945577b7e52e27bb3bd95a8bbf06ff39f02a119a97ff9bff9071ce405861",
+    "context-weave-0.7.0-source.manifest.json": "43e7bdf632100dc42bb31de30f5fc6282ed3fd0d5593e192ba595f66f6ac62a9",
+    "context-weave-0.7.0-source.zip": "92a576fe17fbda961d633955570fb4c419f5b135d2a48ec0e2fcb5b87dc6c2be",
+    "context-weave-0.7.0-validation.json": "e39e6dd9f3b628008ce5b26990c44e8b1dd1fce0672b810308208498048d48ad",
+    "context-weave-0.9.0-official-smoke.json": "6f4d9ba0d2d6d664b4484914ff5f3b886ab56f557cc382b209e1dd379e38bc32",
+    "context-weave-0.9.0-source.manifest.json": "b21efb3476fc248b508b646d5629e1e43bc17f59edc29667c7c35360c825777d",
+    "context-weave-0.9.0-source.zip": "114fa16e4ba47e271c0fee4b896ef69ed67e841f60351577bc72c7d04180ba01",
+    "context-weave-0.9.0-validation.json": "7d098f83749598cac432c89d41d371f989deb4291b6419dd0d85c5a270a8d39c",
+    "docs/COMPETITION_CHECKLIST.md": "14f2067331a43609706a037d8a97c080305afb604300ea9a214d5a5da62e8568",
+    "docs/FULL_RECOVERY.md": "6e77fed94e27bd47659e018f414babdadc895a854c539ff498b4ca4d88d70583",
+    "docs/history/pre-full-disclosure-20261031/OPERATIONS.md": "507f9f63d499585d735c11bd553094066448598b5e5615265334480bb17f66ee",
+    "docs/history/pre-full-disclosure-20261031/README.md": "6f7a7bd3a0ebd9a20e23741a4188c2b8fe6a2e6465f3c1dfd680a8aa400761ce",
+    "docs/history/pre-full-disclosure-20261031/README_CYCLE2.md": "72b4baff71c5acfc2199e4bf6a9d1635708386a4ffd60ac84525b0b38d2de033",
+    "docs/history/pre-full-disclosure-20261031/SUBMISSION.md": "09bde6c292944bb4e5869a829dc868b8d65f71fab37746ee2504cc61a92ea032",
+    "evaluation/pilot-20261001/sample-ids.json": "8770fe9af781765472db442370b2cfc59597cf8c3a8e31316657fcabe57ba24f",
+    "evaluation/pilot-20261001/sample-plan.json": "e7b21cac569d447d37aa7c01eabc48770a5c5bd64a0692dfdaa94cda3c9610c3",
+    "laboratory/legacy-cycle2/LICENSE": "5e840be8e2574ddc674ea9fac785d991d2aad1327a4a9a0f560a8cb57668c530",
+    "laboratory/legacy-cycle2/README.md": "181546efe93e2cdce44641a6fdbffe960566edf172cdb628f549a6cb0ba318d0",
+    "laboratory/legacy-cycle2/adaptive_evidence/__init__.py": "a30aedfc920dacc103423f0dae36b8d556bc8eb0bbb33d2a565f10a7813456bf",
+    "laboratory/legacy-cycle2/adaptive_evidence/add_indexer.py": "6208e8d70c28050ba80da5f379d9e96be58d58eb8a07176a86090559866b4010",
+    "laboratory/legacy-cycle2/adaptive_evidence/api.py": "b2291237ae8b522bc84db152d0a37662c7acfdb613f9d57b8a6ab97e28a9f5d2",
+    "laboratory/legacy-cycle2/adaptive_evidence/core.py": "6e2ff62d48b33f80aacd99bd348934d79a0faf79dd541a7930cd7ee4ca746ae9",
+    "laboratory/legacy-cycle2/adaptive_evidence/encoder.py": "775a9d45ba261d666ab3d5ea026ba9ab0c6c69107cd289b481277fe04f5c1b13",
+    "laboratory/legacy-cycle2/adaptive_evidence/planner.py": "a962448072d8f698cc2879cc4be6800993734d41a20dae0f7805e30bdd55ad07",
+    "laboratory/legacy-cycle2/adaptive_evidence/remote_encoder.py": "daf3482fd9232598138a5ce24b2998d706f97a7de53329cb02a191495a0c1b5c",
+    "laboratory/legacy-cycle2/adaptive_evidence/retrieval_views.py": "e65dc438d66e4efc26075fd86da567c9715a4cd91cc37fef88d6ca3de6b78aa6",
+    "laboratory/legacy-cycle2/env.example": "138148c352ea715feb69a56ab5ed17219d6664a02afdf0597d0ba1095f829f5d",
+    "laboratory/legacy-cycle2/ops/Caddyfile": "dd935aa3add2add6878a2a559feacbfd2c653016d7332bb59558f6d5ed3187b2",
+    "laboratory/legacy-cycle2/ops/Dockerfile": "d90ca187726fdad50dc549231340767e79f0346b291c0ccf31b90c10dc8491d5",
+    "laboratory/legacy-cycle2/ops/compose.yaml": "a6218b47d0ff814b9b88d897a24c907e9246dde8f937b3e623c56ab93b4ce6c4",
+    "laboratory/legacy-cycle2/ops/start_local.ps1": "8390f34b099274b87a0770788ba27329658b605d5751c7e4666e0c09fe2cdb8e",
+    "laboratory/legacy-cycle2/pyproject.toml": "854b8918d170831e0715cebae5b17b8efde1cd7dcbceecd481d73e8ae7fc9bc7",
+    "laboratory/legacy-cycle2/requirements-local.txt": "2b6dc831c424d8daca81df5d8f8fe94d2664ca8b17e52fb5923e5cd600e3ca81",
+    "laboratory/legacy-cycle2/requirements.txt": "8c62249b9350751d779a1218cfb783f69bf4557d70d4820f874fb11004658628",
+    "laboratory/legacy-cycle2/tests/test_adaptive.py": "a3b8148a37a663d616245385cf21896bb8e8ef3b5d75d78ff1c63ee5ee90e6a6",
+    "laboratory/legacy-cycle2/tests/test_add_indexer.py": "9108c630cd359e0da036a3f9349a2aa7ad0a72688f044f7f0094f40f4f216388",
+    "laboratory/legacy-cycle2/tests/test_contract.py": "62ac861c4e372598b1b9c51697d538f0b946edfc6f4b660f4d12edf8ab99f63e",
+    "laboratory/legacy-cycle2/tests/test_cycle2_evaluation.py": "3cbcfab7495da080e5f62b9c012542b558b1b76d72fdf697fcbd32d862203169",
+    "laboratory/legacy-cycle2/tests/test_planner.py": "f0c338d143a1c09e6becf674235338ee6bcb9b233a727318cd10cf1953cc88f6",
+    "laboratory/legacy-cycle2/tests/test_preflight.py": "3d1054deed295c0d4ca11f23a40dcf569a9fed4f7c89735d49090243887baf35",
+    "laboratory/legacy-cycle2/tests/test_remote_encoder.py": "cec5a61eac457dd3942e0c28085cf292cf60f352d9b9945643a3b1e09301db9b",
+    "laboratory/legacy-cycle2/tests/test_retrieval_views.py": "ab77e7a6454546ba5124e418f804983e00df59b68b894a33f0d0a22b9647b4d0",
+    "laboratory/legacy-cycle2/tools/__init__.py": "ee81f9d32b5f3b7b51a9f298dd46e7f498d991464fb32c08185827a7c7ab15b5",
+    "laboratory/legacy-cycle2/tools/evaluate_retrieval.py": "076c65d130dd915c2f583f96ec1a91ed02558d3067e762e6dda93e1ceb853e30",
+    "laboratory/legacy-cycle2/tools/package_cycle2.py": "93bf7dfdfeef2ee891f8a2cf929e37dc4298f22b25559c79edea4399bee550e9",
+    "laboratory/legacy-cycle2/tools/preflight.py": "1bbda988731fff7cdd5cfaabe9c9bfb237cab6e08a5d93441f5ea4c6d964cad1",
+    "laboratory/legacy-cycle2/tools/probe_http.py": "ed793237874f3be7d7588319086f461d38a986deb431b4b7cff89e11ad8a1c69",
+    "long-query-validation.json": "cfe9e520a2f69ef646942aa7352a65989ec25bac3da950b4dc50985af9ad6153",
+    "releases/context-weave-v320-evidence-budget-20261014/.dockerignore": "5883da00290e2c59528b87aca2de6dc9451846da45d1ba9b26e88918a0ec5425",
+    "releases/context-weave-v320-evidence-budget-20261014/.gitattributes": "9a5b3e8c93ebcd35a580f2c2cf3b51cad2f4e5c1514a6984f454f36b355dacd8",
+    "releases/context-weave-v320-evidence-budget-20261014/.gitignore": "32a83f758f5e34a3b4dcff75f738b9b03d0b4bb399bfd756bcaa6e9d2345b347",
+    "releases/context-weave-v320-evidence-budget-20261014/Caddyfile": "dd935aa3add2add6878a2a559feacbfd2c653016d7332bb59558f6d5ed3187b2",
+    "releases/context-weave-v320-evidence-budget-20261014/Dockerfile": "17570580dd2388d1f5bf4d35363efeb1e5eb9f9beeb6ae9775a3f793688dc0a3",
+    "releases/context-weave-v320-evidence-budget-20261014/LICENSE": "5e840be8e2574ddc674ea9fac785d991d2aad1327a4a9a0f560a8cb57668c530",
+    "releases/context-weave-v320-evidence-budget-20261014/OPERATIONS.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/context-weave-v320-evidence-budget-20261014/PROVENANCE.md": "80d043698939251624f83628707336ea57c1177a5a01510677dd5eb2dc8f2cb7",
+    "releases/context-weave-v320-evidence-budget-20261014/README.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/context-weave-v320-evidence-budget-20261014/SHA256SUMS.json": "1164ff02d15fc48c9cf8af389e731d03cb304ef688d7372da9a5329ab10c0cd0",
+    "releases/context-weave-v320-evidence-budget-20261014/SUBMISSION.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/__init__.py": "bffb96293a3ee82cfe3742c52d9a91e8ff65e60394b09128088d6d25cfb4ebbf",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/api.py": "852f309c88b6a5edab2a7199e3297302fc48b1c4de24e265ae601663eb320086",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/core.py": "8bf823550c55dbd9c0048f55dc6d43448387450591204d0513e3717a3462579f",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/encoder.py": "9d780f9179c00168a68d75b74855ff6b07eb655f2ed106fd2c97b5ab9c3b78ae",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/evidence_windows.py": "6995c2b015b75bcb626650e73612ce5e948cc8fdc04e58ca18d534ed0b978166",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/focused_packing.py": "4bac95a03cca7aa65807f24977b7441ddef48b83c4510da16cdfbd2d71d00116",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/passage_packing.py": "e0048dae8c6e6368ede7219602c24557ce524e1bd5ce6c2fc201d9ec1e49bd03",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/remote_encoder.py": "684c42a960cc15c68cea710337421c716145facc2dc09c9a3fd8b1a427b9b1e3",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/retrieval_views.py": "25876968cd5029ac9da816fc459ed5a427f8eed24cc4901540dadef03746bf91",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/source_links.py": "19798eb431e25c57f8f71a2524da70ac482a1e4353f1ba426bf7c0bec49b4bf0",
+    "releases/context-weave-v320-evidence-budget-20261014/adaptive_evidence/source_prior.py": "01321f13642f129dd3ff4c5be27068cff07e6096b0a9b5edd3e324adad3d4e37",
+    "releases/context-weave-v320-evidence-budget-20261014/compose.yaml": "4b8257e6ba1b0a8996c62441a4e4826413859cf1079ec00fdeff2ef869ee542c",
+    "releases/context-weave-v320-evidence-budget-20261014/env.example": "8dfeb0ebe0fa2184b805116e94462fc359b335c2fe1e0cdec98d98a49ff7b46c",
+    "releases/context-weave-v320-evidence-budget-20261014/package_source.py": "ed86e201fee10c73ed034d228fa1220169d7adbade453772222d2a915ee1a577",
+    "releases/context-weave-v320-evidence-budget-20261014/preflight.py": "d4d04182cc033f8843a088ebc6115c90786b2625befc97c23354dc9893061a17",
+    "releases/context-weave-v320-evidence-budget-20261014/requirements.txt": "30ce0a775c34585539d9e8bd18ca8d7557edd62c5f2c97f3d7dfa1fcc143a2cc",
+    "releases/context-weave-v320-evidence-budget-20261014/start_local.ps1": "ac3b6d8c21a265eb0ad13a0e3dc98a893b013493179d732b2ecc502f9949b606",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_adaptive.py": "79fcd31ab327a80a1e145fded1c8f69845cb36ceb28ca1d76b34e778e14fd4d9",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_answer_only.py": "f17cc69e098e7cb46e0fb2806f694f83173b2bcd904b73be9beeb21ee9424a8a",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_coherent_sources.py": "92d715071082ca16e6340b2911666a008b9d4f44675a1370f8dee469157c1049",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_contract.py": "b89cbbfc49f6fb0a7b2f2c0260e2dfa7d2335ffc3b813f31f7593260b52c96ae",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_evidence_budget.py": "c41047949df0e9b65d38056de3607786ba7660a103c2b0ac3db5779645d6cd7d",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_evidence_windows.py": "04fadc9a3c1b612aba1f180ad1ee2fdff3a7f260eaf4a2d6483807273e742e97",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_focused_packing.py": "1c68b0a961201c5cd7125b7914afa5dcdc2d498dc501741f18fb532f128b5c72",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_query_documents.py": "e0e0d1218cf7fc99c30ae682c08ce0794e945174e46e523478c2e52a6e2d3c28",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_remote_encoder.py": "8b001763ae71afe331533c03e684ccf81087223e8fafc486c8ac6d7aaa4e51c4",
+    "releases/context-weave-v320-evidence-budget-20261014/tests/test_retrieval_views.py": "2f626a56be75b4293c0bf1e77ce0b6684ba159da58ebe69afea3651020e1e4a9",
+    "releases/sourcetrail-0.32.0-full/.dockerignore": "5883da00290e2c59528b87aca2de6dc9451846da45d1ba9b26e88918a0ec5425",
+    "releases/sourcetrail-0.32.0-full/.gitattributes": "9a5b3e8c93ebcd35a580f2c2cf3b51cad2f4e5c1514a6984f454f36b355dacd8",
+    "releases/sourcetrail-0.32.0-full/.gitignore": "32a83f758f5e34a3b4dcff75f738b9b03d0b4bb399bfd756bcaa6e9d2345b347",
+    "releases/sourcetrail-0.32.0-full/Caddyfile": "dd935aa3add2add6878a2a559feacbfd2c653016d7332bb59558f6d5ed3187b2",
+    "releases/sourcetrail-0.32.0-full/Dockerfile": "17570580dd2388d1f5bf4d35363efeb1e5eb9f9beeb6ae9775a3f793688dc0a3",
+    "releases/sourcetrail-0.32.0-full/LICENSE": "5e840be8e2574ddc674ea9fac785d991d2aad1327a4a9a0f560a8cb57668c530",
+    "releases/sourcetrail-0.32.0-full/OPERATIONS.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/sourcetrail-0.32.0-full/PROVENANCE.md": "80d043698939251624f83628707336ea57c1177a5a01510677dd5eb2dc8f2cb7",
+    "releases/sourcetrail-0.32.0-full/README.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/sourcetrail-0.32.0-full/SUBMISSION.md": "f64710e52d87db316934866444dc432e4be00c390e4f3d530a7d11620413aff4",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/__init__.py": "bffb96293a3ee82cfe3742c52d9a91e8ff65e60394b09128088d6d25cfb4ebbf",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/api.py": "026e0c6d1c96ef7138363206fcf1f724a36c28c1ddfca0b63e6b2bd2ffc5583f",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/core.py": "8bf823550c55dbd9c0048f55dc6d43448387450591204d0513e3717a3462579f",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/encoder.py": "9d780f9179c00168a68d75b74855ff6b07eb655f2ed106fd2c97b5ab9c3b78ae",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/evidence_windows.py": "6995c2b015b75bcb626650e73612ce5e948cc8fdc04e58ca18d534ed0b978166",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/focused_packing.py": "4bac95a03cca7aa65807f24977b7441ddef48b83c4510da16cdfbd2d71d00116",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/passage_packing.py": "e0048dae8c6e6368ede7219602c24557ce524e1bd5ce6c2fc201d9ec1e49bd03",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/remote_encoder.py": "3959e2d8c8d3d95aa1e92f553bcfe59d8670dd39ed7e2b3a6a274157beea3174",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/retrieval_views.py": "25876968cd5029ac9da816fc459ed5a427f8eed24cc4901540dadef03746bf91",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/source_links.py": "19798eb431e25c57f8f71a2524da70ac482a1e4353f1ba426bf7c0bec49b4bf0",
+    "releases/sourcetrail-0.32.0-full/adaptive_evidence/source_prior.py": "01321f13642f129dd3ff4c5be27068cff07e6096b0a9b5edd3e324adad3d4e37",
+    "releases/sourcetrail-0.32.0-full/compose.yaml": "4b8257e6ba1b0a8996c62441a4e4826413859cf1079ec00fdeff2ef869ee542c",
+    "releases/sourcetrail-0.32.0-full/env.example": "8dfeb0ebe0fa2184b805116e94462fc359b335c2fe1e0cdec98d98a49ff7b46c",
+    "releases/sourcetrail-0.32.0-full/package_source.py": "ed86e201fee10c73ed034d228fa1220169d7adbade453772222d2a915ee1a577",
+    "releases/sourcetrail-0.32.0-full/preflight.py": "d4d04182cc033f8843a088ebc6115c90786b2625befc97c23354dc9893061a17",
+    "releases/sourcetrail-0.32.0-full/requirements.txt": "30ce0a775c34585539d9e8bd18ca8d7557edd62c5f2c97f3d7dfa1fcc143a2cc",
+    "releases/sourcetrail-0.32.0-full/start_local.ps1": "ac3b6d8c21a265eb0ad13a0e3dc98a893b013493179d732b2ecc502f9949b606",
+    "releases/sourcetrail-0.32.0-full/tests/test_adaptive.py": "79fcd31ab327a80a1e145fded1c8f69845cb36ceb28ca1d76b34e778e14fd4d9",
+    "releases/sourcetrail-0.32.0-full/tests/test_answer_only.py": "f17cc69e098e7cb46e0fb2806f694f83173b2bcd904b73be9beeb21ee9424a8a",
+    "releases/sourcetrail-0.32.0-full/tests/test_coherent_sources.py": "92d715071082ca16e6340b2911666a008b9d4f44675a1370f8dee469157c1049",
+    "releases/sourcetrail-0.32.0-full/tests/test_contract.py": "b89cbbfc49f6fb0a7b2f2c0260e2dfa7d2335ffc3b813f31f7593260b52c96ae",
+    "releases/sourcetrail-0.32.0-full/tests/test_embedding_length_recovery.py": "76dc21aeb873c2592f229eacf6cb29e87cf1c5d536c5d8c52edd3b25d445ef4f",
+    "releases/sourcetrail-0.32.0-full/tests/test_evidence_budget.py": "c41047949df0e9b65d38056de3607786ba7660a103c2b0ac3db5779645d6cd7d",
+    "releases/sourcetrail-0.32.0-full/tests/test_evidence_windows.py": "04fadc9a3c1b612aba1f180ad1ee2fdff3a7f260eaf4a2d6483807273e742e97",
+    "releases/sourcetrail-0.32.0-full/tests/test_focused_packing.py": "1c68b0a961201c5cd7125b7914afa5dcdc2d498dc501741f18fb532f128b5c72",
+    "releases/sourcetrail-0.32.0-full/tests/test_query_documents.py": "e0e0d1218cf7fc99c30ae682c08ce0794e945174e46e523478c2e52a6e2d3c28",
+    "releases/sourcetrail-0.32.0-full/tests/test_remote_encoder.py": "8b001763ae71afe331533c03e684ccf81087223e8fafc486c8ac6d7aaa4e51c4",
+    "releases/sourcetrail-0.32.0-full/tests/test_retrieval_views.py": "2f626a56be75b4293c0bf1e77ce0b6684ba159da58ebe69afea3651020e1e4a9",
+    "sourcetrail-0.27.0-source.manifest.json": "af1d2835eeb90805e58e538d663363b3f931078b528e2569c700c70ef55a7667",
+    "sourcetrail-0.27.0-source.zip": "18b0e6b5706b43572b8a61ef674bb44285c9a5890eaf454d8f7bbdbd89bed5f8",
+    "sourcetrail-0.32.0-full-recovery-source.zip": "4cded88da43103edf9b656c22ca6ecc4e0a024e696eb74e65347af06c1e7a6f6",
+    "sourcetrail-0.32.0-full-source.manifest.json": "975a1d80d7cc1246832f3c9bc824e06292ec5eb22e81a2bdd8a3c1ce071d6f59",
+    "sourcetrail-0.32.0-official-full.json": "c7b23c3afe6968ce4506e4e9488641cbe52474893c8f2327c4f1fc13ecffd58c",
+    "sourcetrail-0.32.0-reproduction-check.json": "5896bc55ade72991e2099e539530fad9e3ff3dab7fc18c9236d3901f71527e56",
+    "catalog/REPRODUCTION.md": "a9e2dbb2a1a8ee7357067c54ae9393caef31bea6d607539e65686f431b885677"
+  }
+}

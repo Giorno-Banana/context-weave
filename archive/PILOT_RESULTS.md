@@ -6,8 +6,8 @@
 
 数据为 [LoCoMo-Refined](https://github.com/mem-eval-suite/LoCoMo_refined)，本地版本 `887091190789e8d6760e70b9edd696539923dc4f`。从每类至少有 5 题的对话中，按固定种子的 SHA-256 排序选择 2 组对话；再对每组的 4 个类别各取 5 题。选择过程不使用检索结果。样本是 `conv-43` 和 `conv-50`，共 40 题、1,248 条完整历史消息、246,606 个入库字符。类别均衡抽样不代表原数据的类别分布。
 
-- [冻结题号](evaluation/pilot-20261001/sample-ids.json)
-- [抽样计划](evaluation/pilot-20261001/sample-plan.json)
+- [冻结题号](../evaluation/pilot-20261001/sample-ids.json)
+- [抽样计划](../evaluation/pilot-20261001/sample-plan.json)
 - `conversations.jsonl` SHA-256：`62aac9b61cb03ed83dc3123baa0b1b3e20d29aabb9ef9c59422af3377b794f23`
 - `questions.jsonl` SHA-256：`a88902b3428b76c7c0d75765c844f42ca0a1b99b7b207c2d398b0d100fa579a6`
 
@@ -47,7 +47,7 @@
 按上游许可证自行取得数据，在源码目录配置私有 `.env` 后运行：
 
 ```bash
-python evaluate_retrieval.py --env-file .env --data-dir /path/to/LoCoMo_refined/data/public --sample-ids evaluation/pilot-20261001/sample-ids.json --output runs/v4-pilot-reproduction --modes dense hybrid hybrid_window
+python laboratory/legacy-cycle2/tools/evaluate_retrieval.py --env-file .env --data-dir /path/to/LoCoMo_refined/data/public --sample-ids laboratory/legacy-cycle2/evaluation/pilot-20261001/sample-ids.json --output runs/v4-pilot-reproduction --modes dense hybrid hybrid_window
 ```
 
 该命令会产生真实 Embedding 用量，应使用新数据库。完整历史的入库量与题目数量不同。固定数据、模型与配置有助于复现，但托管模型更新或服务延迟可能导致差异。

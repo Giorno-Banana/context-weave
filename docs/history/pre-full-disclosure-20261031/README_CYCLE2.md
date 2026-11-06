@@ -18,12 +18,12 @@ Provider HTTP status, timeout/validation category, attempts, batch offsets and t
 
 ## Run and verification
 
-Install `requirements.txt`, copy `env.example` to a private `.env`, and configure the service key, Bailian endpoint/key and `OPENROUTER_API_KEY`. Keep `AE_ADD_INDEXER=1` and `AE_PLANNER=0`. Follow [OPERATIONS.md](OPERATIONS.md); Python entry points remain under `adaptive_evidence`.
+Install `laboratory/legacy-cycle2/requirements.txt`, copy `laboratory/legacy-cycle2/env.example` to a private `.env`, and configure the service key, Bailian endpoint/key and `OPENROUTER_API_KEY`. Keep `AE_ADD_INDEXER=1` and `AE_PLANNER=0`. Follow [OPERATIONS.md](OPERATIONS.md); Python entry points remain under `adaptive_evidence`.
 
 ```bash
-python preflight.py --env-file .env
+python laboratory/legacy-cycle2/tools/preflight.py --env-file .env
 python -m unittest discover -s tests -v
-python preflight.py --env-file .env --live
+python laboratory/legacy-cycle2/tools/preflight.py --env-file .env --live
 ```
 
 On 2026-10-08, 50 mocked regression tests and the small live synthetic preflight passed. Tests cover exact source selection, routing, failure recovery, pending-data invisibility, restart checkpoints, payload conflicts, scope isolation, log redaction and original-source Search results. Additional load/deployment checks and the official Smoke are tracked separately. These checks do not establish Full capacity or retrieval quality. The earlier 0.3.0 Smoke ended with Add HTTP 503 without a score; its exact trigger was not recoverable from the old logs. Historical public-data diagnostics in [PILOT_RESULTS.md](PILOT_RESULTS.md) describe the 0.2.0 baseline.

@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 import httpx
 
-import preflight
+from tools import preflight
 from adaptive_evidence import api
 from adaptive_evidence.remote_encoder import DashScopeEncoder
 from test_remote_encoder import ENDPOINT, result

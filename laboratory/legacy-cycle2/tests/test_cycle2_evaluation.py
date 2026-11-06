@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-import evaluate_retrieval
+from tools import evaluate_retrieval
 from test_contract import FakeEncoder
 
 

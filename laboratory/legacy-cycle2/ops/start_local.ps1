@@ -38,7 +38,7 @@ if (-not $env:OPENROUTER_API_KEY) { throw 'Set OPENROUTER_API_KEY before startin
 $env:AE_DEVICE = $Device
 $env:AE_MODE = $Mode
 $env:AE_CONTEXT_CHARS = [string]$ContextChars
-$env:PYTHONPATH = $PSScriptRoot
+$env:PYTHONPATH = Split-Path -Parent $PSScriptRoot
 if (-not $env:MEMORY_API_KEY) { throw 'Set MEMORY_API_KEY before starting the service.' }
 & $pythonPath -m uvicorn adaptive_evidence.api:app --host 127.0.0.1 --port $Port --workers 1 --no-access-log
 exit $LASTEXITCODE

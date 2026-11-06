@@ -1,6 +1,6 @@
 # Run the terminal Full source
 
-These instructions supplement the frozen source without modifying it. Use Python3.10–3.12 with SQLite FTS5. The historical live service used Python3.10; the supplied Dockerfile was not the Full deployment. Install the pinned requirements from the exact release tree in a fresh virtual environment.
+These instructions supplement the frozen source without modifying it. Use Python3.10–3.12 with SQLite FTS5. Install the pinned requirements from the exact release tree in a fresh virtual environment.
 
 ```powershell
 cd releases/sourcetrail-0.32.0-full
@@ -10,7 +10,7 @@ Copy-Item env.example .env
 # Edit .env privately: MEMORY_API_KEY, DASHSCOPE_API_KEY, AE_EMBEDDING_URL.
 # Use the participant's text-embedding-v4 provider endpoint, not a chat endpoint.
 # Set AE_DATABASE to a fresh isolated absolute path; never reuse the official DB for tests.
-.\start_local.ps1 -Port 18098 -PythonPath .\.venv\Scripts\python.exe -EnvFile @('.env')
+.\start_local.ps1 -Port 18532 -PythonPath .\.venv\Scripts\python.exe -EnvFile @('.env')
 ```
 
 Keep `AE_EMBEDDING_BACKEND=dashscope`, dimensions1024,batch10, `AE_MODE=query_document_evidence`, `AE_CONTEXT_CHARS=24000`. The launcher forces generative Add/Search flags off. API keys are different credentials: the service needs the participant Memory System Key and embedding provider key; an AML Eval Key is not needed by the memory implementation.
@@ -21,11 +21,11 @@ For an offline synthetic regression run from this release directory:
 .\.venv\Scripts\python.exe -m unittest discover -s tests
 ```
 
-71 frozen tests passed at recovery. The compatibility test also loads the supplied sibling directory `../context-weave-v320-evidence-budget-20261014/`; keep that original tree beside the recovery tree. The unchanged standalone recovery ZIP does not include this sibling; extract the original archive into that sibling directory if using ZIPs rather than the Git checkout. Reproduction test results are recorded separately from historical tests and scores. `preflight.py --env-file .env --live` sends synthetic data to the configured paid embedding provider and uses temporary isolated storage; run only under the operator's authorized provider budget. Do not send or inspect official evaluation records in diagnostics.
+71 frozen tests passed at recovery. The compatibility test also loads the supplied sibling directory `../context-weave-v320-evidence-budget-20261014/`; keep that original tree beside the recovery tree. The unchanged standalone recovery ZIP does not include this sibling; extract the original archive into that sibling directory if using ZIPs rather than the Git checkout. Reproduction test results are recorded separately from historical tests and scores. `python preflight.py --env-file .env --live` sends synthetic data to the configured paid embedding provider and uses temporary isolated storage; run only under the operator's authorized provider budget. Do not send or inspect official evaluation records in diagnostics.
 
 ## API and capacity
 
-Expose authenticated POST `/add` and `/search`, plus unauthenticated GET `/health`, behind a valid HTTPS proxy. Keep the registered Add/Search URLs unchanged. The expected terminal-source health marker is `embedding_length_recovery=provider-confirmed-lossless-v1`, version0.32.0, embedding text-embedding-v4, zero generative calls, raw_source Add and query_document_evidence Search. A2xx health check alone does not prove the correct source.
+The application provides authenticated POST `/add` and `/search`, plus unauthenticated GET `/health`. Configure the base URL and any HTTPS access in the independent runtime. The expected terminal-source health marker is `embedding_length_recovery=provider-confirmed-lossless-v1`, version0.32.0, embedding text-embedding-v4, zero generative calls, raw_source Add and query_document_evidence Search. A2xx health check alone does not prove the correct source.
 
 Successful Add returns success=true plus the exact request_id/user_id/session_id. Search returns a JSON object containing ranked data records with stable nonempty id/content, at most requested top_k (maximum100); an empty result is data=[]. Timestamp units are source Unix milliseconds. Authentication failures return401; validation422; duplicate-payload conflicts409; embedding failures503 with Retry-After. Access logs are disabled; the application records only path/status/duration and sanitized provider categories, not request bodies or IDs.
 
@@ -33,8 +33,8 @@ Declared Add/Search concurrency is16/16. Upstream embedding batches are serializ
 
 ## Persistence, isolation and retention
 
-Never change official source/profile or clear data during an active/uncertain evaluation. Before maintenance, reconcile active tasks for every account sharing the root endpoint. Preserve pending requests and idempotency state during restarts. Use separate databases for local tests; never copy official data into a public artifact.
+Never change official source/profile or clear data during an active/uncertain evaluation. Preserve pending requests and idempotency state during restarts. Use separate databases for local tests; never copy official data into a public artifact.
 
-Limit access to necessary operators. Delete official data and derived copies within30days after each task ends unless the organizer has given prior written permission. This includes SQLite main/WAL/SHM files, vector/cache backups and copied evaluation bodies. Shared storage requires the earliest relevant task deadline, not simply the latest write date. Full deadline:2026-11-15 03:02:32 UTC+8. Retain only sanitized operational counts, hashes and aggregate score evidence where permitted. Arrange an actual bounded deletion procedure before that deadline; this document is not an automated purge or a completed-deletion attestation.
+Limit access to necessary operators. Delete official data and derived copies within30days after each task ends unless the organizer has given prior written permission. This includes SQLite main/WAL/SHM files, vector/cache backups and copied evaluation bodies. Data from multiple tasks follows the earliest applicable retention deadline. Full deadline:2026-11-15 03:02:32 UTC+8. Retain only sanitized operational counts, hashes and aggregate score evidence where permitted. Arrange an actual bounded deletion procedure before that deadline; this document is not an automated purge or a completed-deletion attestation.
 
-Do not use the frozen `compose.yaml` as a current deployment declaration: its image/volume/port labels were inherited from0.28. The source archive is intentionally unchanged. The Windows launcher above is the evidenced Full deployment path.
+The release archive retains its original container templates and file identities. Use the launcher above for this independent reproduction workflow.
